@@ -14,12 +14,23 @@
 		C9002A951547D8840044B6AD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A941547D8840044B6AD /* OpenGLES.framework */; };
 		C9002A9B1547D8840044B6AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9002A991547D8840044B6AD /* InfoPlist.strings */; };
 		C9002A9D1547D8840044B6AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9002A9C1547D8840044B6AD /* main.m */; };
-		C9002AA11547D8840044B6AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9002AA01547D8840044B6AD /* AppDelegate.m */; };
+		C9002AA11547D8840044B6AD /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9002AA01547D8840044B6AD /* AppDelegate.mm */; };
 		C9002AA41547D8840044B6AD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9002AA21547D8840044B6AD /* MainStoryboard.storyboard */; };
 		C9002AA61547D8840044B6AD /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C9002AA51547D8840044B6AD /* Shader.fsh */; };
 		C9002AA81547D8840044B6AD /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C9002AA71547D8840044B6AD /* Shader.vsh */; };
 		C9002AAB1547D8840044B6AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9002AAA1547D8840044B6AD /* ViewController.m */; };
+		C9002AC51547DCCB0044B6AD /* libABL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002AC41547DC8D0044B6AD /* libABL.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9002AC31547DC8D0044B6AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9002ABC1547DC8C0044B6AD /* ABL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C90028B51547AA040044B6AD;
+			remoteInfo = ABL;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C9002A881547D8840044B6AD /* Ablaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ablaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,12 +44,13 @@
 		C9002A9C1547D8840044B6AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9002A9E1547D8840044B6AD /* Ablaze-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ablaze-Prefix.pch"; sourceTree = "<group>"; };
 		C9002A9F1547D8840044B6AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9002AA01547D8840044B6AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9002AA01547D8840044B6AD /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		C9002AA31547D8840044B6AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C9002AA51547D8840044B6AD /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		C9002AA71547D8840044B6AD /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		C9002AA91547D8840044B6AD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C9002AAA1547D8840044B6AD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C9002ABC1547DC8C0044B6AD /* ABL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ABL.xcodeproj; path = ABL/ABL/ABL.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9002AC51547DCCB0044B6AD /* libABL.a in Frameworks */,
 				C9002A8D1547D8840044B6AD /* UIKit.framework in Frameworks */,
 				C9002A8F1547D8840044B6AD /* Foundation.framework in Frameworks */,
 				C9002A911547D8840044B6AD /* CoreGraphics.framework in Frameworks */,
@@ -77,6 +90,7 @@
 		C9002A8B1547D8840044B6AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9002ABC1547DC8C0044B6AD /* ABL.xcodeproj */,
 				C9002A8C1547D8840044B6AD /* UIKit.framework */,
 				C9002A8E1547D8840044B6AD /* Foundation.framework */,
 				C9002A901547D8840044B6AD /* CoreGraphics.framework */,
@@ -90,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				C9002A9F1547D8840044B6AD /* AppDelegate.h */,
-				C9002AA01547D8840044B6AD /* AppDelegate.m */,
+				C9002AA01547D8840044B6AD /* AppDelegate.mm */,
 				C9002AA21547D8840044B6AD /* MainStoryboard.storyboard */,
 				C9002AA51547D8840044B6AD /* Shader.fsh */,
 				C9002AA71547D8840044B6AD /* Shader.vsh */,
@@ -110,6 +124,14 @@
 				C9002A9E1547D8840044B6AD /* Ablaze-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9002ABD1547DC8C0044B6AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9002AC41547DC8D0044B6AD /* libABL.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,12 +173,28 @@
 			mainGroup = C9002A7D1547D8840044B6AD;
 			productRefGroup = C9002A891547D8840044B6AD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C9002ABD1547DC8C0044B6AD /* Products */;
+					ProjectRef = C9002ABC1547DC8C0044B6AD /* ABL.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C9002A871547D8840044B6AD /* Ablaze */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C9002AC41547DC8D0044B6AD /* libABL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libABL.a;
+			remoteRef = C9002AC31547DC8D0044B6AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C9002A861547D8840044B6AD /* Resources */ = {
@@ -178,7 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9002A9D1547D8840044B6AD /* main.m in Sources */,
-				C9002AA11547D8840044B6AD /* AppDelegate.m in Sources */,
+				C9002AA11547D8840044B6AD /* AppDelegate.mm in Sources */,
 				C9002AAB1547D8840044B6AD /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +296,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ablaze/Ablaze-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "Ablaze/Ablaze-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -270,6 +309,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ablaze/Ablaze-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "Ablaze/Ablaze-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

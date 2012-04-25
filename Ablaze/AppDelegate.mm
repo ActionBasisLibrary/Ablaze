@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ABL/ABL.h"
 
 @implementation AppDelegate
 
@@ -15,6 +16,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+	
+	ABL::test();
+	
     return YES;
 }
 							
