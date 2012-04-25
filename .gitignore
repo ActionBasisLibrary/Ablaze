@@ -1,0 +1,8 @@
+# Xcode 4
+*.xcworkspace/
+xcuserdata/
+
+# Mac OS X
+.DS_Store
+profile
+.LSOverride
