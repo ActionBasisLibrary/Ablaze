@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 
-#import "UITouch+uniqueID.h"
-
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 // Uniform index.
@@ -106,6 +104,7 @@ GLfloat gCubeVertexData[216] =
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	touchState = [TouchState new];
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
@@ -396,31 +395,22 @@ GLfloat gCubeVertexData[216] =
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self printTouches:touches];
+	[touchState handleTouches:touches];
+	[touchState print];
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self printTouches:touches];
-	
+	[touchState handleTouches:touches];
+	[touchState print];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self printTouches:touches];
-	
+	[touchState handleTouches:touches];
+	[touchState print];
 }
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self printTouches:touches];
-	
+	[touchState handleTouches:touches];
+	[touchState print];
 }
 
-- (void)printTouches:(NSSet *)touches {
-	NSEnumerator *e = [touches objectEnumerator];
-	UITouch *touchObject;
-	while ( (touchObject = (UITouch *)[e nextObject]) ) {
-		
-		NSLog(@"%@: %@", touchObject.phaseString, touchObject.uniqueID);
-		NSLog(@"   Timestamp: %f", touchObject.timestamp);
-		NSLog(@"   Tap Count: %u", touchObject.tapCount);
-	}
-}
 
 
 @end

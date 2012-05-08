@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
+#import "TouchState.h"
 
 @interface ViewController : GLKViewController
+{
+	TouchState* touchState;
+}
 
 @end
