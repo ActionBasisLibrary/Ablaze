@@ -396,19 +396,15 @@ GLfloat gCubeVertexData[216] =
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchState handleTouches:touches];
-	[touchState print];
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchState handleTouches:touches];
-	[touchState print];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchState handleTouches:touches];
-	[touchState print];
 }
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchState handleTouches:touches];
-	[touchState print];
 }
 
 

@@ -10,10 +10,10 @@
 
 @interface TouchState : NSObject
 {
-	NSMutableSet* touches;
+	NSMutableDictionary* touches;
 }
 
--(void)handleTouches:(NSSet*)touches;
+-(void)handleTouches:(NSSet*)changedTouches;
 -(void)print;
 
 @end

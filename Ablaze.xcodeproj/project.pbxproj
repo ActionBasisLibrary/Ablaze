@@ -22,6 +22,7 @@
 		C9002AC51547DCCB0044B6AD /* libABL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002AC41547DC8D0044B6AD /* libABL.a */; };
 		C92C4AE015587582002B9396 /* UITouch+uniqueID.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */; };
 		C92C4AF81558A872002B9396 /* TouchState.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AF71558A872002B9396 /* TouchState.m */; };
+		C92C4AFB1558E44D002B9396 /* TouchStateTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITouch+uniqueID.m"; sourceTree = "<group>"; };
 		C92C4AF61558A872002B9396 /* TouchState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchState.h; sourceTree = "<group>"; };
 		C92C4AF71558A872002B9396 /* TouchState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchState.m; sourceTree = "<group>"; };
+		C92C4AF91558E44D002B9396 /* TouchStateTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchStateTouch.h; sourceTree = "<group>"; };
+		C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchStateTouch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +120,7 @@
 				C9002AA91547D8840044B6AD /* ViewController.h */,
 				C9002AAA1547D8840044B6AD /* ViewController.m */,
 				C9002A971547D8840044B6AD /* Supporting Files */,
-				C92C4ADE15587582002B9396 /* UITouch+uniqueID.h */,
-				C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */,
-				C92C4AF61558A872002B9396 /* TouchState.h */,
-				C92C4AF71558A872002B9396 /* TouchState.m */,
+				C92C4AFC1558E45C002B9396 /* Touches */,
 			);
 			path = Ablaze;
 			sourceTree = "<group>";
@@ -142,6 +142,19 @@
 				C9002AC41547DC8D0044B6AD /* libABL.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C92C4AFC1558E45C002B9396 /* Touches */ = {
+			isa = PBXGroup;
+			children = (
+				C92C4AF61558A872002B9396 /* TouchState.h */,
+				C92C4AF71558A872002B9396 /* TouchState.m */,
+				C92C4AF91558E44D002B9396 /* TouchStateTouch.h */,
+				C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */,
+				C92C4ADE15587582002B9396 /* UITouch+uniqueID.h */,
+				C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */,
+			);
+			name = Touches;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +243,7 @@
 				C9002AAB1547D8840044B6AD /* ViewController.m in Sources */,
 				C92C4AE015587582002B9396 /* UITouch+uniqueID.m in Sources */,
 				C92C4AF81558A872002B9396 /* TouchState.m in Sources */,
+				C92C4AFB1558E44D002B9396 /* TouchStateTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
