@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
+#import "ABLWrapper.h"
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
@@ -105,6 +107,8 @@ GLfloat gCubeVertexData[216] =
 {
     [super viewDidLoad];
 	touchState = [TouchState new];
+	wrapper = [ABLWrapper new];
+
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
@@ -192,6 +196,9 @@ GLfloat gCubeVertexData[216] =
 
 - (void)update
 {
+	[wrapper getMean];
+	
+	
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
     

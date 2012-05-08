@@ -10,8 +10,11 @@
 #import <GLKit/GLKit.h>
 #import "TouchState.h"
 
+@class ABLWrapper;
+
 @interface ViewController : GLKViewController
 {
+	ABLWrapper* wrapper;
 	TouchState* touchState;
 }
 
