@@ -15,6 +15,7 @@
 - (id) init {
 	if(self = [super init]){
 		touches = [[NSMutableDictionary alloc] initWithCapacity:11];
+		touchOrder = [[NSMutableArray alloc] initWithCapacity:11];
 	}
 	return self;
 }
@@ -45,7 +46,7 @@
 				break;
 		}
 	}
-	[self print];
+	//[self print];
 }
 
 -(void)addTouch:(UITouch *)touch{
@@ -53,6 +54,9 @@
 	TouchStateTouch* tst = [TouchStateTouch touchWithID:key location:[touch locationInView:[touch view]]];
 	@synchronized(touches){
 		[touches setValue:tst forKey:key];
+	}
+	@synchronized(touchOrder){
+		[touchOrder addObject:key];
 	}
 }
 
@@ -72,6 +76,9 @@
 	@synchronized(touches){
 		[touches removeObjectForKey:key];
 	}
+	@synchronized(touchOrder){
+		[touchOrder removeObject:key];
+	}
 }
 
 -(void)print {
@@ -84,6 +91,75 @@
 		}
 	}
 	NSLog(@"%@", out);
+}
+
+
+-(BOOL)getXs:(float*)buffer {
+	NSString* touchKey;
+	BOOL success = YES;
+	@synchronized(touchOrder){
+		success = ([touchOrder count]>0);
+		if(success)
+			touchKey = [touchOrder objectAtIndex:0];
+	}
+	if(!success) return NO;
+	@synchronized(touches){
+		TouchStateTouch* tst = [touches valueForKey:touchKey];
+		success = (tst!=nil);
+		if(success){
+			buffer[0] = tst.location.x;
+			buffer[1] = tst.location.x;
+		}
+	}
+	if(!success) return NO;
+	@synchronized(touchOrder){
+		success = ([touchOrder count]>1);
+		if(success)
+			touchKey = [touchOrder objectAtIndex:1];
+	}
+	if(!success) return YES;
+	@synchronized(touches){
+		TouchStateTouch* tst = [touches valueForKey:touchKey];
+		success = (tst!=nil);
+		if(success){
+			buffer[1] = tst.location.x;
+		}
+	}
+	return YES;
+}
+
+-(BOOL)getYs:(float*)buffer {
+	NSString* touchKey;
+	BOOL success = YES;
+	@synchronized(touchOrder){
+		success = ([touchOrder count]>0);
+		if(success)
+			touchKey = [touchOrder objectAtIndex:0];
+	}
+	if(!success) return NO;
+	@synchronized(touches){
+		TouchStateTouch* tst = [touches valueForKey:touchKey];
+		success = (tst!=nil);
+		if(success){
+			buffer[0] = tst.location.y;
+			buffer[1] = tst.location.y;
+		}
+	}
+	if(!success) return NO;
+	@synchronized(touchOrder){
+		success = ([touchOrder count]>1);
+		if(success)
+			touchKey = [touchOrder objectAtIndex:1];
+	}
+	if(!success) return YES;
+	@synchronized(touches){
+		TouchStateTouch* tst = [touches valueForKey:touchKey];
+		success = (tst!=nil);
+		if(success){
+			buffer[1] = tst.location.y;
+		}
+	}
+	return YES;
 }
 
 @end

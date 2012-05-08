@@ -9,17 +9,29 @@
 #import "ABLWrapper.h"
 
 
+
+TouchState* ts;
+
+@implementation ABLWrapper
+@synthesize touchState;
+
+
+
 bool updateX(float* buffer){
-	buffer[0] = 100.0;
-	buffer[1] = 200.0;
-	return true;
+	bool a = [ts getXs:buffer];
+	printf("X: %f, %f\n", buffer[0], buffer[1]);
+	return a;
 }
 bool updateY(float* buffer){
-	buffer[0] = 300.0;
-	buffer[1] = 400.0;
-	return true;
+	bool a = [ts getYs:buffer];
+	printf("Y: %f, %f\n", buffer[0], buffer[1]);
+	return a;
 }
-@implementation ABLWrapper
+
+-(void)prepTouchState
+{
+	ts = touchState;
+}
 
 -(id)init {
 	if(self = [super init]){
@@ -45,7 +57,7 @@ bool updateY(float* buffer){
 -(void)getMean {
 	float meanX = *transform.getValue("meanX");
 	float meanY = *transform.getValue("meanY");
-	printf("%f, %f\n", meanX, meanY);
+	printf("%f, %f\n\n", meanX, meanY);
 }
 
 

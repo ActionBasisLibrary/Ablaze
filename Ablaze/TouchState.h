@@ -11,9 +11,13 @@
 @interface TouchState : NSObject
 {
 	NSMutableDictionary* touches;
+	NSMutableArray* touchOrder;
 }
 
 -(void)handleTouches:(NSSet*)changedTouches;
 -(void)print;
+
+-(BOOL)getXs:(float*)buffer;
+-(BOOL)getYs:(float*)buffer;
 
 @end

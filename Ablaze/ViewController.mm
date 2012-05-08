@@ -108,6 +108,8 @@ GLfloat gCubeVertexData[216] =
     [super viewDidLoad];
 	touchState = [TouchState new];
 	wrapper = [ABLWrapper new];
+	wrapper.touchState = touchState;
+	[wrapper prepTouchState];
 
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
