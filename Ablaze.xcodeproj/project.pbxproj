@@ -20,6 +20,7 @@
 		C9002AA81547D8840044B6AD /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C9002AA71547D8840044B6AD /* Shader.vsh */; };
 		C9002AAB1547D8840044B6AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9002AAA1547D8840044B6AD /* ViewController.m */; };
 		C9002AC51547DCCB0044B6AD /* libABL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002AC41547DC8D0044B6AD /* libABL.a */; };
+		C92C4AE015587582002B9396 /* UITouch+uniqueID.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		C9002AA91547D8840044B6AD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C9002AAA1547D8840044B6AD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9002ABC1547DC8C0044B6AD /* ABL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ABL.xcodeproj; path = ABL/ABL/ABL.xcodeproj; sourceTree = "<group>"; };
+		C92C4ADE15587582002B9396 /* UITouch+uniqueID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITouch+uniqueID.h"; sourceTree = "<group>"; };
+		C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITouch+uniqueID.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				C9002AA91547D8840044B6AD /* ViewController.h */,
 				C9002AAA1547D8840044B6AD /* ViewController.m */,
 				C9002A971547D8840044B6AD /* Supporting Files */,
+				C92C4ADE15587582002B9396 /* UITouch+uniqueID.h */,
+				C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */,
 			);
 			path = Ablaze;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				C9002A9D1547D8840044B6AD /* main.m in Sources */,
 				C9002AA11547D8840044B6AD /* AppDelegate.mm in Sources */,
 				C9002AAB1547D8840044B6AD /* ViewController.m in Sources */,
+				C92C4AE015587582002B9396 /* UITouch+uniqueID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

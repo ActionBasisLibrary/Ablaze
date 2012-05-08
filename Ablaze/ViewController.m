@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import "UITouch+uniqueID.h"
+
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 // Uniform index.
@@ -389,6 +391,63 @@ GLfloat gCubeVertexData[216] =
     }
     
     return YES;
+}
+
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self printTouches:touches];
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self printTouches:touches];
+	
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self printTouches:touches];
+	
+}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self printTouches:touches];
+	
+}
+
+- (void)printTouches:(NSSet *)touches {
+	NSEnumerator *e = [touches objectEnumerator];
+	UITouch *touchObject;
+	while ( (touchObject = (UITouch *)[e nextObject]) ) {
+		
+		NSLog(@"Touch: %@", touchObject.uniqueID);
+		NSLog(@"   Timestamp: %f", touchObject.timestamp);
+		NSLog(@"   Tap Count: %u", touchObject.tapCount);
+		NSLog(@"   Phase: %@", [self stringForPhase:touchObject.phase]);
+	}
+}
+
+- (NSString*)stringForPhase:(UITouchPhase)phase {
+	switch (phase) {
+		case UITouchPhaseBegan:
+			return @"began";
+			break;
+			
+		case UITouchPhaseMoved:
+			return @"moved";
+			break;
+			
+		case UITouchPhaseStationary:
+			return @"stationary";
+			break;
+			
+		case UITouchPhaseEnded:
+			return @"ended";
+			break;
+			
+		case UITouchPhaseCancelled:
+			return @"cancelled";
+			break;
+			
+		default:
+			break;
+	}
 }
 
 @end
