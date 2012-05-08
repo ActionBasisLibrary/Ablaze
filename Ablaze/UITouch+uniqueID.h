@@ -11,4 +11,6 @@
 @interface UITouch (uniqueID)
 // Returns a unique identifier for this particular touch
 @property (readonly) NSString* uniqueID;
+// Return a string representation of the touch phase
+@property (readonly) NSString* phaseString;
 @end

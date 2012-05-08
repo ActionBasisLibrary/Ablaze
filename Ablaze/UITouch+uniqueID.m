@@ -23,4 +23,28 @@ static const void *kTCUniqueIdKey = &kTCUniqueIdKey;
     }
     return uniq;
 }
+
+- (NSString*)phaseString {
+	switch (self.phase) {
+		case UITouchPhaseBegan:
+			return @"Began";
+			break;
+		case UITouchPhaseMoved:
+			return @"Moved";
+			break;
+		case UITouchPhaseStationary:
+			return @"Stationary";
+			break;
+		case UITouchPhaseEnded:
+			return @"Ended";
+			break;
+		case UITouchPhaseCancelled:
+			return @"Cancelled";
+			break;
+		default:
+			return nil;
+			break;
+	}
+}
+
 @end

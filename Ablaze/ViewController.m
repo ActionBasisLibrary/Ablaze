@@ -416,38 +416,11 @@ GLfloat gCubeVertexData[216] =
 	UITouch *touchObject;
 	while ( (touchObject = (UITouch *)[e nextObject]) ) {
 		
-		NSLog(@"Touch: %@", touchObject.uniqueID);
+		NSLog(@"%@: %@", touchObject.phaseString, touchObject.uniqueID);
 		NSLog(@"   Timestamp: %f", touchObject.timestamp);
 		NSLog(@"   Tap Count: %u", touchObject.tapCount);
-		NSLog(@"   Phase: %@", [self stringForPhase:touchObject.phase]);
 	}
 }
 
-- (NSString*)stringForPhase:(UITouchPhase)phase {
-	switch (phase) {
-		case UITouchPhaseBegan:
-			return @"began";
-			break;
-			
-		case UITouchPhaseMoved:
-			return @"moved";
-			break;
-			
-		case UITouchPhaseStationary:
-			return @"stationary";
-			break;
-			
-		case UITouchPhaseEnded:
-			return @"ended";
-			break;
-			
-		case UITouchPhaseCancelled:
-			return @"cancelled";
-			break;
-			
-		default:
-			break;
-	}
-}
 
 @end
