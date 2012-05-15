@@ -24,6 +24,7 @@
 		C92C4AF81558A872002B9396 /* TouchState.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AF71558A872002B9396 /* TouchState.m */; };
 		C92C4AFB1558E44D002B9396 /* TouchStateTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */; };
 		C92C4B0B1559C038002B9396 /* ABLWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C92C4B0A1559C037002B9396 /* ABLWrapper.mm */; };
+		C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchStateTouch.m; sourceTree = "<group>"; };
 		C92C4B091559C037002B9396 /* ABLWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLWrapper.h; sourceTree = "<group>"; };
 		C92C4B0A1559C037002B9396 /* ABLWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ABLWrapper.mm; sourceTree = "<group>"; };
+		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
+		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				C92C4AFC1558E45C002B9396 /* Touches */,
 				C92C4B091559C037002B9396 /* ABLWrapper.h */,
 				C92C4B0A1559C037002B9396 /* ABLWrapper.mm */,
+				C9DA51CE1562E76700ADA5AA /* Framerate.h */,
+				C9DA51CF1562E76700ADA5AA /* Framerate.m */,
 			);
 			path = Ablaze;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				C92C4AF81558A872002B9396 /* TouchState.m in Sources */,
 				C92C4AFB1558E44D002B9396 /* TouchStateTouch.m in Sources */,
 				C92C4B0B1559C038002B9396 /* ABLWrapper.mm in Sources */,
+				C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

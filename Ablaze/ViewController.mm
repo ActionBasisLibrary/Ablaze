@@ -107,6 +107,7 @@ GLfloat gCubeVertexData[216] =
 {
     [super viewDidLoad];
 	touchState = [TouchState new];
+	framerate = [Framerate new];
 	wrapper = [ABLWrapper new];
 	wrapper.touchState = touchState;
 	[wrapper prepTouchState];
@@ -121,6 +122,7 @@ GLfloat gCubeVertexData[216] =
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+	view.drawableMultisample = GLKViewDrawableMultisample4X;
     
     [self setupGL];
 }
@@ -226,6 +228,8 @@ GLfloat gCubeVertexData[216] =
     _modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix);
     
     _rotation += self.timeSinceLastUpdate * 0.5f;
+	
+	NSLog(@"     FPS: %i", [framerate tick]);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect

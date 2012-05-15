@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "TouchState.h"
+#import "Framerate.h"
 
 @class ABLWrapper;
 
@@ -16,6 +17,7 @@
 {
 	ABLWrapper* wrapper;
 	TouchState* touchState;
+	Framerate* framerate;
 }
 
 @end
