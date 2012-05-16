@@ -17,14 +17,28 @@ TouchState* ts;
 
 
 
-bool updateX(float* buffer){
-	bool a = [ts getXs:buffer];
-	printf("X: %f, %f\n", buffer[0], buffer[1]);
+bool updateX(float* buffer, unsigned int *count){
+	bool a = [ts getXs:buffer withCount:count];
+	
+	printf("X: ");
+	for (int i=0; i<*count; i++) {
+		printf("%.1f", buffer[i]);
+		if(i<*count-1) printf(", ");
+	}
+	printf("\n");
+	
 	return a;
 }
-bool updateY(float* buffer){
-	bool a = [ts getYs:buffer];
-	printf("Y: %f, %f\n", buffer[0], buffer[1]);
+bool updateY(float* buffer, unsigned int *count){
+	bool a = [ts getYs:buffer withCount:count];
+	
+	printf("Y: ");
+	for (int i=0; i<*count; i++) {
+		printf("%.1f", buffer[i]);
+		if(i<*count-1) printf(", ");
+	}
+	printf("\n");
+	
 	return a;
 }
 
@@ -38,8 +52,8 @@ bool updateY(float* buffer){
 		transform = ABTransform(true);
 		
 		ABSymbol *pos[2] = {
-			new ABSymPull("touchXs", 2, updateX),
-			new ABSymPull("touchYs", 2, updateY),
+			new ABSymVarPull("touchXs", 11, updateX),
+			new ABSymVarPull("touchYs", 11, updateY),
 		};
 		
 		ABSymbol *mean[2] = {
@@ -54,10 +68,11 @@ bool updateY(float* buffer){
 	return self;
 }
 
--(void)getMean {
+-(CGPoint)getMean {
 	float meanX = *transform.getValue("meanX");
 	float meanY = *transform.getValue("meanY");
-	printf("%f, %f\n\n", meanX, meanY);
+	printf("-> (%.2f, %.2f)\n\n", meanX, meanY);
+	return CGPointMake(meanX, meanY);
 }
 
 

@@ -94,72 +94,79 @@
 }
 
 
--(BOOL)getXs:(float*)buffer {
+-(BOOL)getXs:(float*)buffer withCount:(unsigned int *)count {
 	NSString* touchKey;
 	BOOL success = YES;
-	@synchronized(touchOrder){
-		success = ([touchOrder count]>0);
-		if(success)
-			touchKey = [touchOrder objectAtIndex:0];
-	}
-	if(!success) return NO;
-	@synchronized(touches){
-		TouchStateTouch* tst = [touches valueForKey:touchKey];
-		success = (tst!=nil);
-		if(success){
-			buffer[0] = tst.location.x;
-			buffer[1] = tst.location.x;
+	unsigned int i=0;
+	
+	while(true){
+		@synchronized(touchOrder){
+			success = ([touchOrder count]>i);
+			if(success)
+				touchKey = [touchOrder objectAtIndex:i];
 		}
-	}
-	if(!success) return NO;
-	@synchronized(touchOrder){
-		success = ([touchOrder count]>1);
-		if(success)
-			touchKey = [touchOrder objectAtIndex:1];
-	}
-	if(!success) return YES;
-	@synchronized(touches){
-		TouchStateTouch* tst = [touches valueForKey:touchKey];
-		success = (tst!=nil);
-		if(success){
-			buffer[1] = tst.location.x;
+		if(!success) {
+			*count = i;
+			return (i==0)?NO:YES;
 		}
+		@synchronized(touches){
+			TouchStateTouch* tst = [touches valueForKey:touchKey];
+			success = (tst!=nil);
+			if(success){
+				buffer[i] = tst.location.x;
+			}
+		}
+		if(!success) {
+			*count = i;
+			return (i==0)?NO:YES;
+		}
+		// try for the next touch
+		i++;
 	}
-	return YES;
 }
 
--(BOOL)getYs:(float*)buffer {
+-(BOOL)getYs:(float*)buffer withCount:(unsigned int *)count {
 	NSString* touchKey;
 	BOOL success = YES;
-	@synchronized(touchOrder){
-		success = ([touchOrder count]>0);
-		if(success)
-			touchKey = [touchOrder objectAtIndex:0];
-	}
-	if(!success) return NO;
-	@synchronized(touches){
-		TouchStateTouch* tst = [touches valueForKey:touchKey];
-		success = (tst!=nil);
-		if(success){
-			buffer[0] = tst.location.y;
-			buffer[1] = tst.location.y;
+	unsigned int i=0;
+	
+	while(true){
+		@synchronized(touchOrder){
+			success = ([touchOrder count]>i);
+			if(success)
+				touchKey = [touchOrder objectAtIndex:i];
 		}
-	}
-	if(!success) return NO;
-	@synchronized(touchOrder){
-		success = ([touchOrder count]>1);
-		if(success)
-			touchKey = [touchOrder objectAtIndex:1];
-	}
-	if(!success) return YES;
-	@synchronized(touches){
-		TouchStateTouch* tst = [touches valueForKey:touchKey];
-		success = (tst!=nil);
-		if(success){
-			buffer[1] = tst.location.y;
+		if(!success) {
+			*count = i;
+			return (i==0)?NO:YES;
 		}
+		@synchronized(touches){
+			TouchStateTouch* tst = [touches valueForKey:touchKey];
+			success = (tst!=nil);
+			if(success){
+				buffer[i] = tst.location.y;
+			}
+		}
+		if(!success) {
+			*count = i;
+			return (i==0)?NO:YES;
+		}
+		// try for the next touch
+		i++;
 	}
-	return YES;
 }
+
+- (NSArray*)touchPoints {
+	NSMutableArray *tempPoints = [NSMutableArray new];
+	@synchronized(touches){
+		NSEnumerator *e = [touches objectEnumerator];
+		TouchStateTouch *tst;
+		while ((tst = (TouchStateTouch *)[e nextObject]) ) {
+			[tempPoints addObject:[NSValue valueWithCGPoint:tst.location]];
+		}
+	}
+	return [NSArray arrayWithArray:tempPoints];
+}
+
 
 @end
