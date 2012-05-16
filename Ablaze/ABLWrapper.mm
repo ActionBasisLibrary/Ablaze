@@ -54,10 +54,11 @@ bool updateY(float* buffer){
 	return self;
 }
 
--(void)getMean {
+-(CGPoint)getMean {
 	float meanX = *transform.getValue("meanX");
 	float meanY = *transform.getValue("meanY");
 	printf("%f, %f\n\n", meanX, meanY);
+	return CGPointMake(meanX, meanY);
 }
 
 

@@ -25,7 +25,7 @@
 		C92C4AFB1558E44D002B9396 /* TouchStateTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */; };
 		C92C4B0B1559C038002B9396 /* ABLWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C92C4B0A1559C037002B9396 /* ABLWrapper.mm */; };
 		C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
-		C9DA51D41562F50500ADA5AA /* FlatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.m */; };
+		C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
 		C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +69,7 @@
 		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
 		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 		C9DA51D21562F50500ADA5AA /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewController.h; sourceTree = "<group>"; };
-		C9DA51D31562F50500ADA5AA /* FlatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatViewController.m; sourceTree = "<group>"; };
+		C9DA51D31562F50500ADA5AA /* FlatViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FlatViewController.mm; sourceTree = "<group>"; };
 		C9DA51D51562F86A00ADA5AA /* FlatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatView.h; sourceTree = "<group>"; };
 		C9DA51D61562F86A00ADA5AA /* FlatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				C9DA51D21562F50500ADA5AA /* FlatViewController.h */,
-				C9DA51D31562F50500ADA5AA /* FlatViewController.m */,
+				C9DA51D31562F50500ADA5AA /* FlatViewController.mm */,
 				C9DA51D51562F86A00ADA5AA /* FlatView.h */,
 				C9DA51D61562F86A00ADA5AA /* FlatView.m */,
 			);
@@ -274,7 +274,7 @@
 				C92C4AFB1558E44D002B9396 /* TouchStateTouch.m in Sources */,
 				C92C4B0B1559C038002B9396 /* ABLWrapper.mm in Sources */,
 				C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */,
-				C9DA51D41562F50500ADA5AA /* FlatViewController.m in Sources */,
+				C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */,
 				C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TouchStateTouch.h"
 
-@interface FlatView : UIView
+@interface FlatView : UIView {
+	NSArray* points;
+	CGPoint middlePoint;
+}
+@property (retain) NSArray* points;
+@property (assign) CGPoint middlePoint;
+
 
 @end

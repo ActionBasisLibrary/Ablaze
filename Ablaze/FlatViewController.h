@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "TouchState.h"
 
+@class ABLWrapper;
+
 @interface FlatViewController : UIViewController {
 	TouchState* touchState;
+	ABLWrapper* wrapper;
 }
 
 @end

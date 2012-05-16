@@ -7,6 +7,8 @@
 //
 
 #import "FlatViewController.h"
+#import "FlatView.h"
+#import "ABLWrapper.h"
 
 @interface FlatViewController ()
 
@@ -18,7 +20,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        touchState = [TouchState new];
+		NSLog(@"initWithNibName");
     }
     return self;
 }
@@ -26,6 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	touchState = [TouchState new];
+	wrapper = [ABLWrapper new];
+	wrapper.touchState = touchState;
+	[wrapper prepTouchState];
+
 	// Do any additional setup after loading the view.
 }
 
@@ -42,15 +49,25 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchState handleTouches:touches];
+	[self updateViewTouches];
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchState handleTouches:touches];
+	[self updateViewTouches];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchState handleTouches:touches];
+	[self updateViewTouches];
 }
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchState handleTouches:touches];
+	[self updateViewTouches];
+}
+
+- (void)updateViewTouches {
+	((FlatView*)self.view).points = [touchState touchPoints];
+	((FlatView*)self.view).middlePoint = [wrapper getMean];
+	[self.view setNeedsDisplay];
 }
 
 

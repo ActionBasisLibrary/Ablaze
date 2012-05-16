@@ -13,6 +13,7 @@
 	NSMutableDictionary* touches;
 	NSMutableArray* touchOrder;
 }
+@property (readonly) NSArray* touchPoints;
 
 -(void)handleTouches:(NSSet*)changedTouches;
 -(void)print;

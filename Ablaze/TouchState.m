@@ -162,4 +162,17 @@
 	return YES;
 }
 
+- (NSArray*)touchPoints {
+	NSMutableArray *tempPoints = [NSMutableArray new];
+	@synchronized(touches){
+		NSEnumerator *e = [touches objectEnumerator];
+		TouchStateTouch *tst;
+		while ((tst = (TouchStateTouch *)[e nextObject]) ) {
+			[tempPoints addObject:[NSValue valueWithCGPoint:tst.location]];
+		}
+	}
+	return [NSArray arrayWithArray:tempPoints];
+}
+
+
 @end
