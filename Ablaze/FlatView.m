@@ -30,10 +30,12 @@
 - (void)drawRect:(CGRect)rect
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	UIColor *redColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
-	CGContextSetFillColorWithColor(context, redColor.CGColor);
-	
-	CGContextFillEllipseInRect(context, CGRectMake(middlePoint.x-TOUCH_RADIUS, middlePoint.y-TOUCH_RADIUS, 2*TOUCH_RADIUS, 2*TOUCH_RADIUS));
+	if([points count]>0) {
+		UIColor *redColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
+		CGContextSetFillColorWithColor(context, redColor.CGColor);
+		
+		CGContextFillEllipseInRect(context, CGRectMake(middlePoint.x-TOUCH_RADIUS, middlePoint.y-TOUCH_RADIUS, 2*TOUCH_RADIUS, 2*TOUCH_RADIUS));
+	}
 	
 	UIColor *blueColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:1.0];
 	CGContextSetFillColorWithColor(context, blueColor.CGColor);

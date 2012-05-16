@@ -18,7 +18,7 @@
 -(void)handleTouches:(NSSet*)changedTouches;
 -(void)print;
 
--(BOOL)getXs:(float*)buffer;
--(BOOL)getYs:(float*)buffer;
+-(BOOL)getXs:(float*)buffer withCount:(unsigned int *)count;
+-(BOOL)getYs:(float*)buffer withCount:(unsigned int *)count;
 
 @end

@@ -94,7 +94,7 @@
 }
 
 
--(BOOL)getXs:(float*)buffer {
+-(BOOL)getXs:(float*)buffer withCount:(unsigned int *)count {
 	NSString* touchKey;
 	BOOL success = YES;
 	@synchronized(touchOrder){
@@ -102,22 +102,30 @@
 		if(success)
 			touchKey = [touchOrder objectAtIndex:0];
 	}
-	if(!success) return NO;
+	if(!success) {
+		*count = 0;
+		return NO;
+	}
 	@synchronized(touches){
 		TouchStateTouch* tst = [touches valueForKey:touchKey];
 		success = (tst!=nil);
 		if(success){
 			buffer[0] = tst.location.x;
-			buffer[1] = tst.location.x;
 		}
 	}
-	if(!success) return NO;
+	if(!success) {
+		*count = 0;
+		return NO;
+	}
 	@synchronized(touchOrder){
 		success = ([touchOrder count]>1);
 		if(success)
 			touchKey = [touchOrder objectAtIndex:1];
 	}
-	if(!success) return YES;
+	if(!success) {
+		*count = 1;
+		return YES;
+	}
 	@synchronized(touches){
 		TouchStateTouch* tst = [touches valueForKey:touchKey];
 		success = (tst!=nil);
@@ -125,10 +133,15 @@
 			buffer[1] = tst.location.x;
 		}
 	}
+	if(!success) {
+		*count = 1;
+	} else {
+		*count = 2;
+	}
 	return YES;
 }
 
--(BOOL)getYs:(float*)buffer {
+-(BOOL)getYs:(float*)buffer withCount:(unsigned int *)count {
 	NSString* touchKey;
 	BOOL success = YES;
 	@synchronized(touchOrder){
@@ -136,7 +149,10 @@
 		if(success)
 			touchKey = [touchOrder objectAtIndex:0];
 	}
-	if(!success) return NO;
+	if(!success) {
+		*count = 0;
+		return NO;
+	}
 	@synchronized(touches){
 		TouchStateTouch* tst = [touches valueForKey:touchKey];
 		success = (tst!=nil);
@@ -145,19 +161,30 @@
 			buffer[1] = tst.location.y;
 		}
 	}
-	if(!success) return NO;
+	if(!success) {
+		*count = 0;
+		return NO;
+	}
 	@synchronized(touchOrder){
 		success = ([touchOrder count]>1);
 		if(success)
 			touchKey = [touchOrder objectAtIndex:1];
 	}
-	if(!success) return YES;
+	if(!success) {
+		*count = 1;
+		return YES;
+	}
 	@synchronized(touches){
 		TouchStateTouch* tst = [touches valueForKey:touchKey];
 		success = (tst!=nil);
 		if(success){
 			buffer[1] = tst.location.y;
 		}
+	}
+	if(!success) {
+		*count = 1;
+	} else {
+		*count = 2;
 	}
 	return YES;
 }
