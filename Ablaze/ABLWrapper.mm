@@ -22,7 +22,8 @@ bool updateX(float* buffer, unsigned int *count){
 	
 	printf("X: ");
 	for (int i=0; i<*count; i++) {
-		printf("%.0f,", buffer[i]);
+		printf("%.1f", buffer[i]);
+		if(i<*count-1) printf(", ");
 	}
 	printf("\n");
 	
@@ -33,7 +34,8 @@ bool updateY(float* buffer, unsigned int *count){
 	
 	printf("Y: ");
 	for (int i=0; i<*count; i++) {
-		printf("%.0f,", buffer[i]);
+		printf("%.1f", buffer[i]);
+		if(i<*count-1) printf(", ");
 	}
 	printf("\n");
 	
@@ -69,7 +71,7 @@ bool updateY(float* buffer, unsigned int *count){
 -(CGPoint)getMean {
 	float meanX = *transform.getValue("meanX");
 	float meanY = *transform.getValue("meanY");
-	printf("%f, %f\n\n", meanX, meanY);
+	printf("-> (%.2f, %.2f)\n\n", meanX, meanY);
 	return CGPointMake(meanX, meanY);
 }
 
