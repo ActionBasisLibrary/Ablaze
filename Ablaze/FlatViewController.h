@@ -14,6 +14,7 @@
 @interface FlatViewController : UIViewController {
 	TouchState* touchState;
 	ABLWrapper* wrapper;
+	NSTimer* timer;
 }
 
 @end

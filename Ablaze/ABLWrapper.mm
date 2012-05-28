@@ -8,7 +8,10 @@
 
 #import "ABLWrapper.h"
 
-
+#import "ABL/ABSymPull.h"
+#import "ABL/ABSymVarPull.h"
+#import "ABL/ABSymCurve.h"
+#import "ABL/ABSymTime.h"
 
 TouchState* ts;
 
@@ -17,7 +20,7 @@ TouchState* ts;
 
 
 
-bool updateX(float* buffer, unsigned int *count){
+bool updateX(double* buffer, unsigned int *count){
 	bool a = [ts getXs:buffer withCount:count];
 	
 	printf("X: ");
@@ -29,7 +32,7 @@ bool updateX(float* buffer, unsigned int *count){
 	
 	return a;
 }
-bool updateY(float* buffer, unsigned int *count){
+bool updateY(double* buffer, unsigned int *count){
 	bool a = [ts getYs:buffer withCount:count];
 	
 	printf("Y: ");
@@ -42,6 +45,10 @@ bool updateY(float* buffer, unsigned int *count){
 	return a;
 }
 
+bool updateTime(double* buffer){
+	return true;
+}
+
 -(void)prepTouchState
 {
 	ts = touchState;
@@ -51,29 +58,47 @@ bool updateY(float* buffer, unsigned int *count){
 	if(self = [super init]){
 		transform = ABTransform(true);
 		
-		ABSymbol *pos[2] = {
-			new ABSymVarPull("touchXs", 11, updateX),
-			new ABSymVarPull("touchYs", 11, updateY),
+		string names[3] = {"x", "y", "time"};
+		
+		ABSymbol *pos[3] = {
+			new ABSymVarPull("x", 11, updateX),
+			new ABSymVarPull("y", 11, updateY),
+			new ABSymTime("time", &timer, 0),
 		};
 		
-		ABSymbol *mean[2] = {
-			new ABSymMean("meanX", "touchXs"),
-			new ABSymMean("meanY", "touchYs"),
+		vector<string> vTick(names, names+3);
+		ABSymbol *tick[1] = {
+			new ABSymTick("tick", vTick, &timer, 0.1),
 		};
 		
-		transform.addSymbols(pos, 2);
-		transform.addSymbols(mean, 2);
+
+		vector<string> v(names, names+2);
+		ABSymbol *curve[1] = {
+			new ABSymCurve("curve", v, "time", 100, 5),
+		};
+		
+		transform.addSymbols(pos, 3);
+		transform.addSymbols(tick, 1);
+		transform.addSymbols(curve, 1);
+		
+		transform.startTick("tick");
 
 	}
 	return self;
 }
 
 -(CGPoint)getMean {
-	float meanX = *transform.getValue("meanX");
-	float meanY = *transform.getValue("meanY");
+	
+	double buffer[2];
+	double time = timer.getTime()-1.0;
+	transform.getValues("curve", buffer, time);
+	
+	float meanX = buffer[0];
+	float meanY = buffer[1];
 	printf("-> (%.2f, %.2f)\n\n", meanX, meanY);
 	return CGPointMake(meanX, meanY);
 }
+
 
 
 

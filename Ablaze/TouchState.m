@@ -94,7 +94,7 @@
 }
 
 
--(BOOL)getXs:(float*)buffer withCount:(unsigned int *)count {
+-(BOOL)getXs:(double*)buffer withCount:(unsigned int *)count {
 	NSString* touchKey;
 	BOOL success = YES;
 	unsigned int i=0;
@@ -125,7 +125,7 @@
 	}
 }
 
--(BOOL)getYs:(float*)buffer withCount:(unsigned int *)count {
+-(BOOL)getYs:(double*)buffer withCount:(unsigned int *)count {
 	NSString* touchKey;
 	BOOL success = YES;
 	unsigned int i=0;

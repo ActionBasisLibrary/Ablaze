@@ -34,12 +34,15 @@
 	[wrapper prepTouchState];
 
 	// Do any additional setup after loading the view.
+	
+	timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(justUpdateView:) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+	[timer invalidate];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -66,6 +69,11 @@
 
 - (void)updateViewTouches {
 	((FlatView*)self.view).points = [touchState touchPoints];
+	((FlatView*)self.view).middlePoint = [wrapper getMean];
+	[self.view setNeedsDisplay];
+}
+
+- (void)justUpdateView:(NSTimer*)theTimer {
 	((FlatView*)self.view).middlePoint = [wrapper getMean];
 	[self.view setNeedsDisplay];
 }
