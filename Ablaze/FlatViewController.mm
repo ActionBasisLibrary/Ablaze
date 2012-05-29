@@ -12,6 +12,10 @@
 
 @interface FlatViewController ()
 
+
+- (void)updateViewTouches;
+- (void)justUpdateView:(NSTimer*)theTimer;
+
 @end
 
 @implementation FlatViewController

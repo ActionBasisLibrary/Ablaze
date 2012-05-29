@@ -10,6 +10,12 @@
 #import "TouchStateTouch.h"
 #import "UITouch+uniqueID.h"
 
+@interface TouchState ()
+-(void)addTouch:(UITouch *)touch;
+-(void)updateTouch:(UITouch *)touch;
+-(void)removeTouch:(UITouch *)touch;
+@end
+
 @implementation TouchState
 
 - (id) init {
