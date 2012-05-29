@@ -12,6 +12,8 @@
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
+#define CUBE_SIZE 50.0f
+
 // Uniform index.
 enum
 {
@@ -198,25 +200,26 @@ GLfloat gCubeVertexData[216] =
 
 - (void)update
 {
-	[wrapper getMean];
-	
+	CGPoint point = [wrapper getMean];
 	
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
+    //GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
+    GLKMatrix4 projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -100, 1000);
     
     self.effect.transform.projectionMatrix = projectionMatrix;
     
-    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -4.0f);
-    baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, _rotation, 0.0f, 1.0f, 0.0f);
+    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(4.0f*_rotation, 0.0f, 0.0f, 1.0f);
+	baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 1.0f, 0.0f, 0.0f);
     
     // Compute the model view matrix for the object rendered with GLKit
-    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -1.5f);
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(point.x, point.y, 0.0f);
+	modelViewMatrix = GLKMatrix4Scale(modelViewMatrix, CUBE_SIZE, CUBE_SIZE, CUBE_SIZE);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, _rotation, 1.0f, 1.0f, 1.0f);
-    modelViewMatrix = GLKMatrix4Multiply(baseModelViewMatrix, modelViewMatrix);
+    modelViewMatrix = GLKMatrix4Multiply(modelViewMatrix, baseModelViewMatrix);
     
     self.effect.transform.modelviewMatrix = modelViewMatrix;
     
-    _rotation += self.timeSinceLastUpdate * 0.5f;
+    _rotation += self.timeSinceLastUpdate * 1.5f;
 	
 	NSLog(@"     FPS: %i", [framerate tick]);
 }
