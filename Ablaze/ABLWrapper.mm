@@ -12,6 +12,7 @@
 #import "ABL/ABSymVarPull.h"
 #import "ABL/ABSymCurve.h"
 #import "ABL/ABSymTime.h"
+#import "ABL/ABSymCombine.h"
 
 TouchState* ts;
 
@@ -58,28 +59,25 @@ bool updateTime(double* buffer){
 	if(self = [super init]){
 		transform = ABTransform(true);
 		
-		string names[3] = {"x", "y", "time"};
+		string names[] = {"x", "y", "xy", "curve"};
+		vector<string> vComp(names, names+2);
 		
-		ABSymbol *pos[3] = {
+		ABSymbol *pos[] = {
 			new ABSymVarPull("x", 11, updateX),
 			new ABSymVarPull("y", 11, updateY),
-			new ABSymTime("time", &timer, 0),
+			new ABSymCombine("xy", vComp),
+			new ABSymTime("time", &timer, 0)
 		};
 		
-		vector<string> vTick(names, names+3);
-		ABSymbol *tick[1] = {
-			new ABSymTick("tick", vTick, &timer, 0.1),
-		};
 		
+		vector<string> vTick(names+2, names+4);
+		ABSymbol *tick = new ABSymTick("tick", vTick, &timer, 0.1);
 
-		vector<string> v(names, names+2);
-		ABSymbol *curve[1] = {
-			new ABSymCurve("curve", v, "time", 100, 5),
-		};
+		ABSymbol *curve = new ABSymCurve("curve", 2, "xy", "time", 100, 5);
 		
-		transform.addSymbols(pos, 3);
-		transform.addSymbols(tick, 1);
-		transform.addSymbols(curve, 1);
+		transform.addSymbols(pos, 4);
+		transform.addSymbol(tick);
+		transform.addSymbol(curve);
 		
 		transform.startTick("tick");
 
