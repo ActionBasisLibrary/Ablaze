@@ -10,7 +10,7 @@
 
 #include <math.h>
 
-#define GDOUBLE
+//#define GDOUBLE
 
 #ifdef GDOUBLE
 

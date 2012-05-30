@@ -36,6 +36,12 @@
 		1281E84C15745A5D00369462 /* GRandomValue3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E83615745A5D00369462 /* GRandomValue3f.cpp */; };
 		1281E85415745AFF00369462 /* GBinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E84E15745AFF00369462 /* GBinaryTree.cpp */; };
 		1281E85915745B2500369462 /* GIndexList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E85815745B2500369462 /* GIndexList.cpp */; };
+		1281E87915746B6400369462 /* ABParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87715746B5400369462 /* ABParticles.cpp */; };
+		1281E87C157569FD00369462 /* ABParticleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87A157569F700369462 /* ABParticleShader.cpp */; };
+		1281E87E1575B8AE00369462 /* ABParticles.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87D1575B8AD00369462 /* ABParticles.vsh */; };
+		1281E8801575B8BA00369462 /* ABParticles.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87F1575B8B900369462 /* ABParticles.fsh */; };
+		1281E8841575CDC600369462 /* ABParticles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87D1575B8AD00369462 /* ABParticles.vsh */; };
+		1281E8851575CDC600369462 /* ABParticles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87F1575B8B900369462 /* ABParticles.fsh */; };
 		C9002A8D1547D8840044B6AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8C1547D8840044B6AD /* UIKit.framework */; };
 		C9002A8F1547D8840044B6AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8E1547D8840044B6AD /* Foundation.framework */; };
 		C9002A911547D8840044B6AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A901547D8840044B6AD /* CoreGraphics.framework */; };
@@ -131,26 +137,12 @@
 		1281E84F15745AFF00369462 /* GBinaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBinaryTree.h; sourceTree = "<group>"; };
 		1281E85715745B2500369462 /* GIndexList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIndexList.h; sourceTree = "<group>"; };
 		1281E85815745B2500369462 /* GIndexList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GIndexList.cpp; sourceTree = "<group>"; };
-		1281E85C1574639A00369462 /* apsDraw.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = apsDraw.vert; sourceTree = "<group>"; };
-		1281E85D1574639A00369462 /* apsDrawAdvanced.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = apsDrawAdvanced.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E85E1574639A00369462 /* apsDrawAdvanced.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = apsDrawAdvanced.geom; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E85F1574639A00369462 /* apsDrawBasic.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = apsDrawBasic.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E8601574639A00369462 /* apsDrawBasic.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = apsDrawBasic.geom; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E8611574639A00369462 /* apsDrawModerate.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = apsDrawModerate.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E8621574639A00369462 /* apsDrawModerate.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = apsDrawModerate.geom; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E8631574639A00369462 /* default.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = default.vert; sourceTree = "<group>"; };
-		1281E8641574639A00369462 /* g2apos.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = g2apos.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E8651574639A00369462 /* g2avel.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = g2avel.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E8661574639A00369462 /* g2avelMatrix.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = g2avelMatrix.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E8671574639A00369462 /* g2draw.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = g2draw.frag; sourceTree = "<group>"; };
-		1281E8681574639A00369462 /* g2draw.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = g2draw.geom; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E8691574639A00369462 /* g2draw.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = g2draw.vert; sourceTree = "<group>"; };
-		1281E86A1574639A00369462 /* g2drawSort.geom */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = g2drawSort.geom; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E86B1574639A00369462 /* g2eomerge.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = g2eomerge.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E86C1574639A00369462 /* g2rpos.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = g2rpos.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E86D1574639A00369462 /* g2rvel.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = g2rvel.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E86E1574639A00369462 /* vDirect.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; lineEnding = 0; path = vDirect.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		1281E86F1574639A00369462 /* vDirect.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = vDirect.vert; sourceTree = "<group>"; };
+		1281E87715746B5400369462 /* ABParticles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ABParticles.cpp; sourceTree = "<group>"; };
+		1281E87815746B5800369462 /* ABParticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABParticles.h; sourceTree = "<group>"; };
+		1281E87A157569F700369462 /* ABParticleShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ABParticleShader.cpp; sourceTree = "<group>"; };
+		1281E87B157569FA00369462 /* ABParticleShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABParticleShader.h; sourceTree = "<group>"; };
+		1281E87D1575B8AD00369462 /* ABParticles.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ABParticles.vsh; sourceTree = "<group>"; };
+		1281E87F1575B8B900369462 /* ABParticles.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ABParticles.fsh; sourceTree = "<group>"; };
 		C9002A881547D8840044B6AD /* Ablaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ablaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9002A8C1547D8840044B6AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9002A8E1547D8840044B6AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -237,6 +229,10 @@
 				1281E7FA1574589E00369462 /* GParticleSettings.cpp */,
 				1281E7FB1574589E00369462 /* GParticleShaderSingle.h */,
 				1281E7FC1574589E00369462 /* GParticleShaderSingle.cpp */,
+				1281E87815746B5800369462 /* ABParticles.h */,
+				1281E87715746B5400369462 /* ABParticles.cpp */,
+				1281E87B157569FA00369462 /* ABParticleShader.h */,
+				1281E87A157569F700369462 /* ABParticleShader.cpp */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -339,26 +335,8 @@
 		1281E85B1574639700369462 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				1281E85C1574639A00369462 /* apsDraw.vert */,
-				1281E85D1574639A00369462 /* apsDrawAdvanced.frag */,
-				1281E85E1574639A00369462 /* apsDrawAdvanced.geom */,
-				1281E85F1574639A00369462 /* apsDrawBasic.frag */,
-				1281E8601574639A00369462 /* apsDrawBasic.geom */,
-				1281E8611574639A00369462 /* apsDrawModerate.frag */,
-				1281E8621574639A00369462 /* apsDrawModerate.geom */,
-				1281E8631574639A00369462 /* default.vert */,
-				1281E8641574639A00369462 /* g2apos.frag */,
-				1281E8651574639A00369462 /* g2avel.frag */,
-				1281E8661574639A00369462 /* g2avelMatrix.frag */,
-				1281E8671574639A00369462 /* g2draw.frag */,
-				1281E8681574639A00369462 /* g2draw.geom */,
-				1281E8691574639A00369462 /* g2draw.vert */,
-				1281E86A1574639A00369462 /* g2drawSort.geom */,
-				1281E86B1574639A00369462 /* g2eomerge.frag */,
-				1281E86C1574639A00369462 /* g2rpos.frag */,
-				1281E86D1574639A00369462 /* g2rvel.frag */,
-				1281E86E1574639A00369462 /* vDirect.frag */,
-				1281E86F1574639A00369462 /* vDirect.vert */,
+				1281E87D1575B8AD00369462 /* ABParticles.vsh */,
+				1281E87F1575B8B900369462 /* ABParticles.fsh */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -529,6 +507,8 @@
 				C9002AA41547D8840044B6AD /* MainStoryboard.storyboard in Resources */,
 				C9002AA61547D8840044B6AD /* Shader.fsh in Resources */,
 				C9002AA81547D8840044B6AD /* Shader.vsh in Resources */,
+				1281E8841575CDC600369462 /* ABParticles.vsh in Resources */,
+				1281E8851575CDC600369462 /* ABParticles.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +558,10 @@
 				1281E84C15745A5D00369462 /* GRandomValue3f.cpp in Sources */,
 				1281E85415745AFF00369462 /* GBinaryTree.cpp in Sources */,
 				1281E85915745B2500369462 /* GIndexList.cpp in Sources */,
+				1281E87915746B6400369462 /* ABParticles.cpp in Sources */,
+				1281E87C157569FD00369462 /* ABParticleShader.cpp in Sources */,
+				1281E87E1575B8AE00369462 /* ABParticles.vsh in Sources */,
+				1281E8801575B8BA00369462 /* ABParticles.fsh in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

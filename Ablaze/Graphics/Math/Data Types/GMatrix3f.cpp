@@ -160,15 +160,15 @@ void gMatrix3f::setFromOpenGLSubMatrixf(float matrix[16])
 
 #pragma mark STATIC FUNCTIONS
 
-gMatrix3f gMatrix3f::getRotation(double rads, gVector3f axis)
+gMatrix3f gMatrix3f::getRotation(gnum rads, gVector3f axis)
 {
     axis.normalize();
     
-    double x = axis.x, y = axis.y, z = axis.z;
-    double xx = x*x, xy = x*y, xz = x*z, yy = y*y, yz = y*z, zz = z*z;
-    double c = cosf(rads), s = sinf(rads), ic = 1 - c;
+    gnum x = axis.x, y = axis.y, z = axis.z;
+    gnum xx = x*x, xy = x*y, xz = x*z, yy = y*y, yz = y*z, zz = z*z;
+    gnum c = cosf(rads), s = sinf(rads), ic = 1 - c;
     
-    double elems[] = {
+    gnum elems[] = {
         c + xx*ic, xy*ic - z*s, xz*ic + y*s,
         xy*ic + z*s, c + yy*ic, yz*ic - x*s,
         xz*ic - y*s, yz*ic + x*s, c + zz*ic

@@ -10,6 +10,9 @@
 #import "AppDelegate.h"
 #import "ABLWrapper.h"
 
+#include "ABParticles.h"
+#include "ABParticleShader.h"
+
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 #define CUBE_SIZE 50.0f
@@ -77,6 +80,9 @@ GLfloat gCubeVertexData[216] =
     -0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f,
     -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
 };
+
+ABParticles *particles;
+ABParticleShader *pshader;
 
 @interface ViewController () {
     GLuint _program;
@@ -179,6 +185,29 @@ GLfloat gCubeVertexData[216] =
     glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(12));
     
     glBindVertexArrayOES(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    
+    // Create program
+    
+    const char *vertPath = [[[NSBundle mainBundle] pathForResource:@"ABParticles" ofType:@"vsh"] UTF8String];
+    const char *fragPath = [[[NSBundle mainBundle] pathForResource:@"ABParticles" ofType:@"fsh"] UTF8String];
+
+    // Creates the particle shader--see ABParticles.vsh, .fsh
+    pshader = new ABParticleShader(vertPath, fragPath);
+
+    // Initializes particle source with 100 max capacity
+    particles = new ABParticles(100);
+    
+    // Ignore this for now--none of it is used while debugging
+    ABParticles::Profile profile;
+    profile.lifeSpan = 4;
+    profile.delay = 0;
+    profile.continuous = true;
+    
+    ABParticles::ProfileId pid = particles->createProfile(profile);
+    
+    // This creates 100 particles--only important because it makes sure all positions are 0,0,0
+    particles->emitParticles(100, pid);
 }
 
 - (void)tearDownGL
@@ -230,11 +259,34 @@ GLfloat gCubeVertexData[216] =
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glBindVertexArrayOES(_vertexArray);
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glEnableVertexAttribArray(GLKVertexAttribNormal);
     
     // Render the object with GLKit
     [self.effect prepareToDraw];
+
+//    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glDrawArrays(GL_POINTS, 0, 36);
     
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArrayOES(0);
+    
+    /** Particle drawing code here **/
+
+    // Sets current program to use
+    pshader->engage();
+    
+    // Sets the modelview and projection uniforms
+    pshader->setTransform(self.effect.transform.modelviewMatrix.m, self.effect.transform.projectionMatrix.m);
+    
+    // Sets the vertex attribute pointers
+    particles->engage();
+    
+    // All this does right now is call DrawElements on 36 elements
+    particles->renderParticles();
+    
+    // Turns off used vertex attribute arrays
+    particles->disengage();
+    pshader->disengage();
 }
 
 

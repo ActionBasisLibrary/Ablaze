@@ -96,6 +96,7 @@ void gParticleShaderSingle::setSettings(gParticleSettings *settings)
 
 void gParticleShaderSingle::initProgram()
 {
+    #ifndef USE_GLES
 //#include "../../External/cmatrix"
 #include "../../Graphics/Shaders/apsDraw.vert"
 #include "../../Graphics/Shaders/apsDrawAdvanced.geom"
@@ -131,7 +132,6 @@ void gParticleShaderSingle::initProgram()
             break;
     }
     
-#ifndef USE_GLES
     setProgramiv(GL_GEOMETRY_INPUT_TYPE_EXT, GL_POINTS);
     setProgramiv(GL_GEOMETRY_OUTPUT_TYPE_EXT, GL_TRIANGLE_STRIP);
     setProgramiv(GL_GEOMETRY_VERTICES_OUT_EXT, 4);

@@ -177,6 +177,38 @@ unsigned int gIndexList::popBack()
 
 #pragma mark INSERTING AND EXTRACTING LISTS
 
+unsigned int *gIndexList::serialize()
+{
+    if (count == 0) return NULL;
+    
+    unsigned int *array = new unsigned int[count];
+    unsigned int *ptr = array;
+    
+    gNode *curr = head;
+    while (curr) {
+        *ptr++ = curr->index;
+        curr = curr->next;
+    }
+    
+    return array;
+}
+
+unsigned short *gIndexList::serializeShort()
+{
+    if (count == 0) return NULL;
+    
+    unsigned short *array = new unsigned short[count];
+    unsigned short *ptr = array;
+    
+    gNode *curr = head;
+    while (curr) {
+        *ptr++ = (unsigned short)curr->index;
+        curr = curr->next;
+    }
+    
+    return array;
+}
+
 void gIndexList::dissolve(iterator &it, gIndexList &other)
 {
     if (other.size() < 1) return;

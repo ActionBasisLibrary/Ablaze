@@ -10,7 +10,7 @@
 
 #pragma mark PRINT
 
-static struct printStruct {
+struct printStruct {
     std::ostream &stream;
     std::string &format;
     printStruct(std::ostream &str, std::string fmt)

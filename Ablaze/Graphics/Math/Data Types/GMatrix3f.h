@@ -51,7 +51,7 @@ public:
     void getOpenGLSubMatrixf(float matrix[16]);
     void setFromOpenGLSubMatrixf(float matrix[16]);
     
-    static gMatrix3f getRotation(double rads, gVector3f axis);
+    static gMatrix3f getRotation(gnum rads, gVector3f axis);
     
 private:
     inline gnum &getVal(unsigned int idx) { return elements[idx]; }

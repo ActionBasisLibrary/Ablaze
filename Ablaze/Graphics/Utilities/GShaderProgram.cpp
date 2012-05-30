@@ -193,16 +193,10 @@ bool gShaderProgram::loadFragmentShader(const char *text)
 
 bool gShaderProgram::loadGeometryShader(const char *text)
 {
+#ifndef USE_GLES
     // Buffer for error messages
     static const int kBufferSize = 1024;
     char buffer[1024];
-	
-#ifdef USE_GLES
-    {
-        
-        return false;
-    }
-#else
     {
         GLuint shader = glCreateShader(GL_GEOMETRY_SHADER_EXT);
         glShaderSource(shader, 1, &text, NULL);
@@ -221,6 +215,8 @@ bool gShaderProgram::loadGeometryShader(const char *text)
         glLinkProgram(programid);
 		return true;
     }
+#else
+    return false;
 #endif
 }
 

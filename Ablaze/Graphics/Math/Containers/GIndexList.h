@@ -30,16 +30,33 @@ public:
         gNode *curr;
     public:
         inline unsigned int value() { return curr->index; }
+        
+        inline unsigned int operator*() { return curr->index; }
+        
         inline bool next() { return curr = curr->next; }
         inline bool last() { return curr = curr->last; }
         inline bool good() { return curr; }
-        inline bool operator==(iterator other) { return curr == other.curr; }
+        
+        inline bool operator==(iterator &other) { return curr == other.curr; }
+        inline bool operator!=(iterator &other) { return curr != other.curr; }
+        
         bool operator+=(int step) {
             for (int i = 0; i < step; i++) {
                 if (curr) curr = curr->next;
                 else return false;
             }
             return curr;
+        }
+        
+        iterator &operator++() {
+            iterator &ret = *this;
+            curr = curr->next;
+            return ret;
+        }
+        iterator &operator--() {
+            iterator &ret = *this;
+            curr = curr->last;
+            return ret;
         }
     };
     
@@ -53,6 +70,9 @@ public:
     iterator end();
     
     unsigned int size() { return count; }
+    
+    unsigned int *serialize();
+    unsigned short *serializeShort();
     
     void insert(iterator &it, unsigned int index);
     void insertRange(iterator &it, unsigned int start, unsigned int end);

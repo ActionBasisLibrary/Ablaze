@@ -24,24 +24,24 @@ TouchState* ts;
 bool updateX(double* buffer, unsigned int *count){
 	bool a = [ts getXs:buffer withCount:count];
 	
-	printf("X: ");
-	for (int i=0; i<*count; i++) {
-		printf("%.1f", buffer[i]);
-		if(i<*count-1) printf(", ");
-	}
-	printf("\n");
+//	printf("X: ");
+//	for (int i=0; i<*count; i++) {
+//		printf("%.1f", buffer[i]);
+//		if(i<*count-1) printf(", ");
+//	}
+//	printf("\n");
 	
 	return a;
 }
 bool updateY(double* buffer, unsigned int *count){
 	bool a = [ts getYs:buffer withCount:count];
 	
-	printf("Y: ");
-	for (int i=0; i<*count; i++) {
-		printf("%.1f", buffer[i]);
-		if(i<*count-1) printf(", ");
-	}
-	printf("\n");
+//	printf("Y: ");
+//	for (int i=0; i<*count; i++) {
+//		printf("%.1f", buffer[i]);
+//		if(i<*count-1) printf(", ");
+//	}
+//	printf("\n");
 	
 	return a;
 }
@@ -93,7 +93,7 @@ bool updateTime(double* buffer){
 	
 	float meanX = buffer[0];
 	float meanY = buffer[1];
-	printf("-> (%.2f, %.2f)\n\n", meanX, meanY);
+//	printf("-> (%.2f, %.2f)\n\n", meanX, meanY);
 	return CGPointMake(meanX, meanY);
 }
 
