@@ -17,8 +17,8 @@ void main(void)
     vec4 position4 = vec4(position, 1.0);
     
     // Set outgoing color
-    vColor = vec4(1.0);
+    vColor = vec4(0.0, 1.0, 1.0, 1.0)*live;
     
-    gl_PointSize = 40.0;
+    gl_PointSize = 4.0;
     gl_Position = projectionMatrix * modelviewMatrix * position4;
 }

@@ -13,9 +13,12 @@
 #include "ABParticles.h"
 #include "ABParticleShader.h"
 
+#include "GRand.h"
+
+
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
-#define CUBE_SIZE 50.0f
+#define CUBE_SIZE 25.0f
 
 // Uniform index.
 enum
@@ -162,6 +165,20 @@ ABParticleShader *pshader;
     }
 }
 
+
+void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	const float speed = 100.0;
+	vect.x = (-1.0+randf()*2.0)*speed;
+	vect.y = (-1.0+randf()*2.0)*speed;
+	vect.z = (-1.0+randf()*2.0)*speed;
+}
+gVector3f startPos;
+GLKMatrix4 identityMatrix;
+void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	vect = startPos;
+}
+
+
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
@@ -171,6 +188,7 @@ ABParticleShader *pshader;
     self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);
     
     glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
     
     glGenVertexArraysOES(1, &_vertexArray);
     glBindVertexArrayOES(_vertexArray);
@@ -196,13 +214,15 @@ ABParticleShader *pshader;
     pshader = new ABParticleShader(vertPath, fragPath);
 
     // Initializes particle source with 100 max capacity
-    particles = new ABParticles(100);
+    particles = new ABParticles(500);
     
     // Ignore this for now--none of it is used while debugging
     ABParticles::Profile profile;
     profile.lifeSpan = 4;
-    profile.delay = 0;
+    profile.delay = 4;
     profile.continuous = true;
+	profile.startVelFn = startVelFunction;
+	profile.startPosFn = startPosFunction;
     
     ABParticles::ProfileId pid = particles->createProfile(profile);
     
@@ -230,6 +250,8 @@ ABParticleShader *pshader;
 - (void)update
 {
 	CGPoint point = [wrapper getMean];
+	startPos.x = point.x;
+	startPos.y = point.y;
 	
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     //GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
@@ -237,7 +259,7 @@ ABParticleShader *pshader;
     
     self.effect.transform.projectionMatrix = projectionMatrix;
     
-    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(4.0f*_rotation, 0.0f, 0.0f, 1.0f);
+    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(3.0f*_rotation, 0.0f, 0.0f, 1.0f);
 	baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 1.0f, 0.0f, 0.0f);
     
     // Compute the model view matrix for the object rendered with GLKit
@@ -248,14 +270,19 @@ ABParticleShader *pshader;
     
     self.effect.transform.modelviewMatrix = modelViewMatrix;
     
+	identityMatrix = GLKMatrix4Identity;
+	
     _rotation += self.timeSinceLastUpdate * 1.5f;
+	
+	particles->advanceParticlesBySeconds(self.timeSinceLastUpdate);
 	
 	NSLog(@"     FPS: %i", [framerate tick]);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
+    //glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glBindVertexArrayOES(_vertexArray);
@@ -265,8 +292,8 @@ ABParticleShader *pshader;
     // Render the object with GLKit
     [self.effect prepareToDraw];
 
-//    glDrawArrays(GL_TRIANGLES, 0, 36);
-    glDrawArrays(GL_POINTS, 0, 36);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+//    glDrawArrays(GL_POINTS, 0, 36);
     
     glBindVertexArrayOES(0);
     
@@ -276,7 +303,7 @@ ABParticleShader *pshader;
     pshader->engage();
     
     // Sets the modelview and projection uniforms
-    pshader->setTransform(self.effect.transform.modelviewMatrix.m, self.effect.transform.projectionMatrix.m);
+    pshader->setTransform(identityMatrix.m, self.effect.transform.projectionMatrix.m);
     
     // Sets the vertex attribute pointers
     particles->engage();

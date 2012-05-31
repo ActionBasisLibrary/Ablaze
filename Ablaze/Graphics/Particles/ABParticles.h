@@ -90,10 +90,11 @@ class ABParticles::Particle {
 public:
     ProfileId profile;
     
-    char born, texId;
+    char texId;
     float age, size;
     gVector3f position, velocity, acceleration;
     gVector4f color;
+	float born;
     
     char padding[4];
 };

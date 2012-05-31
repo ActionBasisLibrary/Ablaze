@@ -141,29 +141,24 @@ void ABParticles::advanceParticlesBySeconds(double dt)
 // Engage appropriate attribute arrays
 void ABParticles::engage()
 {
-    // Bind vector objects
-//    glBindVertexArrayOES(vaoId);
-//    glBindBuffer(GL_ARRAY_BUFFER, vboId);
-//    
-//    glBufferData(GL_ARRAY_BUFFER, maxCapacity, particleArray, GL_DYNAMIC_DRAW);
-//    GLenum err = glGetError();
     
     // Enable appropriate arrays
     glEnableVertexAttribArray(vPosition);
 
     size_t stride = (char*)&particleArray[1] - (char*)&particleArray[0];
+	
     
     float *ptr = &particleArray[0].position.x;
     glVertexAttribPointer(vPosition, 3, GL_FLOAT, false, stride, &particleArray[0].position.x);
 //    glVertexAttribPointer(vColor, 4, GL_FLOAT, false, stride, &particleArray[0].color);
 //    glVertexAttribPointer(vTexId, 1, GL_UNSIGNED_BYTE, false, stride, &particleArray[0].texId);
 //    glVertexAttribPointer(vSize, 1, GL_FLOAT, false, stride, &particleArray[0].size);
-//    glVertexAttribPointer(vLive, 1, GL_BYTE, false, stride, &particleArray[0].born);
+    glVertexAttribPointer(vLive, 1, GL_FLOAT, false, stride, &particleArray[0].born);
 
 //    glEnableVertexAttribArray(vColor);
 //    glEnableVertexAttribArray(vTexId);
 //    glEnableVertexAttribArray(vSize);
-//    glEnableVertexAttribArray(vLive);
+    glEnableVertexAttribArray(vLive);
     
     engaged = true;
 }
@@ -175,7 +170,7 @@ void ABParticles::disengage()
 //    glDisableVertexAttribArray(vColor);
 //    glEnableVertexAttribArray(vTexId);
 //    glDisableVertexAttribArray(vSize);
-//    glDisableVertexAttribArray(vLive);
+    glDisableVertexAttribArray(vLive);
     
 //    glBindVertexArrayOES(0);
     
@@ -195,12 +190,12 @@ void ABParticles::renderParticles()
     bool wasEngaged = engaged;
     if (!wasEngaged) engage();
 
-//    unsigned short *indices = liveList.serializeShort();
-//    size_t num = liveList.size();
-    const size_t num = 36;
-    unsigned short indices[num];
-    for (size_t i = 0; i < num; i++)
-        indices[i] = (unsigned short)i;
+    unsigned short *indices = liveList.serializeShort();
+    size_t num = liveList.size();
+//    const size_t num = 36;
+//    unsigned short indices[num];
+//    for (size_t i = 0; i < num; i++)
+//        indices[i] = (unsigned short)i;
 
     // Set state appropriately--TODO: Nothing in particular?
 
@@ -211,7 +206,7 @@ void ABParticles::renderParticles()
 
     // Clean up
     
-//    delete[] indices;
+    delete[] indices;
 
     if (!wasEngaged) disengage();
 }
