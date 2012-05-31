@@ -36,8 +36,8 @@ void ABParticleShader::setTransform(float modelviewMatrix[16], float projectionM
     int mvloc = glGetUniformLocation(programId, "modelviewMatrix");
     int ploc = glGetUniformLocation(programId, "projectionMatrix");
     
-    glUniformMatrix4fv(mvloc, 16, GL_FALSE, modelviewMatrix);
-    glUniformMatrix4fv(ploc, 16, GL_FALSE, projectionMatrix);
+    glUniformMatrix4fv(mvloc, 1, GL_FALSE, modelviewMatrix);
+    glUniformMatrix4fv(ploc, 1, GL_FALSE, projectionMatrix);
 }
 
 void ABParticleShader::engage()
