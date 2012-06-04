@@ -114,11 +114,6 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 
 - (void)setupGL;
 - (void)tearDownGL;
-
-- (BOOL)loadShaders;
-- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file;
-- (BOOL)linkProgram:(GLuint)prog;
-- (BOOL)validateProgram:(GLuint)prog;
 @end
 
 @implementation ViewController
