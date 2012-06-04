@@ -253,17 +253,11 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	particleStartPosition.y = point.y;
 	
 	CGPoint velocity = [wrapper getVelocity:0.0];
-	//printf("p:[%.2f, %.2f]\n", point.x, point.y);
-	//printf("v:[%.2f, %.2f]\n", velocity.x, velocity.y);
 	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
 	double speedScale = CUBE_SIZE*(1.0f+sqrt(linearVelocity)/20.0f);
 	
 	
-    float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    //GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
-    GLKMatrix4 projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -100, 1000);
-    
-    self.effect.transform.projectionMatrix = projectionMatrix;
+    self.effect.transform.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
     
     GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeRotation(3.0f*_rotation, 0.0f, 0.0f, 1.0f);
 	baseModelViewMatrix = GLKMatrix4Translate(baseModelViewMatrix, 1.0f, 0.0f, 0.0f);
@@ -283,40 +277,34 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	NSLog(@"     FPS: %i", [framerate tick]);
 }
 
+
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-//    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
+	// Clear the view
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    // Render the cube with GLKit
     glBindVertexArrayOES(_vertexArray);
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribNormal);
-    
-    // Render the object with GLKit
+	
     [self.effect prepareToDraw];
-
     glDrawArrays(GL_TRIANGLES, 0, 36);
-//    glDrawArrays(GL_POINTS, 0, 36);
-    
+	
     glBindVertexArrayOES(0);
     
-    /** Particle drawing code here **/
-
-    // Sets current program to use
-    pshader->engage();
-    
-    // Sets the modelview and projection uniforms
-    pshader->setTransform(((GLKMatrix4)GLKMatrix4Identity).m, self.effect.transform.projectionMatrix.m);
-    
-    // Sets the vertex attribute pointers
-    particles->engage();
-    
-    // All this does right now is call DrawElements on 36 elements
-    particles->renderParticles();
-    
-    // Turns off used vertex attribute arrays
-    particles->disengage();
+	
+    // Render the particle effects
+	
+    pshader->engage(); // Sets current program to use
+    pshader->setTransform(((GLKMatrix4)GLKMatrix4Identity).m,
+						  self.effect.transform.projectionMatrix.m); // Sets the modelview and projection uniforms
+	
+    particles->engage(); // Sets the vertex attribute pointers
+    particles->renderParticles(); // Draw the particles
+    particles->disengage(); // Turns off used vertex attribute arrays
+	
     pshader->disengage();
 }
 
