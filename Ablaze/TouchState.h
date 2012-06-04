@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define MAX_TOUCH_COUNT 11
+
 @interface TouchState : NSObject
 {
 	NSMutableDictionary* touches;
@@ -16,7 +18,6 @@
 @property (readonly) NSArray* touchPoints;
 
 -(void)handleTouches:(NSSet*)changedTouches;
--(void)print;
 
 -(BOOL)getXs:(double*)buffer withCount:(unsigned int *)count;
 -(BOOL)getYs:(double*)buffer withCount:(unsigned int *)count;

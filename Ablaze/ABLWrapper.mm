@@ -58,34 +58,36 @@ bool updateTime(double* buffer){
 #pragma mark Transform Setup
 
 - (void)prepTransform {
-	transform = ABTransform(true);
 
-	string names[] = {"x", "y", "xy", "curve", "velocity", "velCurve"};
-	vector<string> vComp(names, names+2);
+	string names[] = {"x", "y", "position", "positionCurve", "velocity", "velocityCurve"};
+	vector<string> position(names, names+2);
 
-	ABSymbol *pos[] = {
-		new ABSymVarPull("x", 11, updateX),
-		new ABSymVarPull("y", 11, updateY),
-		new ABSymCombine("xy", vComp),
-		new ABSymTime("time", &timer, 0)
+	ABSymbol *rawInputs[] = {
+		new ABSymTime("time", &timer, 0),
+		new ABSymVarPull("x", MAX_TOUCH_COUNT, updateX),
+		new ABSymVarPull("y", MAX_TOUCH_COUNT, updateY),
+		new ABSymCombine("position", position),
 	};
 
-	vector<string> vVel(names, names+2);
-	ABSymbol *velocity = new ABSymDifferentiate("velocity", vVel, "time");
-	ABSymbol *velocityCurve = new ABSymCurve("velCurve", 2, "velocity", "time", 100, 5);
+	ABSymbol *velocity = new ABSymDifferentiate("velocity", position, "time");
+	ABSymbol *velocityCurve = new ABSymCurve("velocityCurve", 2, "velocity", "time", 100, 5);
 
 	vector<string> vTick(names+2, names+6);
 	ABSymbol *tick = new ABSymTick("tick", vTick, &timer, 0.1);
 
-	ABSymbol *curve = new ABSymCurve("curve", 2, "xy", "time", 100, 5);
+	ABSymbol *positionCurve = new ABSymCurve("positionCurve", 2, "position", "time", 100, 5);
 
-	transform.addSymbols(pos, 4);
-	transform.addSymbol(tick);
-	transform.addSymbol(curve);
+
+	// Create a new transform and add all of the symbols
+	transform = ABTransform(true);
+
+	transform.addSymbols(rawInputs, 4);
+	transform.addSymbol(positionCurve);
 
 	transform.addSymbol(velocity);
 	transform.addSymbol(velocityCurve);
 
+	transform.addSymbol(tick);
 	transform.startTick("tick");
 }
 
@@ -95,10 +97,10 @@ bool updateTime(double* buffer){
 	double buffer[2];
 	
 	if(secondsAgo == 0.0){
-		transform.getValues("xy", buffer);
+		transform.getValues("position", buffer);
 	} else {
 		float time = timer.getTime()-secondsAgo;
-		transform.getValues("curve", buffer, time);
+		transform.getValues("positionCurve", buffer, time);
 	}
 	
 	return CGPointMake(buffer[0], buffer[1]);
@@ -111,7 +113,7 @@ bool updateTime(double* buffer){
 		transform.getValues("velocity", buffer);
 	} else {
 		float time = timer.getTime()-secondsAgo;
-		transform.getValues("velCurve", buffer, time);
+		transform.getValues("velocityCurve", buffer, time);
 	}
 	
 	return CGPointMake(buffer[0], buffer[1]);

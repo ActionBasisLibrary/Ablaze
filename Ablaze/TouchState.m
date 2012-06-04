@@ -11,6 +11,7 @@
 #import "UITouch+uniqueID.h"
 
 @interface TouchState ()
+-(void)print;
 -(void)addTouch:(UITouch *)touch;
 -(void)updateTouch:(UITouch *)touch;
 -(void)removeTouch:(UITouch *)touch;
