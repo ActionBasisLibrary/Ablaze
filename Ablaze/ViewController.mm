@@ -254,6 +254,13 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	startPos.x = point.x;
 	startPos.y = point.y;
 	
+	CGPoint velocity = [wrapper getVelocity];
+	//printf("p:[%.2f, %.2f]\n", point.x, point.y);
+	//printf("v:[%.2f, %.2f]\n", velocity.x, velocity.y);
+	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
+	double speedScale = CUBE_SIZE*(1.0f+sqrt(linearVelocity)/20.0f);
+	
+	
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     //GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -100, 1000);
@@ -265,7 +272,7 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     
     // Compute the model view matrix for the object rendered with GLKit
     GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(point.x, point.y, 0.0f);
-	modelViewMatrix = GLKMatrix4Scale(modelViewMatrix, CUBE_SIZE, CUBE_SIZE, CUBE_SIZE);
+	modelViewMatrix = GLKMatrix4Scale(modelViewMatrix, speedScale, speedScale, speedScale);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, _rotation, 1.0f, 1.0f, 1.0f);
     modelViewMatrix = GLKMatrix4Multiply(modelViewMatrix, baseModelViewMatrix);
     

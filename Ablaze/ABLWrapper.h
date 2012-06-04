@@ -20,4 +20,5 @@
 @property (retain) TouchState* touchState;
 -(void)prepTouchState;
 -(CGPoint)getMean;
+-(CGPoint)getVelocity;
 @end
