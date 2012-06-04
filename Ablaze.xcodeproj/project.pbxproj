@@ -38,8 +38,6 @@
 		1281E85915745B2500369462 /* GIndexList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E85815745B2500369462 /* GIndexList.cpp */; };
 		1281E87915746B6400369462 /* ABParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87715746B5400369462 /* ABParticles.cpp */; };
 		1281E87C157569FD00369462 /* ABParticleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87A157569F700369462 /* ABParticleShader.cpp */; };
-		1281E87E1575B8AE00369462 /* ABParticles.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87D1575B8AD00369462 /* ABParticles.vsh */; };
-		1281E8801575B8BA00369462 /* ABParticles.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87F1575B8B900369462 /* ABParticles.fsh */; };
 		1281E8841575CDC600369462 /* ABParticles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87D1575B8AD00369462 /* ABParticles.vsh */; };
 		1281E8851575CDC600369462 /* ABParticles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87F1575B8B900369462 /* ABParticles.fsh */; };
 		C9002A8D1547D8840044B6AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8C1547D8840044B6AD /* UIKit.framework */; };
@@ -560,8 +558,6 @@
 				1281E85915745B2500369462 /* GIndexList.cpp in Sources */,
 				1281E87915746B6400369462 /* ABParticles.cpp in Sources */,
 				1281E87C157569FD00369462 /* ABParticleShader.cpp in Sources */,
-				1281E87E1575B8AE00369462 /* ABParticles.vsh in Sources */,
-				1281E8801575B8BA00369462 /* ABParticles.fsh in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
