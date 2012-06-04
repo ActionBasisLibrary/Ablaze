@@ -84,8 +84,20 @@ GLfloat gCubeVertexData[216] =
     -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
 };
 
+#pragma mark Particle System Setup
 ABParticles *particles;
 ABParticleShader *pshader;
+gVector3f particleStartPosition;
+
+void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	vect = particleStartPosition;
+}
+void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	const float speed = 100.0;
+	vect.x = (-1.0+randf()*2.0)*speed;
+	vect.y = (-1.0+randf()*2.0)*speed;
+	vect.z = (-1.0+randf()*2.0)*speed;
+}
 
 @interface ViewController () {
     GLuint _program;
@@ -165,19 +177,6 @@ ABParticleShader *pshader;
 }
 
 
-void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	const float speed = 100.0;
-	vect.x = (-1.0+randf()*2.0)*speed;
-	vect.y = (-1.0+randf()*2.0)*speed;
-	vect.z = (-1.0+randf()*2.0)*speed;
-}
-gVector3f startPos;
-GLKMatrix4 identityMatrix;
-void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	vect = startPos;
-}
-
-
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
@@ -250,8 +249,8 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 - (void)update
 {
 	CGPoint point = [wrapper getMean:0.0];
-	startPos.x = point.x;
-	startPos.y = point.y;
+	particleStartPosition.x = point.x;
+	particleStartPosition.y = point.y;
 	
 	CGPoint velocity = [wrapper getVelocity:0.0];
 	//printf("p:[%.2f, %.2f]\n", point.x, point.y);
@@ -276,8 +275,6 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     modelViewMatrix = GLKMatrix4Multiply(modelViewMatrix, baseModelViewMatrix);
     
     self.effect.transform.modelviewMatrix = modelViewMatrix;
-    
-	identityMatrix = GLKMatrix4Identity;
 	
     _rotation += self.timeSinceLastUpdate * 1.5f;
 	
@@ -310,7 +307,7 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     pshader->engage();
     
     // Sets the modelview and projection uniforms
-    pshader->setTransform(identityMatrix.m, self.effect.transform.projectionMatrix.m);
+    pshader->setTransform(((GLKMatrix4)GLKMatrix4Identity).m, self.effect.transform.projectionMatrix.m);
     
     // Sets the vertex attribute pointers
     particles->engage();
