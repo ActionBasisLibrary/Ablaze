@@ -13,7 +13,7 @@
 struct printStruct {
     std::ostream &stream;
     std::string &format;
-    printStruct(std::ostream &str, std::string fmt)
+    printStruct(std::ostream &str, std::string &fmt)
     : stream(str), format(fmt) {}
 };
 
