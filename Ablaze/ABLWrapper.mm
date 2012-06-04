@@ -93,7 +93,7 @@ bool updateTime(double* buffer){
 
 #pragma mark Transform Out
 
-- (CGPoint)getMean:(float)secondsAgo {
+- (CGPoint)getPosition:(float)secondsAgo {
 	double buffer[2];
 	
 	if(secondsAgo == 0.0){

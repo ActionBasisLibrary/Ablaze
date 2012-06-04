@@ -72,12 +72,12 @@
 
 - (void)updateViewTouches {
 	((FlatView*)self.view).points = [touchState touchPoints];
-	((FlatView*)self.view).middlePoint = [wrapper getMean:0.0];
+	((FlatView*)self.view).middlePoint = [wrapper getPosition:0.0];
 	[self.view setNeedsDisplay];
 }
 
 - (void)justUpdateView:(NSTimer*)theTimer {
-	((FlatView*)self.view).middlePoint = [wrapper getMean:0.0];
+	((FlatView*)self.view).middlePoint = [wrapper getPosition:0.0];
 	[self.view setNeedsDisplay];
 }
 

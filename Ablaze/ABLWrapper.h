@@ -17,7 +17,7 @@
 }
 @property (retain) TouchState* touchState;
 
--(CGPoint)getMean:(float)secondsAgo;
+-(CGPoint)getPosition:(float)secondsAgo;
 -(CGPoint)getVelocity:(float)secondsAgo;
 
 @end

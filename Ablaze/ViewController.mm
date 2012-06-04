@@ -248,7 +248,7 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 
 - (void)update
 {
-	CGPoint point = [wrapper getMean:0.0];
+	CGPoint point = [wrapper getPosition:0.0];
 	particleStartPosition.x = point.x;
 	particleStartPosition.y = point.y;
 	
