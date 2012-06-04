@@ -8,17 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "ABL/ABTransform.h"
-//#import "ABL/ABSymbolSubclasses.h"
 #import "TouchState.h"
 
 @interface ABLWrapper : NSObject
 {
 	ABTransform transform;
 	GTimerThread timer;
-	TouchState* touchState;
 }
 @property (retain) TouchState* touchState;
--(void)prepTouchState;
--(CGPoint)getMean;
--(CGPoint)getVelocity;
+
+-(CGPoint)getMean:(float)secondsAgo;
+-(CGPoint)getVelocity:(float)secondsAgo;
+
 @end

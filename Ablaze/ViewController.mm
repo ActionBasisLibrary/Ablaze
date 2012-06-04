@@ -121,7 +121,6 @@ ABParticleShader *pshader;
 	framerate = [Framerate new];
 	wrapper = [ABLWrapper new];
 	wrapper.touchState = touchState;
-	[wrapper prepTouchState];
 
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -250,11 +249,11 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 
 - (void)update
 {
-	CGPoint point = [wrapper getMean];
+	CGPoint point = [wrapper getMean:0.0];
 	startPos.x = point.x;
 	startPos.y = point.y;
 	
-	CGPoint velocity = [wrapper getVelocity];
+	CGPoint velocity = [wrapper getVelocity:0.0];
 	//printf("p:[%.2f, %.2f]\n", point.x, point.y);
 	//printf("v:[%.2f, %.2f]\n", velocity.x, velocity.y);
 	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);

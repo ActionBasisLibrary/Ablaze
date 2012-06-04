@@ -35,7 +35,6 @@
 	touchState = [TouchState new];
 	wrapper = [ABLWrapper new];
 	wrapper.touchState = touchState;
-	[wrapper prepTouchState];
 
 	// Do any additional setup after loading the view.
 	
@@ -73,12 +72,12 @@
 
 - (void)updateViewTouches {
 	((FlatView*)self.view).points = [touchState touchPoints];
-	((FlatView*)self.view).middlePoint = [wrapper getMean];
+	((FlatView*)self.view).middlePoint = [wrapper getMean:0.0];
 	[self.view setNeedsDisplay];
 }
 
 - (void)justUpdateView:(NSTimer*)theTimer {
-	((FlatView*)self.view).middlePoint = [wrapper getMean];
+	((FlatView*)self.view).middlePoint = [wrapper getMean:0.0];
 	[self.view setNeedsDisplay];
 }
 
