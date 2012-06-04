@@ -188,6 +188,7 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);
     
     glEnable(GL_DEPTH_TEST);
+    
 	glEnable(GL_BLEND);
     
     glGenVertexArraysOES(1, &_vertexArray);
@@ -281,7 +282,7 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    //glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
+//    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     

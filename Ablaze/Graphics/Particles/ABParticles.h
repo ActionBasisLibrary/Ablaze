@@ -91,7 +91,7 @@ public:
     ProfileId profile;
     
     char texId;
-    float age, size;
+    float age, size, lifeSpan;
     gVector3f position, velocity, acceleration;
     gVector4f color;
 	float born;
@@ -101,7 +101,7 @@ public:
 
 class ABParticles::Profile {
 public:
-    typedef void (*ParamFunction1)(float &val, float dt, const Particle *ptr);
+    typedef void (*ParamFunction1)(float *val, float dt, const Particle *ptr);
     typedef void (*ParamFunction2)(gVector2f &vect, float dt, const Particle *ptr);
     typedef void (*ParamFunction3)(gVector3f &vect, float dt, const Particle *ptr);
     typedef void (*ParamFunction4)(gVector4f &vect, float dt, const Particle *ptr);

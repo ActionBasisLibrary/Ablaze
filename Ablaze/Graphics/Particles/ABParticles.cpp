@@ -141,24 +141,25 @@ void ABParticles::advanceParticlesBySeconds(double dt)
 // Engage appropriate attribute arrays
 void ABParticles::engage()
 {
+    glEnable(GL_DEPTH_TEST);
+    glDepthMask(GL_FALSE);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    
     
     // Enable appropriate arrays
     glEnableVertexAttribArray(vPosition);
+    glEnableVertexAttribArray(vColor);
+//    glEnableVertexAttribArray(vTexId);
+    glEnableVertexAttribArray(vSize);
+    glEnableVertexAttribArray(vLive);
 
     size_t stride = (char*)&particleArray[1] - (char*)&particleArray[0];
-	
     
-    float *ptr = &particleArray[0].position.x;
     glVertexAttribPointer(vPosition, 3, GL_FLOAT, false, stride, &particleArray[0].position.x);
-//    glVertexAttribPointer(vColor, 4, GL_FLOAT, false, stride, &particleArray[0].color);
+    glVertexAttribPointer(vColor, 4, GL_FLOAT, false, stride, &particleArray[0].color);
 //    glVertexAttribPointer(vTexId, 1, GL_UNSIGNED_BYTE, false, stride, &particleArray[0].texId);
-//    glVertexAttribPointer(vSize, 1, GL_FLOAT, false, stride, &particleArray[0].size);
+    glVertexAttribPointer(vSize, 1, GL_FLOAT, false, stride, &particleArray[0].size);
     glVertexAttribPointer(vLive, 1, GL_FLOAT, false, stride, &particleArray[0].born);
-
-//    glEnableVertexAttribArray(vColor);
-//    glEnableVertexAttribArray(vTexId);
-//    glEnableVertexAttribArray(vSize);
-    glEnableVertexAttribArray(vLive);
     
     engaged = true;
 }
@@ -167,10 +168,12 @@ void ABParticles::engage()
 void ABParticles::disengage()
 {
     glDisableVertexAttribArray(vPosition);
-//    glDisableVertexAttribArray(vColor);
+    glDisableVertexAttribArray(vColor);
 //    glEnableVertexAttribArray(vTexId);
-//    glDisableVertexAttribArray(vSize);
+    glDisableVertexAttribArray(vSize);
     glDisableVertexAttribArray(vLive);
+    
+    glDepthMask(GL_TRUE);
     
 //    glBindVertexArrayOES(0);
     
@@ -192,10 +195,6 @@ void ABParticles::renderParticles()
 
     unsigned short *indices = liveList.serializeShort();
     size_t num = liveList.size();
-//    const size_t num = 36;
-//    unsigned short indices[num];
-//    for (size_t i = 0; i < num; i++)
-//        indices[i] = (unsigned short)i;
 
     // Set state appropriately--TODO: Nothing in particular?
 
@@ -228,11 +227,13 @@ void ABParticles::initialize()
 
 static void posFnDefault(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
 static void velFnDefault(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
+static void colFnDefault(gVector4f &vect, float dt, const ABParticles::Particle *ptr);
+static void sizeFnDefault(float *size, float dt, const ABParticles::Particle *ptr);
 
 ABParticles::Profile::Profile()
 : posFn(posFnDefault), velFn(velFnDefault), accFn(NULL),
 startPosFn(NULL), startVelFn(NULL), startAccFn(NULL),
-colorFn(NULL), startColorFn(NULL),
+colorFn(colFnDefault), startColorFn(NULL),
 sizeFn(NULL), startSizeFn(NULL),
 delay(0), lifeSpan(0), continuous(false), texId(-1)
 {}
@@ -241,8 +242,8 @@ void ABParticles::Profile::generateParticle(Particle *ptr)
 {
     ptr->born = 0;
     ptr->age = -randf() * delay;
+    ptr->lifeSpan = lifeSpan;
     ptr->texId = texId;
-    ptr->size = 10.0;
 }
 
 void ABParticles::Profile::birthParticle(Particle *ptr)
@@ -266,7 +267,7 @@ void ABParticles::Profile::birthParticle(Particle *ptr)
     else ptr->color = gVector4f(1);
 
     // Set size to 1.0
-    if (startSizeFn) startSizeFn(ptr->size, 0, ptr);
+    if (startSizeFn) startSizeFn(&ptr->size, 0, ptr);
     else ptr->size = 10.0;
 }
 
@@ -283,10 +284,9 @@ void ABParticles::Profile::updateParticle(Particle *ptr, double dt)
 
     // Update color from everything
     if (colorFn) colorFn(ptr->color, dt, ptr);
-    else 
 
     // Update size if necessary
-    if (sizeFn) sizeFn(ptr->size, dt, ptr);
+    if (sizeFn) sizeFn(&ptr->size, dt, ptr);
 }
 
 static void posFnDefault(gVector3f &vect, float dt, const ABParticles::Particle *ptr)
@@ -297,4 +297,18 @@ static void posFnDefault(gVector3f &vect, float dt, const ABParticles::Particle 
 static void velFnDefault(gVector3f &vect, float dt, const ABParticles::Particle *ptr)
 {
     vect += (gVector3f)ptr->acceleration * dt;
+}
+
+static void colFnDefault(gVector4f &vect, float dt, const ABParticles::Particle *ptr)
+{
+    float t = ptr->age / ptr->lifeSpan;
+//    vect.a = 0.0;
+    vect.a = 4 * sqrtf(.0625 - powf(.5-t, 4));
+}
+
+static void sizeFnDefault(float *size, float dt, const ABParticles::Particle *ptr)
+{
+    float t = ptr->age / ptr->lifeSpan;
+    *size = 40.0 * sqrtf(.0625 - powf(.5 - t, 4));
+//    *size = 20.0;
 }

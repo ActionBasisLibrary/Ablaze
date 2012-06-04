@@ -159,9 +159,9 @@ bool ABParticleShader::loadAndCompileShaders(const char *vertPath, const char *f
     
         // Bind all appropriate attributes
         glBindAttribLocation(programId, ABParticles::vPosition, "position");
-//        glBindAttribLocation(programId, ABParticles::vColor, "color");
+        glBindAttribLocation(programId, ABParticles::vColor, "color");
 //        glBindAttribLocation(programId, ABParticles::vTexId, "texId");
-//        glBindAttribLocation(programId, ABParticles::vSize, "size");
+        glBindAttribLocation(programId, ABParticles::vSize, "size");
         glBindAttribLocation(programId, ABParticles::vLive, "live");
         glLinkProgram(programId);
         
