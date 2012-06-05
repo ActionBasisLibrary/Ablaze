@@ -99,6 +99,27 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	vect.z = (-1.0+randf()*2.0)*speed;
 }
 
+// Trail particle
+ABLWrapper *globalWrapper;
+
+void trailStartPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	CGPoint oldPoint = [globalWrapper getPosition:0.1+randf()*1.0];
+	vect.x = oldPoint.x-5+randf()*10;
+	vect.y = oldPoint.y-5+randf()*10;
+	vect.z = -5+randf()*10;
+}
+void trailStartVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	vect.x = -5+randf()*10;
+	vect.y = -5+randf()*10;
+	vect.z = -5+randf()*10;
+}
+void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	vect.x = -5+randf()*10;
+	vect.y = -5+randf()*10;
+	vect.z = -5+randf()*10;
+}
+
+
 @interface ViewController () {
     GLuint _program;
     
@@ -207,13 +228,13 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     // Creates the particle shader--see ABParticles.vsh, .fsh
     pshader = new ABParticleShader(vertPath, fragPath);
 
-    // Initializes particle source with 100 max capacity
-    particles = new ABParticles(500);
+    // Initializes particle source with 2000 max capacity
+    particles = new ABParticles(2000);
     
     // Ignore this for now--none of it is used while debugging
     ABParticles::Profile profile;
-    profile.lifeSpan = 4;
-    profile.delay = 4;
+    profile.lifeSpan = 2;
+    profile.delay = 2;
     profile.continuous = true;
 	profile.startVelFn = startVelFunction;
 	profile.startPosFn = startPosFunction;
@@ -221,7 +242,21 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     ABParticles::ProfileId pid = particles->createProfile(profile);
     
     // This creates 100 particles--only important because it makes sure all positions are 0,0,0
-    particles->emitParticles(100, pid);
+    particles->emitParticles(500, pid);
+	
+	ABParticles::Profile trailProfile;
+    trailProfile.lifeSpan = 2;
+    trailProfile.delay = 2;
+    trailProfile.continuous = true;
+	trailProfile.startVelFn = trailStartVelFunction;
+	trailProfile.startPosFn = trailStartPosFunction;
+	trailProfile.accFn = trailAccFunction;
+    
+    ABParticles::ProfileId trailPid = particles->createProfile(trailProfile);
+	particles->emitParticles(1500, trailPid);
+	
+	globalWrapper = wrapper;
+
 }
 
 - (void)tearDownGL
