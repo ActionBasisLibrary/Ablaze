@@ -84,6 +84,14 @@ GLfloat gCubeVertexData[216] =
     -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
 };
 
+static const GLfloat squareVertices[] = {
+	-1.0f, -1.0f, 0.0f,
+	 1.0f, -1.0f, 0.0f,
+	-1.0f,  1.0f, 0.0f,
+	 1.0f,  1.0f, 0.0f,
+};
+
+
 #pragma mark Particle System Setup
 ABParticles *particles;
 ABParticleShader *pshader;
@@ -93,11 +101,35 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	vect = particleStartPosition;
 }
 void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	const float speed = 100.0;
-	vect.x = (-1.0+randf()*2.0)*speed;
-	vect.y = (-1.0+randf()*2.0)*speed;
-	vect.z = (-1.0+randf()*2.0)*speed;
+	const float speed = (1.0-2.0*randf())*100.0;
+	double angle = (2.0*M_PI*randf());
+	vect.x = sin(angle)*speed;
+	vect.y = cos(angle)*speed;
+	vect.z = 0;
 }
+
+// Trail particle
+ABLWrapper *globalWrapper;
+
+void trailStartPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	CGPoint oldPoint = [globalWrapper getPosition:0.1+randf()*1.0];
+	vect.x = oldPoint.x-5+randf()*10;
+	vect.y = oldPoint.y-5+randf()*10;
+	vect.z = -5+randf()*10;
+}
+void trailStartVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	double vel = (1.0-2.0*randf())*10;
+	double angle = (2.0*M_PI*randf());
+	vect.x = vel*cos(angle);
+	vect.y = vel*sin(angle);
+	vect.z = 0;
+}
+void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+	vect.x = 0;//-5+randf()*10;
+	vect.y = 0;//-5+randf()*10;
+	vect.z = 0;//-5+randf()*10;
+}
+
 
 @interface ViewController () {
     GLuint _program;
@@ -108,9 +140,14 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     
     GLuint _vertexArray;
     GLuint _vertexBuffer;
+	
+	GLuint _vertexArray2;
+    GLuint _vertexBuffer2;
+
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
+@property (strong, nonatomic) GLKBaseEffect *effect2;
 
 - (void)setupGL;
 - (void)tearDownGL;
@@ -120,6 +157,7 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 
 @synthesize context = _context;
 @synthesize effect = _effect;
+@synthesize effect2 = _effect2;
 
 - (void)viewDidLoad
 {
@@ -139,8 +177,9 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
-	view.drawableMultisample = GLKViewDrawableMultisample4X;
     
+	self.preferredFramesPerSecond = 60;
+	
     [self setupGL];
 }
 
@@ -179,6 +218,9 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     self.effect = [[GLKBaseEffect alloc] init];
     self.effect.light0.enabled = GL_TRUE;
     self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);
+	
+    self.effect2 = [[GLKBaseEffect alloc] init];
+	self.effect2.constantColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 0.3f);
     
     glEnable(GL_DEPTH_TEST);
     
@@ -198,6 +240,21 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     
     glBindVertexArrayOES(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+	
+	////
+	glGenVertexArraysOES(1, &_vertexArray2);
+    glBindVertexArrayOES(_vertexArray2);
+    
+    glGenBuffers(1, &_vertexBuffer2);
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer2);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(squareVertices), squareVertices, GL_STATIC_DRAW);
+    
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 12, BUFFER_OFFSET(0));
+    
+    glBindVertexArrayOES(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
     
     // Create program
     
@@ -207,13 +264,13 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     // Creates the particle shader--see ABParticles.vsh, .fsh
     pshader = new ABParticleShader(vertPath, fragPath);
 
-    // Initializes particle source with 100 max capacity
-    particles = new ABParticles(500);
+    // Initializes particle source with 2000 max capacity
+    particles = new ABParticles(2000);
     
     // Ignore this for now--none of it is used while debugging
     ABParticles::Profile profile;
-    profile.lifeSpan = 4;
-    profile.delay = 4;
+    profile.lifeSpan = 2;
+    profile.delay = 2;
     profile.continuous = true;
 	profile.startVelFn = startVelFunction;
 	profile.startPosFn = startPosFunction;
@@ -221,7 +278,23 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     ABParticles::ProfileId pid = particles->createProfile(profile);
     
     // This creates 100 particles--only important because it makes sure all positions are 0,0,0
-    particles->emitParticles(100, pid);
+    particles->emitParticles(500, pid);
+	
+	ABParticles::Profile trailProfile;
+    trailProfile.lifeSpan = 2;
+    trailProfile.delay = 2;
+    trailProfile.continuous = true;
+	trailProfile.startVelFn = trailStartVelFunction;
+	trailProfile.startPosFn = trailStartPosFunction;
+	trailProfile.accFn = trailAccFunction;
+    
+    ABParticles::ProfileId trailPid = particles->createProfile(trailProfile);
+	particles->emitParticles(1500, trailPid);
+	
+	globalWrapper = wrapper;
+    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 }
 
 - (void)tearDownGL
@@ -249,7 +322,7 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	
 	CGPoint velocity = [wrapper getVelocity:0.0];
 	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
-	double speedScale = CUBE_SIZE*(1.0f+sqrt(linearVelocity)/20.0f);
+	double speedScale = CUBE_SIZE*(1.0f+sqrt(linearVelocity)/40.0f);
 	
 	
     self.effect.transform.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
@@ -275,10 +348,18 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	// Clear the view
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
+	glClear(GL_DEPTH_BUFFER_BIT);
+
+    // Render the SQUARE with GLKit
+    glBindVertexArrayOES(_vertexArray2);
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    [self.effect2 prepareToDraw];
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glBindVertexArrayOES(0);
+	glClear(GL_DEPTH_BUFFER_BIT);
+	
     // Render the cube with GLKit
     glBindVertexArrayOES(_vertexArray);
     glEnableVertexAttribArray(GLKVertexAttribPosition);
