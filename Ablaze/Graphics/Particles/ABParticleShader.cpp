@@ -193,7 +193,7 @@ bool ABParticleShader::loadAndCompileShaders(const char *vertPath, const char *f
 
 bool ABParticleShader::loadFile(const char *filename, std::string &strout)
 {
-    std::fstream file(filename);
+    std::ifstream file(filename);
     
     if (file) {
         std::getline(file, strout, '\0');
