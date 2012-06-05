@@ -101,10 +101,11 @@ void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	vect = particleStartPosition;
 }
 void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	const float speed = 100.0;
-	vect.x = (-1.0+randf()*2.0)*speed;
-	vect.y = (-1.0+randf()*2.0)*speed;
-	vect.z = (-1.0+randf()*2.0)*speed;
+	const float speed = (1.0-2.0*randf())*100.0;
+	double angle = (2.0*M_PI*randf());
+	vect.x = sin(angle)*speed;
+	vect.y = cos(angle)*speed;
+	vect.z = 0;
 }
 
 // Trail particle
@@ -117,14 +118,16 @@ void trailStartPosFunction(gVector3f &vect, float dt, const ABParticles::Particl
 	vect.z = -5+randf()*10;
 }
 void trailStartVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	vect.x = -5+randf()*10;
-	vect.y = -5+randf()*10;
-	vect.z = -5+randf()*10;
+	double vel = (1.0-2.0*randf())*10;
+	double angle = (2.0*M_PI*randf());
+	vect.x = vel*cos(angle);
+	vect.y = vel*sin(angle);
+	vect.z = 0;
 }
 void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	vect.x = -5+randf()*10;
-	vect.y = -5+randf()*10;
-	vect.z = -5+randf()*10;
+	vect.x = 0;//-5+randf()*10;
+	vect.y = 0;//-5+randf()*10;
+	vect.z = 0;//-5+randf()*10;
 }
 
 
@@ -319,7 +322,7 @@ void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	
 	CGPoint velocity = [wrapper getVelocity:0.0];
 	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
-	double speedScale = CUBE_SIZE*(1.0f+sqrt(linearVelocity)/20.0f);
+	double speedScale = CUBE_SIZE*(1.0f+sqrt(linearVelocity)/40.0f);
 	
 	
     self.effect.transform.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
