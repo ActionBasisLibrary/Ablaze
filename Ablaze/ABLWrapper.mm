@@ -10,6 +10,7 @@
 
 #import "ABL/ABSymPull.h"
 #import "ABL/ABSymVarPull.h"
+#import "ABL/ABSymMean.h"
 #import "ABL/ABSymCurve.h"
 #import "ABL/ABSymTime.h"
 #import "ABL/ABSymCombine.h"
@@ -59,20 +60,22 @@ bool updateTime(double* buffer){
 
 - (void)prepTransform {
 
-	string names[] = {"x", "y", "position", "positionCurve", "velocity", "velocityCurve"};
-	vector<string> position(names, names+2);
+	string names[] = {"x", "y", "meanX", "meanY", "position", "positionCurve", "velocity", "velocityCurve"};
+	vector<string> position(names+2, names+4);
 
 	ABSymbol *rawInputs[] = {
-		new ABSymTime("time", &timer, 0),
+		new ABSymTime("time", &timer),
 		new ABSymVarPull("x", MAX_TOUCH_COUNT, updateX),
 		new ABSymVarPull("y", MAX_TOUCH_COUNT, updateY),
+		new ABSymMean("meanX", "x"),
+		new ABSymMean("meanY", "y"),
 		new ABSymCombine("position", position),
 	};
 
 	ABSymbol *velocity = new ABSymDifferentiate("velocity", position, "time");
 	ABSymbol *velocityCurve = new ABSymCurve("velocityCurve", 2, "velocity", "time", 100, 5);
 
-	vector<string> vTick(names+2, names+6);
+	vector<string> vTick(names+2, names+8);
 	ABSymbol *tick = new ABSymTick("tick", vTick, &timer, 0.1);
 
 	ABSymbol *positionCurve = new ABSymCurve("positionCurve", 2, "position", "time", 100, 5);
@@ -81,7 +84,7 @@ bool updateTime(double* buffer){
 	// Create a new transform and add all of the symbols
 	transform = ABTransform(true);
 
-	transform.addSymbols(rawInputs, 4);
+	transform.addSymbols(rawInputs, 6);
 	transform.addSymbol(positionCurve);
 
 	transform.addSymbol(velocity);
