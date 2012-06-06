@@ -15,6 +15,7 @@
 #import "ABL/ABSymTime.h"
 #import "ABL/ABSymCombine.h"
 #import "ABL/ABSymDifferentiate.h"
+#import <iostream>
 
 
 @interface ABLWrapper ()
@@ -91,7 +92,12 @@ bool updateTime(double* buffer){
 	transform.addSymbol(velocityCurve);
 
 	transform.addSymbol(tick);
+    
+//    transform.printSymbolDependencies(std::cout);
+    
 	transform.startTick("tick");
+    
+//    transform.printSymbolDependencies(std::cout);
 }
 
 #pragma mark Transform Out

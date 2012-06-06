@@ -96,6 +96,7 @@ static const GLfloat squareVertices[] = {
 ABParticles *particles;
 ABParticleShader *pshader;
 gVector3f particleStartPosition;
+gVector2f currVelocity;
 
 void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
 	vect = particleStartPosition;
@@ -106,6 +107,16 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	vect.x = sin(angle)*speed;
 	vect.y = cos(angle)*speed;
 	vect.z = 0;
+}
+
+int amod = 0;
+void dragAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
+    double v2 = currVelocity.length() * .001;
+    double drag = 1.2 * exp(-pow(v2 + .5, -4.0)) - 1.0;
+//    if (amod++ % 1000 == 0) printf("Drag %f, vel %f\n", drag, v2);
+    vect.x = drag * ptr->velocity.x;
+	vect.y = drag * ptr->velocity.y;
+	vect.z = drag * ptr->velocity.z;
 }
 
 // Trail particle
@@ -274,6 +285,7 @@ void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     profile.continuous = true;
 	profile.startVelFn = startVelFunction;
 	profile.startPosFn = startPosFunction;
+    profile.accFn = dragAccFunction;
     
     ABParticles::ProfileId pid = particles->createProfile(profile);
     
@@ -317,10 +329,11 @@ void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 - (void)update
 {
 	CGPoint point = [wrapper getPosition:0.0];
-	particleStartPosition.x = point.x;
-	particleStartPosition.y = point.y;
+    particleStartPosition.set(point.x, point.y, 0.0);
 	
-	CGPoint velocity = [wrapper getVelocity:0.0];
+	CGPoint velocity = [wrapper getVelocity:0.1];
+//    printf("Velocity @ -%f = %f %f\n", 0.1, velocity.x, velocity.y);
+    currVelocity.set(velocity.x, velocity.y);
 	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
 	double speedScale = CUBE_SIZE*(1.0f+sqrt(linearVelocity)/40.0f);
 	
