@@ -101,11 +101,13 @@ public:
 
 class ABParticles::Profile {
 public:
+	typedef void (*InitFunction)(Particle *ptr);
     typedef void (*ParamFunction1)(float *val, float dt, const Particle *ptr);
     typedef void (*ParamFunction2)(gVector2f &vect, float dt, const Particle *ptr);
     typedef void (*ParamFunction3)(gVector3f &vect, float dt, const Particle *ptr);
     typedef void (*ParamFunction4)(gVector4f &vect, float dt, const Particle *ptr);
     
+	InitFunction initOverrideFn;
     ParamFunction1 sizeFn, startSizeFn;
     ParamFunction3 posFn, velFn, accFn;
     ParamFunction3 startPosFn, startVelFn, startAccFn;

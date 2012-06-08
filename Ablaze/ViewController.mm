@@ -93,10 +93,13 @@ static const GLfloat squareVertices[] = {
 
 
 #pragma mark Particle System Setup
+ABLWrapper *globalWrapper;
+
 ABParticles *particles;
 ABParticleShader *pshader;
 gVector3f particleStartPosition;
 gVector2f currVelocity;
+gVector4f particleStartColor;
 
 void startPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
 	vect = particleStartPosition;
@@ -108,38 +111,55 @@ void startVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	vect.y = cos(angle)*speed;
 	vect.z = 0;
 }
+void startColorFn(gVector4f &vect, float dt, const ABParticles::Particle *ptr) {
+	vect = particleStartColor;
+}
 
 int amod = 0;
 void dragAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
     double v2 = currVelocity.length() * .001;
-    double drag = 1.2 * exp(-pow(v2 + .5, -4.0)) - 1.0;
+    double drag = 1.5 * exp(-pow(v2 + .5, -4.0)) - 1.0;
 //    if (amod++ % 1000 == 0) printf("Drag %f, vel %f\n", drag, v2);
     vect.x = drag * ptr->velocity.x;
 	vect.y = drag * ptr->velocity.y;
 	vect.z = drag * ptr->velocity.z;
 }
 
-// Trail particle
-ABLWrapper *globalWrapper;
 
-void trailStartPosFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	CGPoint oldPoint = [globalWrapper getPosition:0.1+randf()*1.0];
-	vect.x = oldPoint.x-5+randf()*10;
-	vect.y = oldPoint.y-5+randf()*10;
-	vect.z = -5+randf()*10;
-}
-void trailStartVelFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	double vel = (1.0-2.0*randf())*10;
+
+// Trail particle
+
+void trailInitOverrideFn(ABParticles::Particle *ptr) {
+	// Use this for setting attributes that all depend on this randomized time
+	float secondsAgo = 0.1+randf()*1.0;
+	// Position
+	CGPoint position = [globalWrapper getPosition:secondsAgo];
+	ptr->position.x = position.x-5+randf()*10;
+	ptr->position.y = position.y-5+randf()*10;
+	ptr->position.z = -5+randf()*10;
+	// Color
+	CGPoint velocity = [globalWrapper getVelocity:secondsAgo];
+	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
+	double absVel = linearVelocity/1000-0.1;
+	if(absVel>1.0)absVel = 1.0;
+	if(absVel<0.0)absVel = 0.0;
+	
+	ptr->color.r = absVel;
+	ptr->color.g = 0.0;
+	ptr->color.b = 1.0-absVel;
+	ptr->color.a = 1.0;
+	
+	// Size
+	ptr->size = (position.y/1000)*30.0f+5.0f;
+	
+	// Velocity
+	double vel = (position.x/1000)*randf()*30.0+5.0;
 	double angle = (2.0*M_PI*randf());
-	vect.x = vel*cos(angle);
-	vect.y = vel*sin(angle);
-	vect.z = 0;
+	ptr->velocity.x = vel*cos(angle);
+	ptr->velocity.y = vel*sin(angle);
+	ptr->velocity.z = 0;
 }
-void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *ptr) {
-	vect.x = 0;//-5+randf()*10;
-	vect.y = 0;//-5+randf()*10;
-	vect.z = 0;//-5+randf()*10;
-}
+
 
 
 @interface ViewController () {
@@ -286,6 +306,7 @@ void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 	profile.startVelFn = startVelFunction;
 	profile.startPosFn = startPosFunction;
     profile.accFn = dragAccFunction;
+	profile.startColorFn = startColorFn;
     
     ABParticles::ProfileId pid = particles->createProfile(profile);
     
@@ -296,9 +317,7 @@ void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     trailProfile.lifeSpan = 2;
     trailProfile.delay = 2;
     trailProfile.continuous = true;
-	trailProfile.startVelFn = trailStartVelFunction;
-	trailProfile.startPosFn = trailStartPosFunction;
-	trailProfile.accFn = trailAccFunction;
+	trailProfile.initOverrideFn = trailInitOverrideFn;
     
     ABParticles::ProfileId trailPid = particles->createProfile(trailProfile);
 	particles->emitParticles(1500, trailPid);
@@ -328,7 +347,7 @@ void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
 
 - (void)update
 {
-	CGPoint point = [wrapper getPosition:0.0];
+	CGPoint point = [wrapper getPosition:0.1];
     particleStartPosition.set(point.x, point.y, 0.0);
 	
 	CGPoint velocity = [wrapper getVelocity:0.1];
@@ -336,6 +355,17 @@ void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     currVelocity.set(velocity.x, velocity.y);
 	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
 	double speedScale = CUBE_SIZE*(1.0f+sqrt(linearVelocity)/40.0f);
+	
+	double absVel = linearVelocity/1000;
+	if(absVel>1.0)absVel = 1.0;
+	if(absVel<0.0)absVel = 0.0;
+	
+	//NSLog(@"%f, %f = %f", velocity.x, velocity.y, absVel);
+	particleStartColor.r = absVel;
+	particleStartColor.g = 0.0;
+	particleStartColor.b = 1.0-absVel;
+	particleStartColor.a = 1.0;
+
 	
 	
     self.effect.transform.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
@@ -379,7 +409,7 @@ void trailAccFunction(gVector3f &vect, float dt, const ABParticles::Particle *pt
     glEnableVertexAttribArray(GLKVertexAttribNormal);
 	
     [self.effect prepareToDraw];
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    //glDrawArrays(GL_TRIANGLES, 0, 36);
 	
     glBindVertexArrayOES(0);
     

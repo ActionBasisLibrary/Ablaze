@@ -269,6 +269,8 @@ void ABParticles::Profile::birthParticle(Particle *ptr)
     // Set size to 1.0
     if (startSizeFn) startSizeFn(&ptr->size, 0, ptr);
     else ptr->size = 10.0;
+	
+	if (initOverrideFn) initOverrideFn(ptr);
 }
 
 void ABParticles::Profile::updateParticle(Particle *ptr, double dt)
