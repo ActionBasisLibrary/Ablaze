@@ -58,6 +58,7 @@
 		C942CADA15842EC600F9B17E /* MultiTouchViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CAD915842EC600F9B17E /* MultiTouchViewController.mm */; };
 		C942CAE0158431C000F9B17E /* TouchTrail.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CADF158431C000F9B17E /* TouchTrail.mm */; };
 		C942CAE31584451A00F9B17E /* TrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE21584451A00F9B17E /* TrailController.mm */; };
+		C942CAE615845E7500F9B17E /* Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE515845E7500F9B17E /* Fade.m */; };
 		C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
 		C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
 		C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
@@ -172,6 +173,8 @@
 		C942CADF158431C000F9B17E /* TouchTrail.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchTrail.mm; sourceTree = "<group>"; };
 		C942CAE11584451900F9B17E /* TrailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailController.h; sourceTree = "<group>"; };
 		C942CAE21584451A00F9B17E /* TrailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrailController.mm; sourceTree = "<group>"; };
+		C942CAE415845E7500F9B17E /* Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fade.h; sourceTree = "<group>"; };
+		C942CAE515845E7500F9B17E /* Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fade.m; sourceTree = "<group>"; };
 		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
 		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 		C9DA51D21562F50500ADA5AA /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewController.h; sourceTree = "<group>"; };
@@ -387,6 +390,8 @@
 				C942CADF158431C000F9B17E /* TouchTrail.mm */,
 				C942CAE11584451900F9B17E /* TrailController.h */,
 				C942CAE21584451A00F9B17E /* TrailController.mm */,
+				C942CAE415845E7500F9B17E /* Fade.h */,
+				C942CAE515845E7500F9B17E /* Fade.m */,
 				C92C4AFC1558E45C002B9396 /* Touches */,
 				C9DA51D11562F48C00ADA5AA /* View Controllers */,
 				1281E7ED157456F200369462 /* Graphics */,
@@ -576,6 +581,7 @@
 				C942CADA15842EC600F9B17E /* MultiTouchViewController.mm in Sources */,
 				C942CAE0158431C000F9B17E /* TouchTrail.mm in Sources */,
 				C942CAE31584451A00F9B17E /* TrailController.mm in Sources */,
+				C942CAE615845E7500F9B17E /* Fade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,30 +14,13 @@
 
 #include "GRand.h"
 
+#include "Fade.h"
 #include "TouchTrail.h"
 
 
-#define BUFFER_OFFSET(i) ((char *)NULL + (i))
-
-#define CUBE_SIZE 25.0f
-
-
-static const GLfloat _squareVertices[] = {
-	-1.0f, -1.0f, 0.0f,
-	 1.0f, -1.0f, 0.0f,
-	-1.0f,  1.0f, 0.0f,
-	 1.0f,  1.0f, 0.0f,
-};
-
-
-
-@interface MultiTouchViewController () {
-    GLuint _vertexArray;
-    GLuint _vertexBuffer;
-}
+@interface MultiTouchViewController ()
 @property (strong, nonatomic) EAGLContext *context;
-@property (strong, nonatomic) GLKBaseEffect *effect;
-@property (strong, nonatomic) GLKBaseEffect *effect2;
+@property (strong, nonatomic) Fade *fade;
 
 - (void)setupGL;
 - (void)tearDownGL;
@@ -46,8 +29,7 @@ static const GLfloat _squareVertices[] = {
 @implementation MultiTouchViewController
 
 @synthesize context = _context;
-@synthesize effect = _effect;
-@synthesize effect2 = _effect2;
+@synthesize fade = _fade;
 
 - (void)viewDidLoad
 {
@@ -106,30 +88,13 @@ static const GLfloat _squareVertices[] = {
 {
     [EAGLContext setCurrentContext:self.context];
     
-    self.effect = [[GLKBaseEffect alloc] init];
-    self.effect.light0.enabled = GL_TRUE;
-    self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);
-	
-    self.effect2 = [[GLKBaseEffect alloc] init];
-	self.effect2.constantColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 0.3f);
+	self.fade = [Fade new];
     
     glEnable(GL_DEPTH_TEST);
     
 	glEnable(GL_BLEND);
     
-    glGenVertexArraysOES(1, &_vertexArray);
-    glBindVertexArrayOES(_vertexArray);
-    
-    glGenBuffers(1, &_vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(_squareVertices), _squareVertices, GL_STATIC_DRAW);
-    
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 12, BUFFER_OFFSET(0));
-    
-    glBindVertexArrayOES(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
+	[self.fade setup];
     
     // Create program
     
@@ -171,10 +136,9 @@ static const GLfloat _squareVertices[] = {
 {
     [EAGLContext setCurrentContext:self.context];
     
-    glDeleteBuffers(1, &_vertexBuffer);
-    glDeleteVertexArraysOES(1, &_vertexArray);
+	[self.fade tearDown];
     
-    self.effect = nil;
+    self.fade = nil;
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
@@ -193,12 +157,7 @@ static const GLfloat _squareVertices[] = {
 	glClear(GL_DEPTH_BUFFER_BIT);
 
     // Render the SQUARE with GLKit
-    glBindVertexArrayOES(_vertexArray);
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    [self.effect2 prepareToDraw];
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    glBindVertexArrayOES(0);
-	glClear(GL_DEPTH_BUFFER_BIT);
+	[self.fade render];
 	
     // Render the particle effects
 	[trails render];
