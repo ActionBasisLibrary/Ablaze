@@ -11,7 +11,7 @@
 #import "TouchState.h"
 #import "TrailController.h"
 #import "Framerate.h"
-#include "Fade.h"
+#import "Fade.h"
 
 
 @interface MultiTouchViewController : GLKViewController

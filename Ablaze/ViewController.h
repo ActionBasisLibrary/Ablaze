@@ -9,15 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "TouchState.h"
+#import "TrailController.h"
 #import "Framerate.h"
+#import "Fade.h"
 
-@class ABLWrapper;
 
 @interface ViewController : GLKViewController
 {
-	ABLWrapper* wrapper;
 	TouchState* touchState;
 	Framerate* framerate;
+	
+	TrailController* trails;
+	Fade* fade;
 }
 
 @end
