@@ -151,11 +151,7 @@
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	// Clear the view
-	glClear(GL_DEPTH_BUFFER_BIT);
-
-    // Render the SQUARE with GLKit
+    // Render the fade effect
 	[self.fade render];
 	
     // Render the particle effects

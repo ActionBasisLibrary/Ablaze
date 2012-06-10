@@ -58,11 +58,18 @@ static const GLfloat _squareVertices[] = {
 
 - (void)render
 {
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glClear(GL_DEPTH_BUFFER_BIT);
+
 	glBindVertexArrayOES(_vertexArray);
     glEnableVertexAttribArray(GLKVertexAttribPosition);
+	
     [self.effect prepareToDraw];
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	
+	glDisableVertexAttribArray(GLKVertexAttribPosition);
     glBindVertexArrayOES(0);
+	
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
