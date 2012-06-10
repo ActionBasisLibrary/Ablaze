@@ -33,8 +33,8 @@ public:
         
         inline unsigned int operator*() { return curr->index; }
         
-        inline bool next() { return curr = curr->next; }
-        inline bool last() { return curr = curr->last; }
+        inline bool next() { return curr ? curr = curr->next : NULL; }
+        inline bool last() { return curr ? curr = curr->last : NULL; }
         inline bool good() { return curr; }
         
         inline bool operator==(iterator &other) { return curr == other.curr; }

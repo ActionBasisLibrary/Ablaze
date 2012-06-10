@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1281E7F61574587E00369462 /* GParticleSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E7F11574587E00369462 /* GParticleSource.cpp */; };
-		1281E7F71574587E00369462 /* GMultiParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E7F31574587E00369462 /* GMultiParticleSystem.cpp */; };
-		1281E7F81574587E00369462 /* GListParticleSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E7F51574587E00369462 /* GListParticleSource.cpp */; };
-		1281E7FD1574589E00369462 /* GParticleSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E7FA1574589E00369462 /* GParticleSettings.cpp */; };
-		1281E7FE1574589E00369462 /* GParticleShaderSingle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E7FC1574589E00369462 /* GParticleShaderSingle.cpp */; };
 		1281E803157458AC00369462 /* GTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E800157458AC00369462 /* GTexture.cpp */; };
 		1281E804157458AC00369462 /* GShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E802157458AC00369462 /* GShaderProgram.cpp */; };
 		1281E83815745A5D00369462 /* GMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80815745A5D00369462 /* GMatrix.cpp */; };
@@ -75,16 +70,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1281E7F01574587E00369462 /* GParticleSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GParticleSource.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1281E7F11574587E00369462 /* GParticleSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GParticleSource.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
-		1281E7F21574587E00369462 /* GMultiParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GMultiParticleSystem.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1281E7F31574587E00369462 /* GMultiParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GMultiParticleSystem.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
-		1281E7F41574587E00369462 /* GListParticleSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GListParticleSource.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1281E7F51574587E00369462 /* GListParticleSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GListParticleSource.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
-		1281E7F91574589E00369462 /* GParticleSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GParticleSettings.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1281E7FA1574589E00369462 /* GParticleSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GParticleSettings.cpp; sourceTree = "<group>"; };
-		1281E7FB1574589E00369462 /* GParticleShaderSingle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GParticleShaderSingle.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		1281E7FC1574589E00369462 /* GParticleShaderSingle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GParticleShaderSingle.cpp; sourceTree = "<group>"; };
 		1281E7FF157458AC00369462 /* GTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GTexture.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1281E800157458AC00369462 /* GTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GTexture.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		1281E801157458AC00369462 /* GShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = GShaderProgram.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -225,16 +210,6 @@
 		1281E7EF1574575900369462 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
-				1281E7F01574587E00369462 /* GParticleSource.h */,
-				1281E7F11574587E00369462 /* GParticleSource.cpp */,
-				1281E7F21574587E00369462 /* GMultiParticleSystem.h */,
-				1281E7F31574587E00369462 /* GMultiParticleSystem.cpp */,
-				1281E7F41574587E00369462 /* GListParticleSource.h */,
-				1281E7F51574587E00369462 /* GListParticleSource.cpp */,
-				1281E7F91574589E00369462 /* GParticleSettings.h */,
-				1281E7FA1574589E00369462 /* GParticleSettings.cpp */,
-				1281E7FB1574589E00369462 /* GParticleShaderSingle.h */,
-				1281E7FC1574589E00369462 /* GParticleShaderSingle.cpp */,
 				1281E87815746B5800369462 /* ABParticles.h */,
 				1281E87715746B5400369462 /* ABParticles.cpp */,
 				1281E87B157569FA00369462 /* ABParticleShader.h */,
@@ -547,11 +522,6 @@
 				C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */,
 				C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */,
 				C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */,
-				1281E7F61574587E00369462 /* GParticleSource.cpp in Sources */,
-				1281E7F71574587E00369462 /* GMultiParticleSystem.cpp in Sources */,
-				1281E7F81574587E00369462 /* GListParticleSource.cpp in Sources */,
-				1281E7FD1574589E00369462 /* GParticleSettings.cpp in Sources */,
-				1281E7FE1574589E00369462 /* GParticleShaderSingle.cpp in Sources */,
 				1281E803157458AC00369462 /* GTexture.cpp in Sources */,
 				1281E804157458AC00369462 /* GShaderProgram.cpp in Sources */,
 				1281E83815745A5D00369462 /* GMatrix.cpp in Sources */,

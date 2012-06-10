@@ -73,7 +73,8 @@ bool ABParticles::emitParticles(int numParticles, ABParticles::ProfileId profile
     // TODO: Sort list so that we take the lowest indices
     freeList.sortOddEvenMerge(NULL, idxCompare);
 
-    for (int i = 0; i < numParticles; i++) {
+    int i;
+    for (i = 0; i < numParticles; i++) {
         if (freeList.size() < 1) break;
 
         unsigned int idx = freeList.popFront();
@@ -82,7 +83,33 @@ bool ABParticles::emitParticles(int numParticles, ABParticles::ProfileId profile
         
         liveList.pushBack(idx);
     }
+    
+    profiles[profileId].numDelta += i;
+    if (profiles[profileId].continuous)
+        profiles[profileId].numContinuous += i;
 
+    return true;
+}
+
+bool ABParticles::setNumContinuousParticles(int numParticles, ProfileId profileId)
+{
+    if (profileId >= profiles.size())
+        return false;
+    
+    profiles[profileId].continuous = true;
+    
+    int difference = numParticles - profiles[profileId].numContinuous;
+    
+    if (difference > 0) {
+        emitParticles(difference, profileId);
+    }
+    
+    else if (difference < 0) {
+        profiles[profileId].numDelta += difference;
+    } 
+    
+    profiles[profileId].numContinuous = numParticles;
+    
     return true;
 }
 
@@ -100,17 +127,27 @@ void ABParticles::advanceParticlesBySeconds(double dt)
 
         // If particle hasn't been born yet, do nothing
         if (ptr->age < 0.0) {
-
+            // Don't birth particle if we need to get rid of them
+            if (profiles[ptr->profile].numDelta < 1) {
+                liveList.remove(it);
+                freeList.pushBack(idx);
+            }
+            
+            it.next();
         }
 
         // If particle is still in its lifespan, advance it
         else if (ptr->age < profiles[ptr->profile].lifeSpan) {
             // If particle hasn't been born, birth it--see function for details
-            if (!ptr->born)
+            if (!ptr->born) {
                 profiles[ptr->profile].birthParticle(ptr);
+                profiles[ptr->profile].numDelta--;
+            }
 
-            // Now set all changing attributes
+            // Otherwise just update all changing attributes
             profiles[ptr->profile].updateParticle(ptr, dt);
+            
+            it.next();
         }
 
         // Particle must be past its lifespan, so kill it
@@ -118,6 +155,9 @@ void ABParticles::advanceParticlesBySeconds(double dt)
             // If particle profile dictates continuous particles, just recycle this space
             if (profiles[ptr->profile].continuous) {
                 profiles[ptr->profile].generateParticle(ptr);
+                profiles[ptr->profile].numDelta++;
+                
+                it.next();
             }
 
             // Otherwise, kill this particle
@@ -128,13 +168,8 @@ void ABParticles::advanceParticlesBySeconds(double dt)
                 // Now put the index on the appropriate list
                 liveList.remove(it);
                 freeList.pushBack(idx);
-
-                // Remove leaves it pointing at next valid place, so back it up to prepare for next()
-                it.last();
             }
         }
-
-        it.next();
     }
 }
 
@@ -192,20 +227,22 @@ void ABParticles::renderParticles()
     // Prepare vector buffer
     bool wasEngaged = engaged;
     if (!wasEngaged) engage();
-
-    unsigned short *indices = liveList.serializeShort();
+    
     size_t num = liveList.size();
+    unsigned short *indices = liveList.serializeShort();
 
     // Set state appropriately--TODO: Nothing in particular?
 
     // Call draw methods
-    
-//    glDrawArrays(GL_POINTS, 0, 24);
-    glDrawElements(GL_POINTS, num, GL_UNSIGNED_SHORT, indices);
+    if (num > 0) {
+        
+        glDrawElements(GL_POINTS, num, GL_UNSIGNED_SHORT, indices);
 
-    // Clean up
-    
-    delete[] indices;
+        // Clean up
+        
+        delete[] indices;
+        
+    }
 
     if (!wasEngaged) disengage();
 }
@@ -235,7 +272,8 @@ ABParticles::Profile::Profile()
 startPosFn(NULL), startVelFn(NULL), startAccFn(NULL),
 colorFn(colFnDefault), startColorFn(NULL),
 sizeFn(NULL), startSizeFn(NULL), initOverrideFn(NULL),
-delay(0), lifeSpan(0), continuous(false), texId(-1)
+delay(0), lifeSpan(0), continuous(false), texId(-1),
+numContinuous(0), numDelta(0)
 {}
 
 void ABParticles::Profile::generateParticle(Particle *ptr)
