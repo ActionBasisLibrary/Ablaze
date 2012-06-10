@@ -12,8 +12,9 @@
 #import "ABParticleShader.h"
 #import <GLKit/GLKit.h>
 #import "ABLWrapper.h"
+#import "Drawable.h"
 
-@interface TrailController : NSObject <TouchStateDelegate>
+@interface TrailController : NSObject <TouchStateDelegate, Drawable>
 {
 	ABParticles *particles;
 	ABParticleShader *pshader;
@@ -23,14 +24,5 @@
 @property ABParticleShader *pshader;
 @property GLKMatrix4 projectionMatrix;
 @property ABLWrapper *wrapper;
-
--(void)setup;
--(void)tearDown;
--(void)update:(NSTimeInterval)timeSinceLastUpdate;
--(void)render;
-
--(void)touchAdded:(NSString*)key;
--(void)touchUpdated:(NSString*)key;
--(void)touchRemoved:(NSString*)key;
 
 @end

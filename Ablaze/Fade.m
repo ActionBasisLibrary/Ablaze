@@ -20,6 +20,7 @@ static const GLfloat _squareVertices[] = {
     GLuint _vertexArray;
     GLuint _vertexBuffer;
 }
+@property (strong, nonatomic) GLKBaseEffect *effect;
 @end
 
 @implementation Fade
@@ -55,6 +56,9 @@ static const GLfloat _squareVertices[] = {
 	glDeleteBuffers(1, &_vertexBuffer);
     glDeleteVertexArraysOES(1, &_vertexArray);
 }
+
+- (void)update:(NSTimeInterval)timeSinceLastUpdate
+{}
 
 - (void)render
 {

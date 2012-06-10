@@ -160,6 +160,7 @@
 		C942CAE21584451A00F9B17E /* TrailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrailController.mm; sourceTree = "<group>"; };
 		C942CAE415845E7500F9B17E /* Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fade.h; sourceTree = "<group>"; };
 		C942CAE515845E7500F9B17E /* Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fade.m; sourceTree = "<group>"; };
+		C942CB051584DD5D00F9B17E /* Drawable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
 		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
 		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 		C9DA51D21562F50500ADA5AA /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewController.h; sourceTree = "<group>"; };
@@ -363,6 +364,7 @@
 				C942CAD915842EC600F9B17E /* MultiTouchViewController.mm */,
 				C942CADE158431C000F9B17E /* TouchTrail.h */,
 				C942CADF158431C000F9B17E /* TouchTrail.mm */,
+				C942CB051584DD5D00F9B17E /* Drawable.h */,
 				C942CAE11584451900F9B17E /* TrailController.h */,
 				C942CAE21584451A00F9B17E /* TrailController.mm */,
 				C942CAE415845E7500F9B17E /* Fade.h */,

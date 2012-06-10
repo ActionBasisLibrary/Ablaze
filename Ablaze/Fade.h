@@ -8,13 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
+#import "Drawable.h"
 
-@interface Fade : NSObject
-@property (strong, nonatomic) GLKBaseEffect *effect;
-
-- (void)setup;
-- (void)tearDown;
-
-- (void)render;
+@interface Fade : NSObject <Drawable>
 
 @end
