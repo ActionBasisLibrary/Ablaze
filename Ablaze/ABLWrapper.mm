@@ -44,6 +44,13 @@ bool updateTime(double* buffer){
 -(id)init {
 	if(self = [super init]){
 		[self prepTransform];
+		
+		[[NSNotificationCenter defaultCenter]
+		 addObserver:self
+		 selector:@selector(printCurve:)
+		 name:@"applicationWillResignActive"
+		 object:nil ];
+
 	}
 	return self;
 }
@@ -128,4 +135,10 @@ bool updateTime(double* buffer){
 	return CGPointMake(buffer[0], buffer[1]);
 }
 
+
+
+-(void)printCurve: (NSNotification *) notification
+{
+    transform.printCurveData("velocityCurve");
+}
 @end
