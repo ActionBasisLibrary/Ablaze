@@ -14,22 +14,18 @@
 
 #include "GRand.h"
 
-#include "Fade.h"
-#include "TouchTrail.h"
-
 
 @interface MultiTouchViewController ()
 @property (strong, nonatomic) EAGLContext *context;
-@property (strong, nonatomic) Fade *fade;
 
 - (void)setupGL;
 - (void)tearDownGL;
 @end
 
+
 @implementation MultiTouchViewController
 
 @synthesize context = _context;
-@synthesize fade = _fade;
 
 - (void)viewDidLoad
 {
@@ -39,6 +35,8 @@
 	trails = [TrailController new];
 	touchState.delegate = trails;
 	framerate = [Framerate new];
+    
+	fade = [Fade new];
 
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -61,7 +59,9 @@
     [super viewDidUnload];
     
     [self tearDownGL];
-    
+	
+    fade = nil;
+
     if ([EAGLContext currentContext] == self.context) {
         [EAGLContext setCurrentContext:nil];
     }
@@ -78,47 +78,12 @@
 {
     [EAGLContext setCurrentContext:self.context];
     
-	self.fade = [Fade new];
-    
     glEnable(GL_DEPTH_TEST);
-    
 	glEnable(GL_BLEND);
     
-	[self.fade setup];
-    
-    // Create program
-    
-    const char *vertPath = [[[NSBundle mainBundle] pathForResource:@"ABParticles" ofType:@"vsh"] UTF8String];
-    const char *fragPath = [[[NSBundle mainBundle] pathForResource:@"ABParticles" ofType:@"fsh"] UTF8String];
-
-    // Creates the particle shader--see ABParticles.vsh, .fsh
-    trails.pshader = new ABParticleShader(vertPath, fragPath);
-
-    // Initializes particle source with 2000 max capacity
-    trails.particles = new ABParticles(2000);
-    
-    // Ignore this for now--none of it is used while debugging
-    ABParticles::Profile profile;
-    profile.lifeSpan = 2;
-    profile.delay = 2;
-    profile.continuous = true;
-    
-    ABParticles::ProfileId pid = trails.particles->createProfile(profile);
-    
-    // This creates 100 particles--only important because it makes sure all positions are 0,0,0
-    trails.particles->emitParticles(000, pid);
+	[fade setup];
+	[trails setup];
 	
-	ABParticles::Profile trailProfile;
-    trailProfile.lifeSpan = 2;
-    trailProfile.delay = 2;
-    trailProfile.continuous = true;
-    
-    ABParticles::ProfileId trailPid = trails.particles->createProfile(trailProfile);
-	trails.particles->emitParticles(1500, trailPid);
-	
-    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	trails.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
 }
 
@@ -126,9 +91,8 @@
 {
     [EAGLContext setCurrentContext:self.context];
     
-	[self.fade tearDown];
-    
-    self.fade = nil;
+	[fade tearDown];
+	[trails tearDown];
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
@@ -142,13 +106,13 @@
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     // Render the fade effect
-	[self.fade render];
+	[fade render];
 	
     // Render the particle effects
 	[trails render];
 	
 	// Measure the framerate
-	[framerate tickAndPrint];
+	//[framerate tickAndPrint];
 }
 
 

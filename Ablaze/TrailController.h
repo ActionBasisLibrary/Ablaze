@@ -22,6 +22,8 @@
 @property ABParticleShader *pshader;
 @property GLKMatrix4 projectionMatrix;
 
+-(void)setup;
+-(void)tearDown;
 -(void)update:(NSTimeInterval)timeSinceLastUpdate;
 -(void)render;
 

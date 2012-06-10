@@ -11,6 +11,45 @@
 @implementation TrailController
 @synthesize particles, pshader, projectionMatrix;
 
+
+- (void)setup
+{
+	// Create program
+    
+    const char *vertPath = [[[NSBundle mainBundle] pathForResource:@"ABParticles" ofType:@"vsh"] UTF8String];
+    const char *fragPath = [[[NSBundle mainBundle] pathForResource:@"ABParticles" ofType:@"fsh"] UTF8String];
+	
+    // Creates the particle shader--see ABParticles.vsh, .fsh
+    pshader = new ABParticleShader(vertPath, fragPath);
+	
+    // Initializes particle source with 2000 max capacity
+    particles = new ABParticles(2000);
+    
+    // Ignore this for now--none of it is used while debugging
+    ABParticles::Profile profile;
+    profile.lifeSpan = 2;
+    profile.delay = 2;
+    profile.continuous = true;
+    
+    ABParticles::ProfileId pid = particles->createProfile(profile);
+    
+    // This creates 100 particles--only important because it makes sure all positions are 0,0,0
+    particles->emitParticles(000, pid);
+	
+	ABParticles::Profile trailProfile;
+    trailProfile.lifeSpan = 2;
+    trailProfile.delay = 2;
+    trailProfile.continuous = true;
+    
+    ABParticles::ProfileId trailPid = particles->createProfile(trailProfile);
+	particles->emitParticles(1500, trailPid);
+}
+
+- (void)tearDown
+{
+	
+}
+
 - (void)update:(NSTimeInterval)timeSinceLastUpdate
 {
 	particles->advanceParticlesBySeconds(timeSinceLastUpdate);
