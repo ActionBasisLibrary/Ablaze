@@ -11,8 +11,8 @@
 
 @protocol TouchStateDelegate <NSObject>
 @optional
--(void)touchAdded:(NSString*)key;
--(void)touchUpdated:(NSString*)key;
+-(void)touchAdded:(NSString*)key atPoint:(CGPoint)point;
+-(void)touchUpdated:(NSString*)key atPoint:(CGPoint)point;
 -(void)touchRemoved:(NSString*)key;
 @end
 

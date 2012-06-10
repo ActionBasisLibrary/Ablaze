@@ -59,7 +59,8 @@
 
 -(void)addTouch:(UITouch *)touch{
 	NSString* key = touch.uniqueID;
-	TouchStateTouch* tst = [TouchStateTouch touchWithID:key location:[touch locationInView:[touch view]]];
+	CGPoint location = [touch locationInView:[touch view]];
+	TouchStateTouch* tst = [TouchStateTouch touchWithID:key location:location];
 	@synchronized(touches){
 		[touches setValue:tst forKey:key];
 	}
@@ -67,23 +68,24 @@
 		[touchOrder addObject:key];
 	}
 	// Notify delegate
-	if([delegate respondsToSelector:@selector(touchAdded:)]){
-		[delegate touchAdded:key];
+	if([delegate respondsToSelector:@selector(touchAdded:atPoint:)]){
+		[delegate touchAdded:key atPoint:location];
 	}
 }
 
 -(void)updateTouch:(UITouch *)touch{
 	NSString* key = touch.uniqueID;
+	CGPoint location = [touch locationInView:[touch view]];
 	TouchStateTouch* tst;
 	@synchronized(touches){
 		tst = [touches valueForKey:key];
 		if(tst){
-			tst.location = [touch locationInView:[touch view]];
+			tst.location = location;
 		}
 	}
 	// Notify delegate
-	if([delegate respondsToSelector:@selector(touchUpdated:)]){
-		[delegate touchUpdated:key];
+	if([delegate respondsToSelector:@selector(touchUpdated:atPoint:)]){
+		[delegate touchUpdated:key atPoint:location];
 	}
 }
 
