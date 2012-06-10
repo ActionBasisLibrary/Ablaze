@@ -146,7 +146,6 @@
 - (void)update
 {
 	[trails update:self.timeSinceLastUpdate];
-	//NSLog(@"     FPS: %i", [framerate tick]);
 }
 
 
@@ -161,6 +160,9 @@
 	
     // Render the particle effects
 	[trails render];
+	
+	// Measure the framerate
+	[framerate tickAndPrint];
 }
 
 

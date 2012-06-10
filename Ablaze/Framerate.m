@@ -22,7 +22,8 @@ struct ticknode {
 
 @implementation Framerate
 
-- (NSUInteger)tick {
+- (NSUInteger)tick
+{
 	// Create a new node
 	struct ticknode *new = malloc( sizeof(struct ticknode) );
 	new->timestamp = CFAbsoluteTimeGetCurrent();
@@ -46,6 +47,11 @@ struct ticknode {
 	}
 	
 	return count;
+}
+
+- (void)tickAndPrint
+{
+	NSLog(@"     FPS: %i", [self tick]);
 }
 
 @end

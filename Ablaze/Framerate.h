@@ -11,5 +11,6 @@
 @interface Framerate : NSObject
 
 - (NSUInteger)tick;
+- (void)tickAndPrint;
 
 @end
