@@ -234,7 +234,7 @@ ABParticles::Profile::Profile()
 : posFn(posFnDefault), velFn(velFnDefault), accFn(NULL),
 startPosFn(NULL), startVelFn(NULL), startAccFn(NULL),
 colorFn(colFnDefault), startColorFn(NULL),
-sizeFn(NULL), startSizeFn(NULL),
+sizeFn(NULL), startSizeFn(NULL), initOverrideFn(NULL),
 delay(0), lifeSpan(0), continuous(false), texId(-1)
 {}
 
