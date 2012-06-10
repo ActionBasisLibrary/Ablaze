@@ -252,6 +252,7 @@ static const GLfloat _squareVertices[] = {
     glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	trails.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
 }
 
 - (void)tearDownGL
@@ -273,10 +274,7 @@ static const GLfloat _squareVertices[] = {
 
 - (void)update
 {
-    self.effect.transform.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
-    
-	trails.particles->advanceParticlesBySeconds(self.timeSinceLastUpdate);
-	
+	[trails update:self.timeSinceLastUpdate];
 	//NSLog(@"     FPS: %i", [framerate tick]);
 }
 
@@ -307,16 +305,7 @@ static const GLfloat _squareVertices[] = {
     
 	
     // Render the particle effects
-	
-    trails.pshader->engage(); // Sets current program to use
-    trails.pshader->setTransform(((GLKMatrix4)GLKMatrix4Identity).m,
-						  self.effect.transform.projectionMatrix.m); // Sets the modelview and projection uniforms
-	
-    trails.particles->engage(); // Sets the vertex attribute pointers
-    trails.particles->renderParticles(); // Draw the particles
-    trails.particles->disengage(); // Turns off used vertex attribute arrays
-	
-    trails.pshader->disengage();
+	[trails render];
 }
 
 
