@@ -206,17 +206,17 @@ void _trailInitOverrideFn(ABParticles::Particle *ptr) {
 # pragma mark - TouchStateDelegate methods
 -(void)touchAdded:(NSString*)key
 {
-	NSLog(@"touchAdded: %@", key);
+	//NSLog(@"touchAdded: %@", key);
 }
 
 -(void)touchUpdated:(NSString*)key
 {
-	NSLog(@"touchUpdated: %@", key);
+	//NSLog(@"touchUpdated: %@", key);
 }
 
 -(void)touchRemoved:(NSString*)key
 {
-	NSLog(@"touchRemoved: %@", key);
+	//NSLog(@"touchRemoved: %@", key);
 }
 
 @end

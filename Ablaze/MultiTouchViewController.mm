@@ -85,8 +85,6 @@
     
 	[fade setup];
 	[trails setup];
-	
-	trails.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
 }
 
 - (void)tearDownGL
@@ -101,6 +99,7 @@
 
 - (void)update
 {
+	trails.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
 	[trails update:self.timeSinceLastUpdate];
 }
 
