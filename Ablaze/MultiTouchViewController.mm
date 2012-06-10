@@ -12,8 +12,6 @@
 #include "ABParticles.h"
 #include "ABParticleShader.h"
 
-#include "GRand.h"
-
 
 @interface MultiTouchViewController ()
 @property (strong, nonatomic) EAGLContext *context;
@@ -35,6 +33,10 @@
 	trails = [TrailController new];
 	touchState.delegate = trails;
 	framerate = [Framerate new];
+	
+	ABLWrapper *wrapper = [ABLWrapper new];
+	wrapper.touchState = touchState;
+	trails.wrapper = wrapper;
     
 	fade = [Fade new];
 

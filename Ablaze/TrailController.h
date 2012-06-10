@@ -11,6 +11,7 @@
 #import "ABParticles.h"
 #import "ABParticleShader.h"
 #import <GLKit/GLKit.h>
+#import "ABLWrapper.h"
 
 @interface TrailController : NSObject <TouchStateDelegate>
 {
@@ -21,6 +22,7 @@
 @property ABParticles *particles;
 @property ABParticleShader *pshader;
 @property GLKMatrix4 projectionMatrix;
+@property ABLWrapper *wrapper;
 
 -(void)setup;
 -(void)tearDown;
