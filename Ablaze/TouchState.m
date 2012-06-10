@@ -18,6 +18,7 @@
 @end
 
 @implementation TouchState
+@synthesize delegate;
 
 - (id) init {
 	if(self = [super init]){
@@ -65,6 +66,10 @@
 	@synchronized(touchOrder){
 		[touchOrder addObject:key];
 	}
+	// Notify delegate
+	if([delegate respondsToSelector:@selector(touchAdded:)]){
+		[delegate touchAdded:key];
+	}
 }
 
 -(void)updateTouch:(UITouch *)touch{
@@ -76,6 +81,10 @@
 			tst.location = [touch locationInView:[touch view]];
 		}
 	}
+	// Notify delegate
+	if([delegate respondsToSelector:@selector(touchUpdated:)]){
+		[delegate touchUpdated:key];
+	}
 }
 
 -(void)removeTouch:(UITouch *)touch{
@@ -85,6 +94,10 @@
 	}
 	@synchronized(touchOrder){
 		[touchOrder removeObject:key];
+	}
+	// Notify delegate
+	if([delegate respondsToSelector:@selector(touchRemoved:)]){
+		[delegate touchRemoved:key];
 	}
 }
 

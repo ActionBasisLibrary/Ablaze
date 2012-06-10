@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
+@protocol TouchStateDelegate <NSObject>
+@optional
+-(void)touchAdded:(NSString*)key;
+-(void)touchUpdated:(NSString*)key;
+-(void)touchRemoved:(NSString*)key;
+@end
+
 #define MAX_TOUCH_COUNT 11
 
 @interface TouchState : NSObject
@@ -15,6 +23,7 @@
 	NSMutableDictionary* touches;
 	NSMutableArray* touchOrder;
 }
+@property (nonatomic, weak) id<TouchStateDelegate> delegate;
 @property (readonly) NSArray* touchPoints;
 
 -(void)handleTouches:(NSSet*)changedTouches;
