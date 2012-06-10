@@ -96,6 +96,7 @@ static const GLfloat squareVertices[] = {
 ABLWrapper *globalWrapper;
 
 ABParticles *particles;
+ABParticles::ProfileId trailPid;
 ABParticleShader *pshader;
 gVector3f particleStartPosition;
 gVector2f currVelocity;
@@ -348,7 +349,7 @@ void trailInitOverrideFn(ABParticles::Particle *ptr) {
     trailProfile.continuous = true;
 	trailProfile.initOverrideFn = trailInitOverrideFn;
     
-    ABParticles::ProfileId trailPid = particles->createProfile(trailProfile);
+    trailPid = particles->createProfile(trailProfile);
 	particles->emitParticles(1500, trailPid);
 	
 	globalWrapper = wrapper;

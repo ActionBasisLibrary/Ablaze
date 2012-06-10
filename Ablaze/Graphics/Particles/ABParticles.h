@@ -69,6 +69,8 @@ public:
     // Functions for particle creation and deletion
     bool emitParticles(int numParticles, ProfileId profileId);
     
+    bool setNumContinuousParticles(int numParticles, ProfileId profileId);
+    
     // Functions for animation governing updating stats, life, and death
     void advanceParticlesBySeconds(double dt);
 
@@ -118,6 +120,8 @@ public:
     
 private:
     friend class ABParticles;
+    
+    int numContinuous, numDelta;
     
 public:
     Profile();

@@ -42,7 +42,6 @@ gIndexList::~gIndexList()
 void gIndexList::insert(iterator &it, unsigned int index)
 {
     gNode *aNode = newNode;
-    count++;
     
     aNode->index = index;
     aNode->last = it.curr ? it.curr->last : tail;
@@ -52,6 +51,7 @@ void gIndexList::insert(iterator &it, unsigned int index)
     else head = aNode;
     if (aNode->next) aNode->next->last = aNode;
     else tail = aNode;
+    count++;
 }
 
 void gIndexList::insertRange(iterator &it, unsigned int start, unsigned int end)
@@ -66,7 +66,8 @@ void gIndexList::remove(iterator &it, unsigned int length)
     if (!it.curr || length == 0) return;
     
     iterator start = it;
-    while (length != 0 && it.next()) {
+    while (length != 0 && it.good()) {
+        it.next();
         count--; length--;
     }
     
