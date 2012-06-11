@@ -7,27 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TouchState.h"
-#import "ABParticles.h"
-#import "ABParticleShader.h"
 #import <GLKit/GLKit.h>
 #import "ABLWrapper.h"
 #import "Drawable.h"
 
-#include "RainbowTrailCallback.h"
-#include "SpeedColorCallback.h"
-
 @interface TrailController : NSObject <TouchStateDelegate, Drawable>
-{
-	ABParticles *particles;
-	ABParticleShader *pshader;
-	GLKMatrix4 projectionMatrix;
-	RainbowTrailCallback *trailCallback;
-	SpeedColorCallback *instantCallback;
-}
-@property ABParticles *particles;
-@property ABParticleShader *pshader;
-@property GLKMatrix4 projectionMatrix;
-@property ABLWrapper *wrapper;
+
+@property (assign) GLKMatrix4 projectionMatrix;
+@property (strong) ABLWrapper *wrapper;
 
 @end
