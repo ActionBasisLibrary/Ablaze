@@ -15,7 +15,8 @@
 enum TrailType {
     FIRST_TRAIL,
     FOUNTAIN,
-    KALEIDOSCOPE
+    KALEIDOSCOPE,
+    CHAOS
 };
 
 static const TrailType CURRENT_TRAIL = FOUNTAIN;
@@ -63,6 +64,12 @@ static const TrailType CURRENT_TRAIL = FOUNTAIN;
             ((Kaleidoscope*)trails).touchState = touchState;
 			
 			fade.color = GLKVector4Make(1.0, 1.0, 1.0, 0.01);
+        }
+            break;
+        case CHAOS:
+        {
+            trails = [ChaosController new];
+            ((ChaosController*)trails).touchState = touchState;
         }
             break;
         default:

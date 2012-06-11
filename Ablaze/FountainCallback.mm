@@ -40,7 +40,7 @@ void FountainCallback::startSize (float *val, float dt, const ABParticles::Parti
 {
     double num;
     transform->getValues("currtouch", &num);
-    *val = randf(4.0, max(4.0,num));
+    *val = randf(4.0, max(4.0,num*num));
 }
 
 void FountainCallback::acceleration(gVector3f &vect, float dt, const ABParticles::Particle *ptr)

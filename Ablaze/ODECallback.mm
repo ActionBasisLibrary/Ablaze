@@ -26,15 +26,38 @@ void ODECallback::startVelocity(gVector3f &vect, float dt, const ABParticles::Pa
     vect.set(0,0,0);
 }
 
-void ODECallback::color(gVector4f &vect, float dt, const ABParticles::Particle *ptr)
+void ODECallback::startColor(gVector4f &vect, float dt, const ABParticles::Particle *ptr)
 {
+    double qvals[5];
+    transform->getValues("quad", qvals);
     
-    vect.set(.8, .7, .2);
-//    double v = ((gVector3f)ptr->velocity).length();
-//    double h = atan(v * .02 - 10) / M_PI + .5;
-//    gVector3f rgb = gColorUtils::getRGB(h, 1, .5);
-//    vect.set(rgb);
+    double r = randd(0,1);
+    
+    if (qvals[4] < 1e-6) {
+        vect.set(1, 1, 1);
+    }
+    
+    else if (r < qvals[0]/qvals[4]) {
+        vect.set(1, 0, 0);
+    }
+    
+    else if (r < qvals[1]/qvals[4]) {
+        vect.set(0, 1, 0);
+    }
+    
+    else if (r < qvals[2]/qvals[4]) {
+        vect.set(1, 1, 0);
+    }
+    
+    else {
+        vect.set(0, 0, 1);
+    }
 }
+
+//void ODECallback::color(gVector4f &vect, float dt, const ABParticles::Particle *ptr)
+//{
+//    
+//}
 
 void ODECallback::startSize (float *val, float dt, const ABParticles::Particle *ptr)
 {

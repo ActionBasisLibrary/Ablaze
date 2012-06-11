@@ -20,7 +20,7 @@ public:
 	void startPosition (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
 	void startVelocity (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
 	void acceleration  (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
-	void color (gVector4f &vect, float dt, const ABParticles::Particle *ptr);
+	void startColor (gVector4f &vect, float dt, const ABParticles::Particle *ptr);
     void startSize (float *val, float dt, const ABParticles::Particle *ptr);
     void initOverride   (ABParticles::Particle *ptr);
 };

@@ -12,6 +12,7 @@
 #import "TrailController.h"
 #import "FountainController.h"
 #import "Kaleidoscope.h"
+#import "ChaosController.h"
 #import "Framerate.h"
 #import "Fade.h"
 #import "Drawable.h"
