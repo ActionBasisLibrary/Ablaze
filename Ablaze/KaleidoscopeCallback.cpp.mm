@@ -21,7 +21,7 @@ void KaleidoscopeCallback::size(float *size, float dt, const ABParticles::Partic
 
 void KaleidoscopeCallback::startColor(gVector4f &color, float dt, const ABParticles::Particle *ptr)
 {
-	color.set(0.0, 0.0, randf()*0.1+0.05, 1.0);
+	color.set(0.0, randf()*0.1+0.05, randf()*0.1+0.05, 1.0);
 }
 
 void KaleidoscopeCallback::startPosition(gVector3f &vect, float dt, const ABParticles::Particle *ptr)
@@ -53,13 +53,19 @@ void KaleidoscopeCallback::startVelocity(gVector3f &vect, float dt, const ABPart
 void KaleidoscopeCallback::velocity(gVector3f &vect, float dt, const ABParticles::Particle *ptr)
 {
 	double curvature = [transform getCurvature];
-	if (curvature > 1000) {
-		curvature = 1000;
+	
+	const double weight = 0.005;
+	if (curvature > 1/weight) {
+		curvature = 1/weight;
 	} else if (curvature < 0) {
 		curvature = 0;
 	}
+	
 	double a = 1-0.005*curvature;
+	if (a < 0.0) a = 0.0;
+	if (a > 1.0) a = 1.0;
 	double b = sqrt(1-a*a);
+	
 	vect.x = a*ptr->velocity.x-b*ptr->velocity.y;
 	vect.y = a*ptr->velocity.y+b*ptr->velocity.x;
 	vect.z = ptr->velocity.z;
