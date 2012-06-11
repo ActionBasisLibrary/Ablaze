@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "TouchState.h"
-#import "TrailController.h"
+#import "Kaleidoscope.h"
 #import "Framerate.h"
 #import "Fade.h"
 
@@ -19,7 +19,7 @@
 	TouchState* touchState;
 	Framerate* framerate;
 	
-	TrailController* trails;
+	Kaleidoscope* kaleidoscope;
 	Fade* fade;
 }
 

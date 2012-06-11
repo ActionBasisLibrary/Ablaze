@@ -30,15 +30,13 @@
     [super viewDidLoad];
 	
 	touchState = [TouchState new];
-	trails = [TrailController new];
-	touchState.delegate = trails;
 	framerate = [Framerate new];
-	
-	ABLWrapper *wrapper = [ABLWrapper new];
-	wrapper.touchState = touchState;
-	trails.wrapper = wrapper;
     
 	fade = [Fade new];
+	fade.color = GLKVector4Make(1.0, 1.0, 1.0, 0.2);
+	
+	kaleidoscope = [Kaleidoscope new];
+	kaleidoscope.touchState = touchState;
 	
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -84,7 +82,7 @@
 	glEnable(GL_BLEND);
     
 	[fade setup];
-	[trails setup];
+	[kaleidoscope setup];
 }
 
 - (void)tearDownGL
@@ -92,25 +90,27 @@
     [EAGLContext setCurrentContext:self.context];
     
 	[fade tearDown];
-	[trails tearDown];
+	[kaleidoscope tearDown];
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
 
 - (void)update
 {
-	trails.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
-	[trails update:self.timeSinceLastUpdate];
+	kaleidoscope.projectionMatrix = GLKMatrix4MakeOrtho(0, self.view.bounds.size.width, self.view.bounds.size.height, 0, -1000, 1000);
+	[kaleidoscope update:self.timeSinceLastUpdate];
 }
 
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Render the fade effect
-	[fade render];
+	//[fade render];
 	
     // Render the particle effects
-	[trails render];
+	[kaleidoscope render];
 	
 	// Measure the framerate
 	//[framerate tickAndPrint];

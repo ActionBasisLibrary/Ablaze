@@ -58,6 +58,9 @@
 		C942CB101585992500F9B17E /* RainbowTrailCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */; };
 		C942CB2715859E3200F9B17E /* SpeedColorCallback.cpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB2615859E3200F9B17E /* SpeedColorCallback.cpp.mm */; };
 		C942CB2A1585A6AD00F9B17E /* MultiTrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB291585A6AD00F9B17E /* MultiTrailController.mm */; };
+		C942CB301585B3DB00F9B17E /* Kaleidoscope.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB2F1585B3DB00F9B17E /* Kaleidoscope.mm */; };
+		C942CB5B1585B81200F9B17E /* KaleidoscopeCallback.cpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB5A1585B81100F9B17E /* KaleidoscopeCallback.cpp.mm */; };
+		C942CB5E1585BD0000F9B17E /* KaleidoscopeTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB5D1585BD0000F9B17E /* KaleidoscopeTransform.mm */; };
 		C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
 		C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
 		C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
@@ -172,6 +175,12 @@
 		C942CB2615859E3200F9B17E /* SpeedColorCallback.cpp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpeedColorCallback.cpp.mm; sourceTree = "<group>"; };
 		C942CB281585A69B00F9B17E /* MultiTrailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTrailController.h; sourceTree = "<group>"; };
 		C942CB291585A6AD00F9B17E /* MultiTrailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MultiTrailController.mm; sourceTree = "<group>"; };
+		C942CB2E1585B3DB00F9B17E /* Kaleidoscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kaleidoscope.h; sourceTree = "<group>"; };
+		C942CB2F1585B3DB00F9B17E /* Kaleidoscope.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Kaleidoscope.mm; sourceTree = "<group>"; };
+		C942CB591585B80300F9B17E /* KaleidoscopeCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KaleidoscopeCallback.h; sourceTree = "<group>"; };
+		C942CB5A1585B81100F9B17E /* KaleidoscopeCallback.cpp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KaleidoscopeCallback.cpp.mm; sourceTree = "<group>"; };
+		C942CB5C1585BD0000F9B17E /* KaleidoscopeTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaleidoscopeTransform.h; sourceTree = "<group>"; };
+		C942CB5D1585BD0000F9B17E /* KaleidoscopeTransform.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KaleidoscopeTransform.mm; sourceTree = "<group>"; };
 		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
 		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 		C9DA51D21562F50500ADA5AA /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewController.h; sourceTree = "<group>"; };
@@ -460,8 +469,22 @@
 			children = (
 				C942CB09158592DD00F9B17E /* Trails */,
 				C942CB2B1585AC8A00F9B17E /* MultiTrail */,
+				C942CB2D1585B36F00F9B17E /* Kaleidoscope */,
 			);
 			name = "Draw Modes";
+			sourceTree = "<group>";
+		};
+		C942CB2D1585B36F00F9B17E /* Kaleidoscope */ = {
+			isa = PBXGroup;
+			children = (
+				C942CB2E1585B3DB00F9B17E /* Kaleidoscope.h */,
+				C942CB2F1585B3DB00F9B17E /* Kaleidoscope.mm */,
+				C942CB5C1585BD0000F9B17E /* KaleidoscopeTransform.h */,
+				C942CB5D1585BD0000F9B17E /* KaleidoscopeTransform.mm */,
+				C942CB591585B80300F9B17E /* KaleidoscopeCallback.h */,
+				C942CB5A1585B81100F9B17E /* KaleidoscopeCallback.cpp.mm */,
+			);
+			name = Kaleidoscope;
 			sourceTree = "<group>";
 		};
 		C9DA51D11562F48C00ADA5AA /* View Controllers */ = {
@@ -609,6 +632,9 @@
 				C942CB101585992500F9B17E /* RainbowTrailCallback.mm in Sources */,
 				C942CB2715859E3200F9B17E /* SpeedColorCallback.cpp.mm in Sources */,
 				C942CB2A1585A6AD00F9B17E /* MultiTrailController.mm in Sources */,
+				C942CB301585B3DB00F9B17E /* Kaleidoscope.mm in Sources */,
+				C942CB5B1585B81200F9B17E /* KaleidoscopeCallback.cpp.mm in Sources */,
+				C942CB5E1585BD0000F9B17E /* KaleidoscopeTransform.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
