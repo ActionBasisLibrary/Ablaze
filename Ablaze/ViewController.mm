@@ -33,7 +33,7 @@
 	framerate = [Framerate new];
     
 	fade = [Fade new];
-	fade.color = GLKVector4Make(1.0, 1.0, 1.0, 0.2);
+	fade.color = GLKVector4Make(1.0, 1.0, 1.0, 0.01);
 	
 	kaleidoscope = [Kaleidoscope new];
 	kaleidoscope.touchState = touchState;
@@ -104,10 +104,8 @@
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-	glClearColor(1.0, 1.0, 1.0, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Render the fade effect
-	//[fade render];
+	[fade render];
 	
     // Render the particle effects
 	[kaleidoscope render];

@@ -15,7 +15,7 @@
 #import "ABL/ABSymTime.h"
 #import "ABL/ABSymCombine.h"
 #import "ABL/ABSymDifferentiate.h"
-#import "ABL/ABSymCurvature.h"
+#import "ABL/ABSymCurveCurvature.h"
 
 #pragma mark UI State Accessors
 
@@ -79,7 +79,7 @@ bool kaleidoscopeUpdateY(double* buffer, unsigned int *count){
 	
 	ABSymbol *positionCurve = new ABSymCurve("positionCurve", 2, "position", "time", 100, 5);
 	
-	ABSymbol *curvature = new ABSymCurvature("curvature", "position", 2, "time");
+	ABSymbol *curvature = new ABSymCurveCurvature("curvature", "positionCurve", 2, "time");
 
 	// Create a new transform and add all of the symbols
 	transform = ABTransform(true);

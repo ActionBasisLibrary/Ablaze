@@ -22,7 +22,7 @@ public:
 	void startPosition(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
 	//void position(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
 	void startVelocity(gVector3f &color, float dt, const ABParticles::Particle *ptr);
-	//void velocity(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
+	void velocity(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
 	void acceleration(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
 };
 

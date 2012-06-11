@@ -35,7 +35,7 @@
     particleShader = new ABParticleShader(vertPath, fragPath);
 	
     // Initializes particle source
-    particleSystem = new ABParticles(3000);
+    particleSystem = new ABParticles(1000);
     
     // Define particles
     ABParticles::Profile profile;
@@ -48,7 +48,7 @@
 	profile.callback = particleCallback;
     
     ABParticles::ProfileId pid = particleSystem->createProfile(profile);
-    particleSystem->emitParticles(3000, pid);
+    particleSystem->emitParticles(1000, pid);
 }
 
 -(void)tearDown
