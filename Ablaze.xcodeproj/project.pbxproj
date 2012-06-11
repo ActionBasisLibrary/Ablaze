@@ -57,6 +57,7 @@
 		C942CB0C1585930F00F9B17E /* TouchTrailCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0B1585930F00F9B17E /* TouchTrailCallback.cpp */; };
 		C942CB101585992500F9B17E /* RainbowTrailCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */; };
 		C942CB2715859E3200F9B17E /* SpeedColorCallback.cpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB2615859E3200F9B17E /* SpeedColorCallback.cpp.mm */; };
+		C942CB2A1585A6AD00F9B17E /* MultiTrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB291585A6AD00F9B17E /* MultiTrailController.mm */; };
 		C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
 		C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
 		C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
@@ -169,6 +170,8 @@
 		C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RainbowTrailCallback.mm; sourceTree = "<group>"; };
 		C942CB2515859E1F00F9B17E /* SpeedColorCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedColorCallback.h; sourceTree = "<group>"; };
 		C942CB2615859E3200F9B17E /* SpeedColorCallback.cpp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpeedColorCallback.cpp.mm; sourceTree = "<group>"; };
+		C942CB281585A69B00F9B17E /* MultiTrailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTrailController.h; sourceTree = "<group>"; };
+		C942CB291585A6AD00F9B17E /* MultiTrailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MultiTrailController.mm; sourceTree = "<group>"; };
 		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
 		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 		C9DA51D21562F50500ADA5AA /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewController.h; sourceTree = "<group>"; };
@@ -369,7 +372,7 @@
 				C9002AAA1547D8840044B6AD /* ViewController.mm */,
 				C92C4B091559C037002B9396 /* ABLWrapper.h */,
 				C92C4B0A1559C037002B9396 /* ABLWrapper.mm */,
-				C942CB09158592DD00F9B17E /* Trails */,
+				C942CB2C1585AE2500F9B17E /* Draw Modes */,
 				C942CB0A158592EE00F9B17E /* Drawables */,
 				C92C4AFC1558E45C002B9396 /* Touches */,
 				C9DA51D11562F48C00ADA5AA /* View Controllers */,
@@ -424,10 +427,6 @@
 				C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */,
 				C942CB2515859E1F00F9B17E /* SpeedColorCallback.h */,
 				C942CB2615859E3200F9B17E /* SpeedColorCallback.cpp.mm */,
-				C942CADE158431C000F9B17E /* TouchTrail.h */,
-				C942CADF158431C000F9B17E /* TouchTrail.mm */,
-				C942CB0D1585931C00F9B17E /* TouchTrailCallback.h */,
-				C942CB0B1585930F00F9B17E /* TouchTrailCallback.cpp */,
 			);
 			name = Trails;
 			sourceTree = "<group>";
@@ -441,6 +440,28 @@
 			);
 			name = Drawables;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		C942CB2B1585AC8A00F9B17E /* MultiTrail */ = {
+			isa = PBXGroup;
+			children = (
+				C942CB281585A69B00F9B17E /* MultiTrailController.h */,
+				C942CB291585A6AD00F9B17E /* MultiTrailController.mm */,
+				C942CADE158431C000F9B17E /* TouchTrail.h */,
+				C942CADF158431C000F9B17E /* TouchTrail.mm */,
+				C942CB0D1585931C00F9B17E /* TouchTrailCallback.h */,
+				C942CB0B1585930F00F9B17E /* TouchTrailCallback.cpp */,
+			);
+			name = MultiTrail;
+			sourceTree = "<group>";
+		};
+		C942CB2C1585AE2500F9B17E /* Draw Modes */ = {
+			isa = PBXGroup;
+			children = (
+				C942CB09158592DD00F9B17E /* Trails */,
+				C942CB2B1585AC8A00F9B17E /* MultiTrail */,
+			);
+			name = "Draw Modes";
 			sourceTree = "<group>";
 		};
 		C9DA51D11562F48C00ADA5AA /* View Controllers */ = {
@@ -587,6 +608,7 @@
 				C942CB0C1585930F00F9B17E /* TouchTrailCallback.cpp in Sources */,
 				C942CB101585992500F9B17E /* RainbowTrailCallback.mm in Sources */,
 				C942CB2715859E3200F9B17E /* SpeedColorCallback.cpp.mm in Sources */,
+				C942CB2A1585A6AD00F9B17E /* MultiTrailController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
