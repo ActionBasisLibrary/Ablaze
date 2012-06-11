@@ -40,7 +40,7 @@ void FountainCallback::startSize (float *val, float dt, const ABParticles::Parti
 {
     double num;
     transform->getValues("currtouch", &num);
-    *val = randf(4.0, max(4.0,num*num));
+    *val = randf(4.0, max(4.0,num));
 }
 
 void FountainCallback::acceleration(gVector3f &vect, float dt, const ABParticles::Particle *ptr)
@@ -57,7 +57,7 @@ void FountainCallback::acceleration(gVector3f &vect, float dt, const ABParticles
     transform->getValues("positionCurve", vel, timer->getTime() - .1, 1);
 //    double vsq = sqrtf(vel[0]*vel[0]+vel[1]*vel[1]);
     
-    double kx = num > 0 ? num : 0.0, kv = -.5 + 1.5 / max(1.0, inum*.1);
+    double kx = num > 0 ? num : 0.0, kv = -.2;//5 + 1.5 / max(1.0, inum*.1);
     vect.x = kx * (pos[0] - ptr->position.x) - kv * ptr->velocity.x + vel[0];
     vect.y = kx * (pos[1] - ptr->position.y) - kv * ptr->velocity.y + vel[1];
 }

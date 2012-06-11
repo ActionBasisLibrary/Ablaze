@@ -86,7 +86,8 @@ bool _fountainUpdateY(double* buffer, unsigned int *count){
     transform.getValues("positionCurve", vel, timer.getTime() - .5, 1);
 //    printf("Velocity: %f %f\n", vel[0], vel[1]);
     
-    particles->setNumContinuousParticles(50+sqrt(max(num, 0.0))*40, pid0);
+	int np = 50+sqrt(max(num, 0.0))*40;
+    particles->setNumContinuousParticles(min(np, 4000), pid0);
 //	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
 	
 //	double absVel = linearVelocity/1000;
