@@ -40,13 +40,13 @@ static const TrailType CURRENT_TRAIL = FOUNTAIN;
 	touchState = [TouchState new];
 	framerate = [Framerate new];
 	fade = [Fade new];
-    ABLWrapper *wrapper = [ABLWrapper new];
-    wrapper.touchState = touchState;
     
     // Now create the trail, depending on the switch
     switch (CURRENT_TRAIL) {
         case FIRST_TRAIL:
         {
+			ABLWrapper *wrapper = [ABLWrapper new];
+			wrapper.touchState = touchState;
             trails = [TrailController new];
             ((TrailController*)trails).wrapper = wrapper;
         }
@@ -55,6 +55,14 @@ static const TrailType CURRENT_TRAIL = FOUNTAIN;
         {
             trails = [FountainController new];
             ((FountainController*)trails).touchState = touchState;
+        }
+            break;
+        case KALEIDOSCOPE:
+        {
+            trails = [Kaleidoscope new];
+            ((Kaleidoscope*)trails).touchState = touchState;
+			
+			fade.color = GLKVector4Make(1.0, 1.0, 1.0, 0.01);
         }
             break;
         default:

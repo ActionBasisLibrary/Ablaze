@@ -11,6 +11,7 @@
 #import "TouchState.h"
 #import "TrailController.h"
 #import "FountainController.h"
+#import "Kaleidoscope.h"
 #import "Framerate.h"
 #import "Fade.h"
 #import "Drawable.h"

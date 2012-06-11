@@ -35,6 +35,18 @@ static const GLfloat _squareVertices[] = {
 	return self;
 }
 
+- (GLKVector4)color
+{
+	return self.effect.constantColor;
+}
+- (void)setColor:(GLKVector4)color
+{
+	self.effect.constantColor = color;
+}
+
+
+# pragma mark Drawable Protocol
+
 - (void)setup
 {
 	glGenVertexArraysOES(1, &_vertexArray);

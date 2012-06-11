@@ -178,7 +178,7 @@ void ABParticles::engage()
 {
     glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_FALSE);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     
     // Enable appropriate arrays

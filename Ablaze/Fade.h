@@ -12,4 +12,6 @@
 
 @interface Fade : NSObject <Drawable>
 
+@property (assign) GLKVector4 color;
+
 @end
