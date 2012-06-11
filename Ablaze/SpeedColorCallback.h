@@ -10,12 +10,11 @@
 #define Ablaze_SpeedColorCallback_h
 
 #include "ABParticles.h"
+#import "ABLWrapper.h"
 
 class SpeedColorCallback : public ABParticles::ProfileCallback {
 public:
-	gVector3f particleStartPosition;
-	gVector2f currVelocity;
-	gVector4f particleStartColor;
+	ABLWrapper *wrapper;
 	
 	void startPosition (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
 	void startVelocity (gVector3f &vect, float dt, const ABParticles::Particle *ptr);

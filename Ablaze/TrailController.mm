@@ -48,6 +48,7 @@
     profile.continuous = true;
 	
 	instantCallback = new SpeedColorCallback();
+	instantCallback->wrapper = self.wrapper;
 	profile.callback = instantCallback;
 
 	//profile.startVelFn = _startVelFunction;
@@ -83,25 +84,6 @@
 
 - (void)update:(NSTimeInterval)timeSinceLastUpdate
 {	
-	CGPoint point = [self.wrapper getPosition:0.1];
-    instantCallback->particleStartPosition.set(point.x, point.y, 0.0);
-	
-	CGPoint velocity = [self.wrapper getVelocity:0.1];
-	//    printf("Velocity @ -%f = %f %f\n", 0.1, velocity.x, velocity.y);
-    instantCallback->currVelocity.set(velocity.x, velocity.y);
-	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
-	
-	double absVel = linearVelocity/1000;
-	if(absVel>1.0)absVel = 1.0;
-	if(absVel<0.0)absVel = 0.0;
-	
-	//NSLog(@"%f, %f = %f", velocity.x, velocity.y, absVel);
-	instantCallback->particleStartColor.r = absVel;
-	instantCallback->particleStartColor.g = 0.0;
-	instantCallback->particleStartColor.b = 1.0-absVel;
-	instantCallback->particleStartColor.a = 1.0;
-
-	
 	particles->advanceParticlesBySeconds(timeSinceLastUpdate);
 }
 
