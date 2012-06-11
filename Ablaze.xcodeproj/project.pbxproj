@@ -50,7 +50,6 @@
 		C92C4AF81558A872002B9396 /* TouchState.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AF71558A872002B9396 /* TouchState.m */; };
 		C92C4AFB1558E44D002B9396 /* TouchStateTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */; };
 		C92C4B0B1559C038002B9396 /* ABLWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C92C4B0A1559C037002B9396 /* ABLWrapper.mm */; };
-		C942CADA15842EC600F9B17E /* MultiTouchViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CAD915842EC600F9B17E /* MultiTouchViewController.mm */; };
 		C942CAE0158431C000F9B17E /* TouchTrail.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CADF158431C000F9B17E /* TouchTrail.mm */; };
 		C942CAE31584451A00F9B17E /* TrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE21584451A00F9B17E /* TrailController.mm */; };
 		C942CAE615845E7500F9B17E /* Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE515845E7500F9B17E /* Fade.m */; };
@@ -156,8 +155,6 @@
 		C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchStateTouch.m; sourceTree = "<group>"; };
 		C92C4B091559C037002B9396 /* ABLWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABLWrapper.h; sourceTree = "<group>"; };
 		C92C4B0A1559C037002B9396 /* ABLWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = ABLWrapper.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C942CAD815842EBB00F9B17E /* MultiTouchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTouchViewController.h; sourceTree = "<group>"; };
-		C942CAD915842EC600F9B17E /* MultiTouchViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MultiTouchViewController.mm; sourceTree = "<group>"; };
 		C942CADE158431C000F9B17E /* TouchTrail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchTrail.h; sourceTree = "<group>"; };
 		C942CADF158431C000F9B17E /* TouchTrail.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchTrail.mm; sourceTree = "<group>"; };
 		C942CAE11584451900F9B17E /* TrailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailController.h; sourceTree = "<group>"; };
@@ -372,8 +369,6 @@
 				C9002AAA1547D8840044B6AD /* ViewController.mm */,
 				C92C4B091559C037002B9396 /* ABLWrapper.h */,
 				C92C4B0A1559C037002B9396 /* ABLWrapper.mm */,
-				C942CAD815842EBB00F9B17E /* MultiTouchViewController.h */,
-				C942CAD915842EC600F9B17E /* MultiTouchViewController.mm */,
 				C942CB09158592DD00F9B17E /* Trails */,
 				C942CB0A158592EE00F9B17E /* Drawables */,
 				C92C4AFC1558E45C002B9396 /* Touches */,
@@ -585,7 +580,6 @@
 				1281E85915745B2500369462 /* GIndexList.cpp in Sources */,
 				1281E87915746B6400369462 /* ABParticles.cpp in Sources */,
 				1281E87C157569FD00369462 /* ABParticleShader.cpp in Sources */,
-				C942CADA15842EC600F9B17E /* MultiTouchViewController.mm in Sources */,
 				C942CAE0158431C000F9B17E /* TouchTrail.mm in Sources */,
 				C942CAE31584451A00F9B17E /* TrailController.mm in Sources */,
 				C942CAE615845E7500F9B17E /* Fade.m in Sources */,
