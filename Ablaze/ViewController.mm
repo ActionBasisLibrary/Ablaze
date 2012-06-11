@@ -18,8 +18,7 @@ enum TrailType {
     KALEIDOSCOPE
 };
 
-static const TrailType CURRENT_TRAIL = FOUNTAIN;
-
+static const TrailType CURRENT_TRAIL = FIRST_TRAIL;
 
 @interface ViewController ()
 @property (strong, nonatomic) EAGLContext *context;
@@ -41,8 +40,9 @@ static const TrailType CURRENT_TRAIL = FOUNTAIN;
 	framerate = [Framerate new];
 	fade = [Fade new];
     
+	NSNumber *tType = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"TrailType"];
     // Now create the trail, depending on the switch
-    switch (CURRENT_TRAIL) {
+    switch (tType?[tType intValue]:CURRENT_TRAIL) {
         case FIRST_TRAIL:
         {
 			ABLWrapper *wrapper = [ABLWrapper new];
