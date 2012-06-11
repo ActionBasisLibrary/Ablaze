@@ -35,6 +35,10 @@ public:
         vLive       = 5,
     };
     
+    enum BlendMode {
+        gAdditive, gLinear, gMultiplicative, gMultiplicativeNeg, gAdditiveSort
+    };
+    
 private:
     // The Vertex Array
     unsigned int vaoId, vboId;
@@ -52,6 +56,10 @@ private:
 
     // States necessary to handle attribute pointers
     bool engaged;
+    
+    // Blend mode
+    BlendMode blendMode;
+    GLenum SBlend, DBlend;
     
 public:
     // Constructor
@@ -83,6 +91,10 @@ public:
     
     // Function for drawing
     void renderParticles();
+    
+    // Settings for blend mode
+    void setBlendMode(BlendMode mode);
+    BlendMode getBlendMode();
     
 private:
     // Function to initialize all members correctly

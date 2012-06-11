@@ -17,6 +17,7 @@
 ABParticles::ABParticles(int capacity)
 : maxCapacity(capacity)
 {
+    setBlendMode(gAdditive);
     initialize();
 }
 
@@ -178,7 +179,7 @@ void ABParticles::engage()
 {
     glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_FALSE);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	glBlendFunc(SBlend, DBlend);
     
     
     // Enable appropriate arrays
@@ -245,6 +246,38 @@ void ABParticles::renderParticles()
     }
 
     if (!wasEngaged) disengage();
+}
+
+void ABParticles::setBlendMode(BlendMode mode)
+{
+    blendMode = mode;
+	
+	switch (blendMode) {
+		case gAdditive: case gAdditiveSort:
+			SBlend = GL_SRC_ALPHA;
+			DBlend = GL_ONE;
+			break;
+		case gLinear:
+			SBlend = GL_SRC_ALPHA;
+			DBlend = GL_ONE_MINUS_SRC_ALPHA;
+			break;
+		case gMultiplicative:
+			SBlend = GL_SRC_COLOR;
+			DBlend = GL_ZERO;
+			break;
+		case gMultiplicativeNeg:
+			SBlend = GL_ONE_MINUS_SRC_COLOR;
+			DBlend = GL_ZERO;
+			break;
+			
+		default:
+			break;
+	}
+}
+
+ABParticles::BlendMode ABParticles::getBlendMode()
+{
+    return blendMode;
 }
 
 #pragma mark PRIVATE METHODS

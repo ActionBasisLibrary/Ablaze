@@ -13,6 +13,7 @@
 #import <GLKit/GLKit.h>
 #import "Drawable.h"
 #import "FountainCallback.h"
+#import "ODECallback.h"
 
 #import "ABL/ABTransform.h"
 #import "ABL/GTimerThread.h"
@@ -26,7 +27,9 @@
 	ABParticleShader *pshader;
     
     FountainCallback callback;
-    ABParticles::ProfileId pid0;
+    ABParticles::ProfileId pid0, pidOde;
+    
+    ODECallback odeCallback;
     
     ABTransform transform;
 }

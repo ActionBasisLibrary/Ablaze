@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120E6D4B15861F6C0096FCF7 /* ODECallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 120E6D4A15861F6C0096FCF7 /* ODECallback.mm */; };
 		1281E803157458AC00369462 /* GTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E800157458AC00369462 /* GTexture.cpp */; };
 		1281E804157458AC00369462 /* GShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E802157458AC00369462 /* GShaderProgram.cpp */; };
 		1281E83815745A5D00369462 /* GMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80815745A5D00369462 /* GMatrix.cpp */; };
@@ -76,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		120E6D4915861F6B0096FCF7 /* ODECallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODECallback.h; sourceTree = "<group>"; };
+		120E6D4A15861F6C0096FCF7 /* ODECallback.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ODECallback.mm; sourceTree = "<group>"; };
 		1281E7FF157458AC00369462 /* GTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GTexture.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1281E800157458AC00369462 /* GTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GTexture.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		1281E801157458AC00369462 /* GShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = GShaderProgram.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -348,6 +351,8 @@
 				129B5FFA158588BB003C43FA /* FountainController.mm */,
 				129B603B1585BD76003C43FA /* FountainCallback.h */,
 				129B603C1585BD76003C43FA /* FountainCallback.mm */,
+				120E6D4915861F6B0096FCF7 /* ODECallback.h */,
+				120E6D4A15861F6C0096FCF7 /* ODECallback.mm */,
 			);
 			name = Fountain;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				C942CB2A1585A6AD00F9B17E /* MultiTrailController.mm in Sources */,
 				129B5FFB158588BB003C43FA /* FountainController.mm in Sources */,
 				129B603D1585BD76003C43FA /* FountainCallback.mm in Sources */,
+				120E6D4B15861F6C0096FCF7 /* ODECallback.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
