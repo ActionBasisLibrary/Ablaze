@@ -48,8 +48,8 @@
 	instantCallback->wrapper = self.wrapper;
 	profile.callback = instantCallback;
     
-    ABParticles::ProfileId pid = particles->createProfile(profile);
-    particles->emitParticles(500, pid);
+    //ABParticles::ProfileId pid = particles->createProfile(profile);
+    //particles->emitParticles(500, pid);
 	
     // Define trail particles
 	ABParticles::Profile trailProfile;

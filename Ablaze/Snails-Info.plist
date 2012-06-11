@@ -14,7 +14,7 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Icon_Trail.png</string>
+				<string>Icon_Snails.png</string>
 			</array>
 		</dict>
 	</dict>
@@ -34,6 +34,8 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>TrailType</key>
+	<integer>2</integer>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -46,7 +48,5 @@
 	<array>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>TrailType</key>
-	<string>0</string>
 </dict>
 </plist>

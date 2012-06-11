@@ -65,6 +65,126 @@
 		C942CB301585B3DB00F9B17E /* Kaleidoscope.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB2F1585B3DB00F9B17E /* Kaleidoscope.mm */; };
 		C942CB5B1585B81200F9B17E /* KaleidoscopeCallback.cpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB5A1585B81100F9B17E /* KaleidoscopeCallback.cpp.mm */; };
 		C942CB5E1585BD0000F9B17E /* KaleidoscopeTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB5D1585BD0000F9B17E /* KaleidoscopeTransform.mm */; };
+		C964D935158625A400AB2CB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9002A9C1547D8840044B6AD /* main.m */; };
+		C964D936158625A400AB2CB9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9002AA01547D8840044B6AD /* AppDelegate.mm */; };
+		C964D937158625A400AB2CB9 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9002AAA1547D8840044B6AD /* ViewController.mm */; };
+		C964D938158625A400AB2CB9 /* UITouch+uniqueID.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */; };
+		C964D939158625A400AB2CB9 /* TouchState.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AF71558A872002B9396 /* TouchState.m */; };
+		C964D93A158625A400AB2CB9 /* TouchStateTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */; };
+		C964D93B158625A400AB2CB9 /* ABLWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C92C4B0A1559C037002B9396 /* ABLWrapper.mm */; };
+		C964D93C158625A400AB2CB9 /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
+		C964D93D158625A400AB2CB9 /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
+		C964D93E158625A400AB2CB9 /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
+		C964D93F158625A400AB2CB9 /* GTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E800157458AC00369462 /* GTexture.cpp */; };
+		C964D940158625A400AB2CB9 /* GShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E802157458AC00369462 /* GShaderProgram.cpp */; };
+		C964D941158625A400AB2CB9 /* GMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80815745A5D00369462 /* GMatrix.cpp */; };
+		C964D942158625A400AB2CB9 /* GMatrix3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80A15745A5D00369462 /* GMatrix3f.cpp */; };
+		C964D943158625A400AB2CB9 /* GMatrixSparse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80C15745A5D00369462 /* GMatrixSparse.cpp */; };
+		C964D944158625A400AB2CB9 /* GRigidTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80E15745A5D00369462 /* GRigidTransform.cpp */; };
+		C964D945158625A400AB2CB9 /* GRigidTransformNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81015745A5D00369462 /* GRigidTransformNode.cpp */; };
+		C964D946158625A400AB2CB9 /* GSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81215745A5D00369462 /* GSolver.cpp */; };
+		C964D947158625A400AB2CB9 /* GVector2f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81515745A5D00369462 /* GVector2f.cpp */; };
+		C964D948158625A400AB2CB9 /* GVector3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81715745A5D00369462 /* GVector3f.cpp */; };
+		C964D949158625A400AB2CB9 /* GVector4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81915745A5D00369462 /* GVector4f.cpp */; };
+		C964D94A158625A400AB2CB9 /* GColorUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81C15745A5D00369462 /* GColorUtils.cpp */; };
+		C964D94B158625A400AB2CB9 /* GEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81E15745A5D00369462 /* GEasing.cpp */; };
+		C964D94C158625A400AB2CB9 /* GInterpolatedValue1f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82315745A5D00369462 /* GInterpolatedValue1f.cpp */; };
+		C964D94D158625A400AB2CB9 /* GInterpolatedValue2f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82515745A5D00369462 /* GInterpolatedValue2f.cpp */; };
+		C964D94E158625A400AB2CB9 /* GInterpolatedValue3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82715745A5D00369462 /* GInterpolatedValue3f.cpp */; };
+		C964D94F158625A400AB2CB9 /* GKeyframeValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82A15745A5D00369462 /* GKeyframeValue.cpp */; };
+		C964D950158625A400AB2CB9 /* GDistribution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82D15745A5D00369462 /* GDistribution.cpp */; };
+		C964D951158625A400AB2CB9 /* GRand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82F15745A5D00369462 /* GRand.cpp */; };
+		C964D952158625A400AB2CB9 /* GRandomValue1f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E83215745A5D00369462 /* GRandomValue1f.cpp */; };
+		C964D953158625A400AB2CB9 /* GRandomValue2f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E83415745A5D00369462 /* GRandomValue2f.cpp */; };
+		C964D954158625A400AB2CB9 /* GRandomValue3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E83615745A5D00369462 /* GRandomValue3f.cpp */; };
+		C964D955158625A400AB2CB9 /* GBinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E84E15745AFF00369462 /* GBinaryTree.cpp */; };
+		C964D956158625A400AB2CB9 /* GIndexList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E85815745B2500369462 /* GIndexList.cpp */; };
+		C964D957158625A400AB2CB9 /* ABParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87715746B5400369462 /* ABParticles.cpp */; };
+		C964D958158625A400AB2CB9 /* ABParticleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87A157569F700369462 /* ABParticleShader.cpp */; };
+		C964D959158625A400AB2CB9 /* TouchTrail.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CADF158431C000F9B17E /* TouchTrail.mm */; };
+		C964D95A158625A400AB2CB9 /* TrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE21584451A00F9B17E /* TrailController.mm */; };
+		C964D95B158625A400AB2CB9 /* Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE515845E7500F9B17E /* Fade.m */; };
+		C964D95C158625A400AB2CB9 /* ABParticles_ProfileCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C942CB06158563A400F9B17E /* ABParticles_ProfileCallback.cpp */; };
+		C964D95D158625A400AB2CB9 /* TouchTrailCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0B1585930F00F9B17E /* TouchTrailCallback.cpp */; };
+		C964D95E158625A400AB2CB9 /* RainbowTrailCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */; };
+		C964D95F158625A400AB2CB9 /* SpeedColorCallback.cpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB2615859E3200F9B17E /* SpeedColorCallback.cpp.mm */; };
+		C964D960158625A400AB2CB9 /* MultiTrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB291585A6AD00F9B17E /* MultiTrailController.mm */; };
+		C964D961158625A400AB2CB9 /* FountainController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 129B5FFA158588BB003C43FA /* FountainController.mm */; };
+		C964D962158625A400AB2CB9 /* FountainCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 129B603C1585BD76003C43FA /* FountainCallback.mm */; };
+		C964D963158625A400AB2CB9 /* Kaleidoscope.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB2F1585B3DB00F9B17E /* Kaleidoscope.mm */; };
+		C964D964158625A400AB2CB9 /* KaleidoscopeCallback.cpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB5A1585B81100F9B17E /* KaleidoscopeCallback.cpp.mm */; };
+		C964D965158625A400AB2CB9 /* KaleidoscopeTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB5D1585BD0000F9B17E /* KaleidoscopeTransform.mm */; };
+		C964D967158625A400AB2CB9 /* libABL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002AC41547DC8D0044B6AD /* libABL.a */; };
+		C964D968158625A400AB2CB9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8C1547D8840044B6AD /* UIKit.framework */; };
+		C964D969158625A400AB2CB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8E1547D8840044B6AD /* Foundation.framework */; };
+		C964D96A158625A400AB2CB9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A901547D8840044B6AD /* CoreGraphics.framework */; };
+		C964D96B158625A400AB2CB9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A921547D8840044B6AD /* GLKit.framework */; };
+		C964D96C158625A400AB2CB9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A941547D8840044B6AD /* OpenGLES.framework */; };
+		C964D96E158625A400AB2CB9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9002A991547D8840044B6AD /* InfoPlist.strings */; };
+		C964D96F158625A400AB2CB9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9002AA21547D8840044B6AD /* MainStoryboard.storyboard */; };
+		C964D970158625A400AB2CB9 /* ABParticles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87D1575B8AD00369462 /* ABParticles.vsh */; };
+		C964D971158625A400AB2CB9 /* ABParticles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87F1575B8B900369462 /* ABParticles.fsh */; };
+		C964D97A15862C3200AB2CB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9002A9C1547D8840044B6AD /* main.m */; };
+		C964D97B15862C3200AB2CB9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9002AA01547D8840044B6AD /* AppDelegate.mm */; };
+		C964D97C15862C3200AB2CB9 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9002AAA1547D8840044B6AD /* ViewController.mm */; };
+		C964D97D15862C3200AB2CB9 /* UITouch+uniqueID.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */; };
+		C964D97E15862C3200AB2CB9 /* TouchState.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AF71558A872002B9396 /* TouchState.m */; };
+		C964D97F15862C3200AB2CB9 /* TouchStateTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C4AFA1558E44D002B9396 /* TouchStateTouch.m */; };
+		C964D98015862C3200AB2CB9 /* ABLWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C92C4B0A1559C037002B9396 /* ABLWrapper.mm */; };
+		C964D98115862C3200AB2CB9 /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
+		C964D98215862C3200AB2CB9 /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
+		C964D98315862C3200AB2CB9 /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
+		C964D98415862C3200AB2CB9 /* GTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E800157458AC00369462 /* GTexture.cpp */; };
+		C964D98515862C3200AB2CB9 /* GShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E802157458AC00369462 /* GShaderProgram.cpp */; };
+		C964D98615862C3200AB2CB9 /* GMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80815745A5D00369462 /* GMatrix.cpp */; };
+		C964D98715862C3200AB2CB9 /* GMatrix3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80A15745A5D00369462 /* GMatrix3f.cpp */; };
+		C964D98815862C3200AB2CB9 /* GMatrixSparse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80C15745A5D00369462 /* GMatrixSparse.cpp */; };
+		C964D98915862C3200AB2CB9 /* GRigidTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E80E15745A5D00369462 /* GRigidTransform.cpp */; };
+		C964D98A15862C3200AB2CB9 /* GRigidTransformNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81015745A5D00369462 /* GRigidTransformNode.cpp */; };
+		C964D98B15862C3200AB2CB9 /* GSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81215745A5D00369462 /* GSolver.cpp */; };
+		C964D98C15862C3200AB2CB9 /* GVector2f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81515745A5D00369462 /* GVector2f.cpp */; };
+		C964D98D15862C3200AB2CB9 /* GVector3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81715745A5D00369462 /* GVector3f.cpp */; };
+		C964D98E15862C3200AB2CB9 /* GVector4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81915745A5D00369462 /* GVector4f.cpp */; };
+		C964D98F15862C3200AB2CB9 /* GColorUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81C15745A5D00369462 /* GColorUtils.cpp */; };
+		C964D99015862C3200AB2CB9 /* GEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E81E15745A5D00369462 /* GEasing.cpp */; };
+		C964D99115862C3200AB2CB9 /* GInterpolatedValue1f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82315745A5D00369462 /* GInterpolatedValue1f.cpp */; };
+		C964D99215862C3200AB2CB9 /* GInterpolatedValue2f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82515745A5D00369462 /* GInterpolatedValue2f.cpp */; };
+		C964D99315862C3200AB2CB9 /* GInterpolatedValue3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82715745A5D00369462 /* GInterpolatedValue3f.cpp */; };
+		C964D99415862C3200AB2CB9 /* GKeyframeValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82A15745A5D00369462 /* GKeyframeValue.cpp */; };
+		C964D99515862C3200AB2CB9 /* GDistribution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82D15745A5D00369462 /* GDistribution.cpp */; };
+		C964D99615862C3200AB2CB9 /* GRand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E82F15745A5D00369462 /* GRand.cpp */; };
+		C964D99715862C3200AB2CB9 /* GRandomValue1f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E83215745A5D00369462 /* GRandomValue1f.cpp */; };
+		C964D99815862C3200AB2CB9 /* GRandomValue2f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E83415745A5D00369462 /* GRandomValue2f.cpp */; };
+		C964D99915862C3200AB2CB9 /* GRandomValue3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E83615745A5D00369462 /* GRandomValue3f.cpp */; };
+		C964D99A15862C3200AB2CB9 /* GBinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E84E15745AFF00369462 /* GBinaryTree.cpp */; };
+		C964D99B15862C3200AB2CB9 /* GIndexList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E85815745B2500369462 /* GIndexList.cpp */; };
+		C964D99C15862C3200AB2CB9 /* ABParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87715746B5400369462 /* ABParticles.cpp */; };
+		C964D99D15862C3200AB2CB9 /* ABParticleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1281E87A157569F700369462 /* ABParticleShader.cpp */; };
+		C964D99E15862C3200AB2CB9 /* TouchTrail.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CADF158431C000F9B17E /* TouchTrail.mm */; };
+		C964D99F15862C3200AB2CB9 /* TrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE21584451A00F9B17E /* TrailController.mm */; };
+		C964D9A015862C3200AB2CB9 /* Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE515845E7500F9B17E /* Fade.m */; };
+		C964D9A115862C3200AB2CB9 /* ABParticles_ProfileCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C942CB06158563A400F9B17E /* ABParticles_ProfileCallback.cpp */; };
+		C964D9A215862C3200AB2CB9 /* TouchTrailCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0B1585930F00F9B17E /* TouchTrailCallback.cpp */; };
+		C964D9A315862C3200AB2CB9 /* RainbowTrailCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */; };
+		C964D9A415862C3200AB2CB9 /* SpeedColorCallback.cpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB2615859E3200F9B17E /* SpeedColorCallback.cpp.mm */; };
+		C964D9A515862C3200AB2CB9 /* MultiTrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB291585A6AD00F9B17E /* MultiTrailController.mm */; };
+		C964D9A615862C3200AB2CB9 /* FountainController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 129B5FFA158588BB003C43FA /* FountainController.mm */; };
+		C964D9A715862C3200AB2CB9 /* FountainCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 129B603C1585BD76003C43FA /* FountainCallback.mm */; };
+		C964D9A815862C3200AB2CB9 /* Kaleidoscope.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB2F1585B3DB00F9B17E /* Kaleidoscope.mm */; };
+		C964D9A915862C3200AB2CB9 /* KaleidoscopeCallback.cpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB5A1585B81100F9B17E /* KaleidoscopeCallback.cpp.mm */; };
+		C964D9AA15862C3200AB2CB9 /* KaleidoscopeTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB5D1585BD0000F9B17E /* KaleidoscopeTransform.mm */; };
+		C964D9AC15862C3200AB2CB9 /* libABL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002AC41547DC8D0044B6AD /* libABL.a */; };
+		C964D9AD15862C3200AB2CB9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8C1547D8840044B6AD /* UIKit.framework */; };
+		C964D9AE15862C3200AB2CB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8E1547D8840044B6AD /* Foundation.framework */; };
+		C964D9AF15862C3200AB2CB9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A901547D8840044B6AD /* CoreGraphics.framework */; };
+		C964D9B015862C3200AB2CB9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A921547D8840044B6AD /* GLKit.framework */; };
+		C964D9B115862C3200AB2CB9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A941547D8840044B6AD /* OpenGLES.framework */; };
+		C964D9B315862C3200AB2CB9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9002A991547D8840044B6AD /* InfoPlist.strings */; };
+		C964D9B415862C3200AB2CB9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9002AA21547D8840044B6AD /* MainStoryboard.storyboard */; };
+		C964D9B515862C3200AB2CB9 /* ABParticles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87D1575B8AD00369462 /* ABParticles.vsh */; };
+		C964D9B615862C3200AB2CB9 /* ABParticles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87F1575B8B900369462 /* ABParticles.fsh */; };
+		C964D9CF1586309A00AB2CB9 /* Icon_Snails.png in Resources */ = {isa = PBXBuildFile; fileRef = C964D9CE1586309A00AB2CB9 /* Icon_Snails.png */; };
+		C964D9D1158630CD00AB2CB9 /* Icon_Trail.png in Resources */ = {isa = PBXBuildFile; fileRef = C964D9D0158630CD00AB2CB9 /* Icon_Trail.png */; };
 		C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
 		C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
 		C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
@@ -193,6 +313,12 @@
 		C942CB5A1585B81100F9B17E /* KaleidoscopeCallback.cpp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KaleidoscopeCallback.cpp.mm; sourceTree = "<group>"; };
 		C942CB5C1585BD0000F9B17E /* KaleidoscopeTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaleidoscopeTransform.h; sourceTree = "<group>"; };
 		C942CB5D1585BD0000F9B17E /* KaleidoscopeTransform.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KaleidoscopeTransform.mm; sourceTree = "<group>"; };
+		C964D975158625A400AB2CB9 /* Snails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snails.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C964D977158625A400AB2CB9 /* Snails-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Snails-Info.plist"; path = "/Users/matt/Projects/Action Basis Library/Ablaze/Ablaze/Snails-Info.plist"; sourceTree = "<absolute>"; };
+		C964D9BA15862C3200AB2CB9 /* Fountain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fountain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C964D9BC15862C3300AB2CB9 /* Fountain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Fountain-Info.plist"; path = "/Users/matt/Projects/Action Basis Library/Ablaze/Ablaze/Fountain-Info.plist"; sourceTree = "<absolute>"; };
+		C964D9CE1586309A00AB2CB9 /* Icon_Snails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Snails.png; sourceTree = "<group>"; };
+		C964D9D0158630CD00AB2CB9 /* Icon_Trail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Trail.png; sourceTree = "<group>"; };
 		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
 		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 		C9DA51D21562F50500ADA5AA /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewController.h; sourceTree = "<group>"; };
@@ -212,6 +338,32 @@
 				C9002A911547D8840044B6AD /* CoreGraphics.framework in Frameworks */,
 				C9002A931547D8840044B6AD /* GLKit.framework in Frameworks */,
 				C9002A951547D8840044B6AD /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C964D966158625A400AB2CB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C964D967158625A400AB2CB9 /* libABL.a in Frameworks */,
+				C964D968158625A400AB2CB9 /* UIKit.framework in Frameworks */,
+				C964D969158625A400AB2CB9 /* Foundation.framework in Frameworks */,
+				C964D96A158625A400AB2CB9 /* CoreGraphics.framework in Frameworks */,
+				C964D96B158625A400AB2CB9 /* GLKit.framework in Frameworks */,
+				C964D96C158625A400AB2CB9 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C964D9AB15862C3200AB2CB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C964D9AC15862C3200AB2CB9 /* libABL.a in Frameworks */,
+				C964D9AD15862C3200AB2CB9 /* UIKit.framework in Frameworks */,
+				C964D9AE15862C3200AB2CB9 /* Foundation.framework in Frameworks */,
+				C964D9AF15862C3200AB2CB9 /* CoreGraphics.framework in Frameworks */,
+				C964D9B015862C3200AB2CB9 /* GLKit.framework in Frameworks */,
+				C964D9B115862C3200AB2CB9 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +533,8 @@
 		C9002A7D1547D8840044B6AD = {
 			isa = PBXGroup;
 			children = (
+				C964D9D0158630CD00AB2CB9 /* Icon_Trail.png */,
+				C964D9CE1586309A00AB2CB9 /* Icon_Snails.png */,
 				C9002A961547D8840044B6AD /* Ablaze */,
 				C9002A8B1547D8840044B6AD /* Frameworks */,
 				C9002A891547D8840044B6AD /* Products */,
@@ -391,6 +545,8 @@
 			isa = PBXGroup;
 			children = (
 				C9002A881547D8840044B6AD /* Ablaze.app */,
+				C964D975158625A400AB2CB9 /* Snails.app */,
+				C964D9BA15862C3200AB2CB9 /* Fountain.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,6 +589,8 @@
 				C9002AA01547D8840044B6AD /* AppDelegate.mm */,
 				C9002AA21547D8840044B6AD /* MainStoryboard.storyboard */,
 				C9002A981547D8840044B6AD /* Ablaze-Info.plist */,
+				C964D977158625A400AB2CB9 /* Snails-Info.plist */,
+				C964D9BC15862C3300AB2CB9 /* Fountain-Info.plist */,
 				C9002A991547D8840044B6AD /* InfoPlist.strings */,
 				C9002A9C1547D8840044B6AD /* main.m */,
 				C9002A9E1547D8840044B6AD /* Ablaze-Prefix.pch */,
@@ -563,6 +721,40 @@
 			productReference = C9002A881547D8840044B6AD /* Ablaze.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C964D933158625A400AB2CB9 /* Snails */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C964D972158625A400AB2CB9 /* Build configuration list for PBXNativeTarget "Snails" */;
+			buildPhases = (
+				C964D934158625A400AB2CB9 /* Sources */,
+				C964D966158625A400AB2CB9 /* Frameworks */,
+				C964D96D158625A400AB2CB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Snails;
+			productName = Ablaze;
+			productReference = C964D975158625A400AB2CB9 /* Snails.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C964D97815862C3200AB2CB9 /* Fountain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C964D9B715862C3200AB2CB9 /* Build configuration list for PBXNativeTarget "Fountain" */;
+			buildPhases = (
+				C964D97915862C3200AB2CB9 /* Sources */,
+				C964D9AB15862C3200AB2CB9 /* Frameworks */,
+				C964D9B215862C3200AB2CB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fountain;
+			productName = Ablaze;
+			productReference = C964D9BA15862C3200AB2CB9 /* Fountain.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -591,6 +783,8 @@
 			projectRoot = "";
 			targets = (
 				C9002A871547D8840044B6AD /* Ablaze */,
+				C964D933158625A400AB2CB9 /* Snails */,
+				C964D97815862C3200AB2CB9 /* Fountain */,
 			);
 		};
 /* End PBXProject section */
@@ -614,6 +808,30 @@
 				C9002AA41547D8840044B6AD /* MainStoryboard.storyboard in Resources */,
 				1281E8841575CDC600369462 /* ABParticles.vsh in Resources */,
 				1281E8851575CDC600369462 /* ABParticles.fsh in Resources */,
+				C964D9D1158630CD00AB2CB9 /* Icon_Trail.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C964D96D158625A400AB2CB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C964D96E158625A400AB2CB9 /* InfoPlist.strings in Resources */,
+				C964D96F158625A400AB2CB9 /* MainStoryboard.storyboard in Resources */,
+				C964D970158625A400AB2CB9 /* ABParticles.vsh in Resources */,
+				C964D971158625A400AB2CB9 /* ABParticles.fsh in Resources */,
+				C964D9CF1586309A00AB2CB9 /* Icon_Snails.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C964D9B215862C3200AB2CB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C964D9B315862C3200AB2CB9 /* InfoPlist.strings in Resources */,
+				C964D9B415862C3200AB2CB9 /* MainStoryboard.storyboard in Resources */,
+				C964D9B515862C3200AB2CB9 /* ABParticles.vsh in Resources */,
+				C964D9B615862C3200AB2CB9 /* ABParticles.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +893,118 @@
 				C942CB5B1585B81200F9B17E /* KaleidoscopeCallback.cpp.mm in Sources */,
 				C942CB5E1585BD0000F9B17E /* KaleidoscopeTransform.mm in Sources */,
 				120E6D6D15862F0E0096FCF7 /* ChaosController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C964D934158625A400AB2CB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C964D935158625A400AB2CB9 /* main.m in Sources */,
+				C964D936158625A400AB2CB9 /* AppDelegate.mm in Sources */,
+				C964D937158625A400AB2CB9 /* ViewController.mm in Sources */,
+				C964D938158625A400AB2CB9 /* UITouch+uniqueID.m in Sources */,
+				C964D939158625A400AB2CB9 /* TouchState.m in Sources */,
+				C964D93A158625A400AB2CB9 /* TouchStateTouch.m in Sources */,
+				C964D93B158625A400AB2CB9 /* ABLWrapper.mm in Sources */,
+				C964D93C158625A400AB2CB9 /* Framerate.m in Sources */,
+				C964D93D158625A400AB2CB9 /* FlatViewController.mm in Sources */,
+				C964D93E158625A400AB2CB9 /* FlatView.m in Sources */,
+				C964D93F158625A400AB2CB9 /* GTexture.cpp in Sources */,
+				C964D940158625A400AB2CB9 /* GShaderProgram.cpp in Sources */,
+				C964D941158625A400AB2CB9 /* GMatrix.cpp in Sources */,
+				C964D942158625A400AB2CB9 /* GMatrix3f.cpp in Sources */,
+				C964D943158625A400AB2CB9 /* GMatrixSparse.cpp in Sources */,
+				C964D944158625A400AB2CB9 /* GRigidTransform.cpp in Sources */,
+				C964D945158625A400AB2CB9 /* GRigidTransformNode.cpp in Sources */,
+				C964D946158625A400AB2CB9 /* GSolver.cpp in Sources */,
+				C964D947158625A400AB2CB9 /* GVector2f.cpp in Sources */,
+				C964D948158625A400AB2CB9 /* GVector3f.cpp in Sources */,
+				C964D949158625A400AB2CB9 /* GVector4f.cpp in Sources */,
+				C964D94A158625A400AB2CB9 /* GColorUtils.cpp in Sources */,
+				C964D94B158625A400AB2CB9 /* GEasing.cpp in Sources */,
+				C964D94C158625A400AB2CB9 /* GInterpolatedValue1f.cpp in Sources */,
+				C964D94D158625A400AB2CB9 /* GInterpolatedValue2f.cpp in Sources */,
+				C964D94E158625A400AB2CB9 /* GInterpolatedValue3f.cpp in Sources */,
+				C964D94F158625A400AB2CB9 /* GKeyframeValue.cpp in Sources */,
+				C964D950158625A400AB2CB9 /* GDistribution.cpp in Sources */,
+				C964D951158625A400AB2CB9 /* GRand.cpp in Sources */,
+				C964D952158625A400AB2CB9 /* GRandomValue1f.cpp in Sources */,
+				C964D953158625A400AB2CB9 /* GRandomValue2f.cpp in Sources */,
+				C964D954158625A400AB2CB9 /* GRandomValue3f.cpp in Sources */,
+				C964D955158625A400AB2CB9 /* GBinaryTree.cpp in Sources */,
+				C964D956158625A400AB2CB9 /* GIndexList.cpp in Sources */,
+				C964D957158625A400AB2CB9 /* ABParticles.cpp in Sources */,
+				C964D958158625A400AB2CB9 /* ABParticleShader.cpp in Sources */,
+				C964D959158625A400AB2CB9 /* TouchTrail.mm in Sources */,
+				C964D95A158625A400AB2CB9 /* TrailController.mm in Sources */,
+				C964D95B158625A400AB2CB9 /* Fade.m in Sources */,
+				C964D95C158625A400AB2CB9 /* ABParticles_ProfileCallback.cpp in Sources */,
+				C964D95D158625A400AB2CB9 /* TouchTrailCallback.cpp in Sources */,
+				C964D95E158625A400AB2CB9 /* RainbowTrailCallback.mm in Sources */,
+				C964D95F158625A400AB2CB9 /* SpeedColorCallback.cpp.mm in Sources */,
+				C964D960158625A400AB2CB9 /* MultiTrailController.mm in Sources */,
+				C964D961158625A400AB2CB9 /* FountainController.mm in Sources */,
+				C964D962158625A400AB2CB9 /* FountainCallback.mm in Sources */,
+				C964D963158625A400AB2CB9 /* Kaleidoscope.mm in Sources */,
+				C964D964158625A400AB2CB9 /* KaleidoscopeCallback.cpp.mm in Sources */,
+				C964D965158625A400AB2CB9 /* KaleidoscopeTransform.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C964D97915862C3200AB2CB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C964D97A15862C3200AB2CB9 /* main.m in Sources */,
+				C964D97B15862C3200AB2CB9 /* AppDelegate.mm in Sources */,
+				C964D97C15862C3200AB2CB9 /* ViewController.mm in Sources */,
+				C964D97D15862C3200AB2CB9 /* UITouch+uniqueID.m in Sources */,
+				C964D97E15862C3200AB2CB9 /* TouchState.m in Sources */,
+				C964D97F15862C3200AB2CB9 /* TouchStateTouch.m in Sources */,
+				C964D98015862C3200AB2CB9 /* ABLWrapper.mm in Sources */,
+				C964D98115862C3200AB2CB9 /* Framerate.m in Sources */,
+				C964D98215862C3200AB2CB9 /* FlatViewController.mm in Sources */,
+				C964D98315862C3200AB2CB9 /* FlatView.m in Sources */,
+				C964D98415862C3200AB2CB9 /* GTexture.cpp in Sources */,
+				C964D98515862C3200AB2CB9 /* GShaderProgram.cpp in Sources */,
+				C964D98615862C3200AB2CB9 /* GMatrix.cpp in Sources */,
+				C964D98715862C3200AB2CB9 /* GMatrix3f.cpp in Sources */,
+				C964D98815862C3200AB2CB9 /* GMatrixSparse.cpp in Sources */,
+				C964D98915862C3200AB2CB9 /* GRigidTransform.cpp in Sources */,
+				C964D98A15862C3200AB2CB9 /* GRigidTransformNode.cpp in Sources */,
+				C964D98B15862C3200AB2CB9 /* GSolver.cpp in Sources */,
+				C964D98C15862C3200AB2CB9 /* GVector2f.cpp in Sources */,
+				C964D98D15862C3200AB2CB9 /* GVector3f.cpp in Sources */,
+				C964D98E15862C3200AB2CB9 /* GVector4f.cpp in Sources */,
+				C964D98F15862C3200AB2CB9 /* GColorUtils.cpp in Sources */,
+				C964D99015862C3200AB2CB9 /* GEasing.cpp in Sources */,
+				C964D99115862C3200AB2CB9 /* GInterpolatedValue1f.cpp in Sources */,
+				C964D99215862C3200AB2CB9 /* GInterpolatedValue2f.cpp in Sources */,
+				C964D99315862C3200AB2CB9 /* GInterpolatedValue3f.cpp in Sources */,
+				C964D99415862C3200AB2CB9 /* GKeyframeValue.cpp in Sources */,
+				C964D99515862C3200AB2CB9 /* GDistribution.cpp in Sources */,
+				C964D99615862C3200AB2CB9 /* GRand.cpp in Sources */,
+				C964D99715862C3200AB2CB9 /* GRandomValue1f.cpp in Sources */,
+				C964D99815862C3200AB2CB9 /* GRandomValue2f.cpp in Sources */,
+				C964D99915862C3200AB2CB9 /* GRandomValue3f.cpp in Sources */,
+				C964D99A15862C3200AB2CB9 /* GBinaryTree.cpp in Sources */,
+				C964D99B15862C3200AB2CB9 /* GIndexList.cpp in Sources */,
+				C964D99C15862C3200AB2CB9 /* ABParticles.cpp in Sources */,
+				C964D99D15862C3200AB2CB9 /* ABParticleShader.cpp in Sources */,
+				C964D99E15862C3200AB2CB9 /* TouchTrail.mm in Sources */,
+				C964D99F15862C3200AB2CB9 /* TrailController.mm in Sources */,
+				C964D9A015862C3200AB2CB9 /* Fade.m in Sources */,
+				C964D9A115862C3200AB2CB9 /* ABParticles_ProfileCallback.cpp in Sources */,
+				C964D9A215862C3200AB2CB9 /* TouchTrailCallback.cpp in Sources */,
+				C964D9A315862C3200AB2CB9 /* RainbowTrailCallback.mm in Sources */,
+				C964D9A415862C3200AB2CB9 /* SpeedColorCallback.cpp.mm in Sources */,
+				C964D9A515862C3200AB2CB9 /* MultiTrailController.mm in Sources */,
+				C964D9A615862C3200AB2CB9 /* FountainController.mm in Sources */,
+				C964D9A715862C3200AB2CB9 /* FountainCallback.mm in Sources */,
+				C964D9A815862C3200AB2CB9 /* Kaleidoscope.mm in Sources */,
+				C964D9A915862C3200AB2CB9 /* KaleidoscopeCallback.cpp.mm in Sources */,
+				C964D9AA15862C3200AB2CB9 /* KaleidoscopeTransform.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,6 +1109,62 @@
 			};
 			name = Release;
 		};
+		C964D973158625A400AB2CB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ablaze/Ablaze-Prefix.pch";
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				INFOPLIST_FILE = "Ablaze/Snails-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Snails;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C964D974158625A400AB2CB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ablaze/Ablaze-Prefix.pch";
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				INFOPLIST_FILE = "Ablaze/Snails-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Snails;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C964D9B815862C3200AB2CB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ablaze/Ablaze-Prefix.pch";
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				INFOPLIST_FILE = "Ablaze/Fountain-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Fountain;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C964D9B915862C3200AB2CB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ablaze/Ablaze-Prefix.pch";
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				INFOPLIST_FILE = "Ablaze/Fountain-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Fountain;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -796,6 +1182,24 @@
 			buildConfigurations = (
 				C9002AAF1547D8840044B6AD /* Debug */,
 				C9002AB01547D8840044B6AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C964D972158625A400AB2CB9 /* Build configuration list for PBXNativeTarget "Snails" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C964D973158625A400AB2CB9 /* Debug */,
+				C964D974158625A400AB2CB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C964D9B715862C3200AB2CB9 /* Build configuration list for PBXNativeTarget "Fountain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C964D9B815862C3200AB2CB9 /* Debug */,
+				C964D9B915862C3200AB2CB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
