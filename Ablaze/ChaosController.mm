@@ -111,7 +111,7 @@ bool _chaosUpdateY(double* buffer, unsigned int *count){
 - (void)prepTransform
 {   
     transform = ABTransform(true);
-    double ctr[512, 368];
+    double ctr[] = {512, 368};
     
     string names[] = {"x", "y", "meanX", "meanY", "position", "positionCurve", "quad", "force"};
 	vector<string> position(names+2, names+4);
