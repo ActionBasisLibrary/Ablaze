@@ -185,6 +185,11 @@
 		C964D9B615862C3200AB2CB9 /* ABParticles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87F1575B8B900369462 /* ABParticles.fsh */; };
 		C964D9CF1586309A00AB2CB9 /* Icon_Snails.png in Resources */ = {isa = PBXBuildFile; fileRef = C964D9CE1586309A00AB2CB9 /* Icon_Snails.png */; };
 		C964D9D1158630CD00AB2CB9 /* Icon_Trail.png in Resources */ = {isa = PBXBuildFile; fileRef = C964D9D0158630CD00AB2CB9 /* Icon_Trail.png */; };
+		C964D9E11586371100AB2CB9 /* ChaosController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 120E6D6C15862F0E0096FCF7 /* ChaosController.mm */; };
+		C964D9E21586371100AB2CB9 /* ODECallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 120E6D4A15861F6C0096FCF7 /* ODECallback.mm */; };
+		C964D9E31586373800AB2CB9 /* ChaosController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 120E6D6C15862F0E0096FCF7 /* ChaosController.mm */; };
+		C964D9E41586373800AB2CB9 /* ODECallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 120E6D4A15861F6C0096FCF7 /* ODECallback.mm */; };
+		C964D9E6158638C100AB2CB9 /* Icon_Fountain.png in Resources */ = {isa = PBXBuildFile; fileRef = C964D9E5158638C100AB2CB9 /* Icon_Fountain.png */; };
 		C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
 		C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
 		C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
@@ -319,6 +324,7 @@
 		C964D9BC15862C3300AB2CB9 /* Fountain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Fountain-Info.plist"; path = "/Users/matt/Projects/Action Basis Library/Ablaze/Ablaze/Fountain-Info.plist"; sourceTree = "<absolute>"; };
 		C964D9CE1586309A00AB2CB9 /* Icon_Snails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Snails.png; sourceTree = "<group>"; };
 		C964D9D0158630CD00AB2CB9 /* Icon_Trail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Trail.png; sourceTree = "<group>"; };
+		C964D9E5158638C100AB2CB9 /* Icon_Fountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Fountain.png; sourceTree = "<group>"; };
 		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
 		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 		C9DA51D21562F50500ADA5AA /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewController.h; sourceTree = "<group>"; };
@@ -533,6 +539,7 @@
 		C9002A7D1547D8840044B6AD = {
 			isa = PBXGroup;
 			children = (
+				C964D9E5158638C100AB2CB9 /* Icon_Fountain.png */,
 				C964D9D0158630CD00AB2CB9 /* Icon_Trail.png */,
 				C964D9CE1586309A00AB2CB9 /* Icon_Snails.png */,
 				C9002A961547D8840044B6AD /* Ablaze */,
@@ -832,6 +839,7 @@
 				C964D9B415862C3200AB2CB9 /* MainStoryboard.storyboard in Resources */,
 				C964D9B515862C3200AB2CB9 /* ABParticles.vsh in Resources */,
 				C964D9B615862C3200AB2CB9 /* ABParticles.fsh in Resources */,
+				C964D9E6158638C100AB2CB9 /* Icon_Fountain.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +908,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C964D9E31586373800AB2CB9 /* ChaosController.mm in Sources */,
+				C964D9E41586373800AB2CB9 /* ODECallback.mm in Sources */,
 				C964D935158625A400AB2CB9 /* main.m in Sources */,
 				C964D936158625A400AB2CB9 /* AppDelegate.mm in Sources */,
 				C964D937158625A400AB2CB9 /* ViewController.mm in Sources */,
@@ -956,6 +966,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C964D9E11586371100AB2CB9 /* ChaosController.mm in Sources */,
+				C964D9E21586371100AB2CB9 /* ODECallback.mm in Sources */,
 				C964D97A15862C3200AB2CB9 /* main.m in Sources */,
 				C964D97B15862C3200AB2CB9 /* AppDelegate.mm in Sources */,
 				C964D97C15862C3200AB2CB9 /* ViewController.mm in Sources */,
