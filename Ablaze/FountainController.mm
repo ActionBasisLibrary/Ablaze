@@ -35,7 +35,6 @@
 
 #pragma mark Global Functions
 
-static ABSymVarPull *xpull;
 TouchState* _fountainTouchState;
 
 bool _fountainUpdateX(double* buffer, unsigned int *count){

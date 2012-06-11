@@ -36,7 +36,6 @@
 
 #pragma mark Global Functions
 
-static ABSymVarPull *xpull;
 TouchState* _chaosTouchState;
 
 bool _chaosUpdateX(double* buffer, unsigned int *count){
@@ -117,7 +116,7 @@ bool _chaosUpdateY(double* buffer, unsigned int *count){
 	vector<string> position(names+2, names+4);
     
     vector<string> tickInputs(names+5, names+7);
-    vector<string> tickInputs2(names+8, names+8);
+    vector<string> tickInputs2(names+7, names+8);
     
     ABSymbol *rawInputs[] = {
 		new ABSymTime("time", &timer),
