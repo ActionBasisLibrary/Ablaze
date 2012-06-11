@@ -13,12 +13,14 @@
 #import <GLKit/GLKit.h>
 #import "ABLWrapper.h"
 #import "Drawable.h"
+#include "RainbowTrailCallback.h"
 
 @interface TrailController : NSObject <TouchStateDelegate, Drawable>
 {
 	ABParticles *particles;
 	ABParticleShader *pshader;
 	GLKMatrix4 projectionMatrix;
+	RainbowTrailCallback *trailCallback;
 }
 @property ABParticles *particles;
 @property ABParticleShader *pshader;

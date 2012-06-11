@@ -262,16 +262,8 @@ void ABParticles::initialize()
 
 #pragma mark PROFILE METHODS
 
-static void posFnDefault(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
-static void velFnDefault(gVector3f &vect, float dt, const ABParticles::Particle *ptr);
-static void colFnDefault(gVector4f &vect, float dt, const ABParticles::Particle *ptr);
-static void sizeFnDefault(float *size, float dt, const ABParticles::Particle *ptr);
-
 ABParticles::Profile::Profile()
-: posFn(posFnDefault), velFn(velFnDefault), accFn(NULL),
-startPosFn(NULL), startVelFn(NULL), startAccFn(NULL),
-colorFn(colFnDefault), startColorFn(NULL),
-sizeFn(NULL), startSizeFn(NULL), initOverrideFn(NULL),
+: callback(NULL),
 delay(0), lifeSpan(0), continuous(false), texId(-1),
 numContinuous(0), numDelta(0)
 {}
@@ -288,67 +280,27 @@ void ABParticles::Profile::birthParticle(Particle *ptr)
 {
     ptr->born = 1;
 
-    // Set position
-    if (startPosFn) startPosFn(ptr->position, 0, ptr);
-    else ptr->position = gVector3f(0);
-
-    // Set velocity
-    if (startVelFn) startVelFn(ptr->velocity, 0, ptr);
-    else ptr->velocity = gVector3f(0);
-
-    // Set acceleration 0
-    if (startAccFn) startAccFn(ptr->acceleration, 0, ptr);
-    else ptr->acceleration = gVector3f(0);
-
-    // Set color white
-    if (startColorFn) startColorFn(ptr->color, 0, ptr);
-    else ptr->color = gVector4f(1);
-
-    // Set size to 1.0
-    if (startSizeFn) startSizeFn(&ptr->size, 0, ptr);
-    else ptr->size = 10.0;
+	ProfileCallback *useCallback = &defaultCallback;
+	if (callback) useCallback = callback;
 	
-	if (initOverrideFn) initOverrideFn(ptr);
+	useCallback->startPosition(ptr->position, 0, ptr);
+	useCallback->startVelocity(ptr->velocity, 0, ptr);
+	useCallback->startAcceleration(ptr->acceleration, 0, ptr);
+	useCallback->startColor(ptr->color, 0, ptr);
+	useCallback->startSize(&ptr->size, 0, ptr);
+	
+	useCallback->initOverride(ptr);
 }
 
 void ABParticles::Profile::updateParticle(Particle *ptr, double dt)
 {
-    // Update acceleration
-    if (accFn) accFn(ptr->acceleration, dt, ptr);
+	ProfileCallback *useCallback = &defaultCallback;
+	if (callback) useCallback = callback;
 
-    // Update velocity from acceleration
-    if (velFn) velFn(ptr->velocity, dt, ptr);
-
-    // Update position from velocity
-    if (posFn) posFn(ptr->position, dt, ptr);
-
-    // Update color from everything
-    if (colorFn) colorFn(ptr->color, dt, ptr);
-
-    // Update size if necessary
-    if (sizeFn) sizeFn(&ptr->size, dt, ptr);
+	useCallback->position(ptr->position, dt, ptr);
+	useCallback->velocity(ptr->velocity, dt, ptr);
+	useCallback->acceleration(ptr->acceleration, dt, ptr);
+	useCallback->color(ptr->color, dt, ptr);
+	useCallback->size(&ptr->size, dt, ptr);
 }
 
-static void posFnDefault(gVector3f &vect, float dt, const ABParticles::Particle *ptr)
-{
-    vect += (gVector3f)ptr->velocity * dt;
-}
-
-static void velFnDefault(gVector3f &vect, float dt, const ABParticles::Particle *ptr)
-{
-    vect += (gVector3f)ptr->acceleration * dt;
-}
-
-static void colFnDefault(gVector4f &vect, float dt, const ABParticles::Particle *ptr)
-{
-    float t = ptr->age / ptr->lifeSpan;
-//    vect.a = 0.0;
-    vect.a = 4 * sqrtf(.0625 - powf(.5-t, 4));
-}
-
-static void sizeFnDefault(float *size, float dt, const ABParticles::Particle *ptr)
-{
-    float t = ptr->age / ptr->lifeSpan;
-    *size = 40.0 * sqrtf(.0625 - powf(.5 - t, 4));
-//    *size = 20.0;
-}

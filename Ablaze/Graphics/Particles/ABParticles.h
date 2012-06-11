@@ -22,6 +22,7 @@ public:
     // Class to hold shared particle data like callbacks
     typedef int ProfileId;
     class Profile;
+    class ProfileCallback;
     
     // Class to hold specific particle data like location
     class Particle;
@@ -90,6 +91,8 @@ private:
 
 class ABParticles::Particle {
 public:
+    friend class ABParticleCallback;
+	
     ProfileId profile;
     
     char texId;
@@ -101,27 +104,38 @@ public:
     char padding[4];
 };
 
+
+
+class ABParticles::ProfileCallback {
+public:
+	virtual void initOverride      (ABParticles::Particle *ptr);
+	
+    virtual void size              (float *val,      float dt, const ABParticles::Particle *ptr);
+    virtual void position          (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
+	virtual void velocity          (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
+	virtual void acceleration      (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
+    virtual void color             (gVector4f &vect, float dt, const ABParticles::Particle *ptr);
+	
+	virtual void startSize         (float *val,      float dt, const ABParticles::Particle *ptr);
+    virtual void startPosition     (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
+	virtual void startVelocity     (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
+	virtual void startAcceleration (gVector3f &vect, float dt, const ABParticles::Particle *ptr);
+	virtual void startColor        (gVector4f &vect, float dt, const ABParticles::Particle *ptr);
+};
+
+
 class ABParticles::Profile {
 public:
-	typedef void (*InitFunction)(Particle *ptr);
-    typedef void (*ParamFunction1)(float *val, float dt, const Particle *ptr);
-    typedef void (*ParamFunction2)(gVector2f &vect, float dt, const Particle *ptr);
-    typedef void (*ParamFunction3)(gVector3f &vect, float dt, const Particle *ptr);
-    typedef void (*ParamFunction4)(gVector4f &vect, float dt, const Particle *ptr);
-    
-	InitFunction initOverrideFn;
-    ParamFunction1 sizeFn, startSizeFn;
-    ParamFunction3 posFn, velFn, accFn;
-    ParamFunction3 startPosFn, startVelFn, startAccFn;
-    ParamFunction4 colorFn, startColorFn;
     float delay, lifeSpan;
     char texId;
     bool continuous;
+    ProfileCallback *callback;
     
 private:
     friend class ABParticles;
     
     int numContinuous, numDelta;
+	ProfileCallback defaultCallback;
     
 public:
     Profile();
@@ -137,5 +151,9 @@ private:
     // Function to advance a given particle correctly
     void updateParticle(Particle *ptr, double dt);
 };
+
+
+
+
 
 #endif

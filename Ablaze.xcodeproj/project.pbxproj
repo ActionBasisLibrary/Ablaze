@@ -54,6 +54,9 @@
 		C942CAE0158431C000F9B17E /* TouchTrail.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CADF158431C000F9B17E /* TouchTrail.mm */; };
 		C942CAE31584451A00F9B17E /* TrailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE21584451A00F9B17E /* TrailController.mm */; };
 		C942CAE615845E7500F9B17E /* Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = C942CAE515845E7500F9B17E /* Fade.m */; };
+		C942CB07158563A400F9B17E /* ABParticles_ProfileCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C942CB06158563A400F9B17E /* ABParticles_ProfileCallback.cpp */; };
+		C942CB0C1585930F00F9B17E /* TouchTrailCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0B1585930F00F9B17E /* TouchTrailCallback.cpp */; };
+		C942CB101585992500F9B17E /* RainbowTrailCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */; };
 		C9DA51D01562E76700ADA5AA /* Framerate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51CF1562E76700ADA5AA /* Framerate.m */; };
 		C9DA51D41562F50500ADA5AA /* FlatViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D31562F50500ADA5AA /* FlatViewController.mm */; };
 		C9DA51D71562F86A00ADA5AA /* FlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA51D61562F86A00ADA5AA /* FlatView.m */; };
@@ -158,9 +161,14 @@
 		C942CADF158431C000F9B17E /* TouchTrail.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchTrail.mm; sourceTree = "<group>"; };
 		C942CAE11584451900F9B17E /* TrailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailController.h; sourceTree = "<group>"; };
 		C942CAE21584451A00F9B17E /* TrailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TrailController.mm; sourceTree = "<group>"; };
-		C942CAE415845E7500F9B17E /* Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fade.h; sourceTree = "<group>"; };
-		C942CAE515845E7500F9B17E /* Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fade.m; sourceTree = "<group>"; };
-		C942CB051584DD5D00F9B17E /* Drawable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
+		C942CAE415845E7500F9B17E /* Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fade.h; path = Ablaze/Fade.h; sourceTree = "<group>"; };
+		C942CAE515845E7500F9B17E /* Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fade.m; path = Ablaze/Fade.m; sourceTree = "<group>"; };
+		C942CB051584DD5D00F9B17E /* Drawable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Drawable.h; path = Ablaze/Drawable.h; sourceTree = "<group>"; };
+		C942CB06158563A400F9B17E /* ABParticles_ProfileCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ABParticles_ProfileCallback.cpp; sourceTree = "<group>"; };
+		C942CB0B1585930F00F9B17E /* TouchTrailCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchTrailCallback.cpp; sourceTree = "<group>"; };
+		C942CB0D1585931C00F9B17E /* TouchTrailCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchTrailCallback.h; sourceTree = "<group>"; };
+		C942CB0E1585991B00F9B17E /* RainbowTrailCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainbowTrailCallback.h; sourceTree = "<group>"; };
+		C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RainbowTrailCallback.mm; sourceTree = "<group>"; };
 		C9DA51CE1562E76700ADA5AA /* Framerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framerate.h; sourceTree = "<group>"; };
 		C9DA51CF1562E76700ADA5AA /* Framerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Framerate.m; sourceTree = "<group>"; };
 		C9DA51D21562F50500ADA5AA /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewController.h; sourceTree = "<group>"; };
@@ -215,6 +223,7 @@
 				1281E87715746B5400369462 /* ABParticles.cpp */,
 				1281E87B157569FA00369462 /* ABParticleShader.h */,
 				1281E87A157569F700369462 /* ABParticleShader.cpp */,
+				C942CB06158563A400F9B17E /* ABParticles_ProfileCallback.cpp */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -362,13 +371,8 @@
 				C92C4B0A1559C037002B9396 /* ABLWrapper.mm */,
 				C942CAD815842EBB00F9B17E /* MultiTouchViewController.h */,
 				C942CAD915842EC600F9B17E /* MultiTouchViewController.mm */,
-				C942CADE158431C000F9B17E /* TouchTrail.h */,
-				C942CADF158431C000F9B17E /* TouchTrail.mm */,
-				C942CB051584DD5D00F9B17E /* Drawable.h */,
-				C942CAE11584451900F9B17E /* TrailController.h */,
-				C942CAE21584451A00F9B17E /* TrailController.mm */,
-				C942CAE415845E7500F9B17E /* Fade.h */,
-				C942CAE515845E7500F9B17E /* Fade.m */,
+				C942CB09158592DD00F9B17E /* Trails */,
+				C942CB0A158592EE00F9B17E /* Drawables */,
 				C92C4AFC1558E45C002B9396 /* Touches */,
 				C9DA51D11562F48C00ADA5AA /* View Controllers */,
 				1281E7ED157456F200369462 /* Graphics */,
@@ -411,6 +415,32 @@
 				C92C4ADF15587582002B9396 /* UITouch+uniqueID.m */,
 			);
 			name = Touches;
+			sourceTree = "<group>";
+		};
+		C942CB09158592DD00F9B17E /* Trails */ = {
+			isa = PBXGroup;
+			children = (
+				C942CAE11584451900F9B17E /* TrailController.h */,
+				C942CAE21584451A00F9B17E /* TrailController.mm */,
+				C942CB0E1585991B00F9B17E /* RainbowTrailCallback.h */,
+				C942CB0F1585992500F9B17E /* RainbowTrailCallback.mm */,
+				C942CADE158431C000F9B17E /* TouchTrail.h */,
+				C942CADF158431C000F9B17E /* TouchTrail.mm */,
+				C942CB0D1585931C00F9B17E /* TouchTrailCallback.h */,
+				C942CB0B1585930F00F9B17E /* TouchTrailCallback.cpp */,
+			);
+			name = Trails;
+			sourceTree = "<group>";
+		};
+		C942CB0A158592EE00F9B17E /* Drawables */ = {
+			isa = PBXGroup;
+			children = (
+				C942CB051584DD5D00F9B17E /* Drawable.h */,
+				C942CAE415845E7500F9B17E /* Fade.h */,
+				C942CAE515845E7500F9B17E /* Fade.m */,
+			);
+			name = Drawables;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		C9DA51D11562F48C00ADA5AA /* View Controllers */ = {
@@ -554,6 +584,9 @@
 				C942CAE0158431C000F9B17E /* TouchTrail.mm in Sources */,
 				C942CAE31584451A00F9B17E /* TrailController.mm in Sources */,
 				C942CAE615845E7500F9B17E /* Fade.m in Sources */,
+				C942CB07158563A400F9B17E /* ABParticles_ProfileCallback.cpp in Sources */,
+				C942CB0C1585930F00F9B17E /* TouchTrailCallback.cpp in Sources */,
+				C942CB101585992500F9B17E /* RainbowTrailCallback.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
