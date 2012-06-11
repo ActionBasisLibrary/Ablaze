@@ -10,8 +10,10 @@
 #import <GLKit/GLKit.h>
 #import "TouchState.h"
 #import "TrailController.h"
+#import "FountainController.h"
 #import "Framerate.h"
 #import "Fade.h"
+#import "Drawable.h"
 
 
 @interface ViewController : GLKViewController
@@ -19,7 +21,7 @@
 	TouchState* touchState;
 	Framerate* framerate;
 	
-	TrailController* trails;
+	id<Drawable> trails;
 	Fade* fade;
 }
 

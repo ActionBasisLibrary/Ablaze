@@ -13,7 +13,6 @@
 
 @interface TrailController : NSObject <TouchStateDelegate, Drawable>
 
-@property (assign) GLKMatrix4 projectionMatrix;
 @property (strong) ABLWrapper *wrapper;
 
 @end

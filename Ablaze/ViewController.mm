@@ -12,6 +12,14 @@
 #include "ABParticles.h"
 #include "ABParticleShader.h"
 
+enum TrailType {
+    FIRST_TRAIL,
+    FOUNTAIN,
+    KALEIDOSCOPE
+};
+
+static const TrailType CURRENT_TRAIL = FOUNTAIN;
+
 
 @interface ViewController ()
 @property (strong, nonatomic) EAGLContext *context;
@@ -30,15 +38,29 @@
     [super viewDidLoad];
 	
 	touchState = [TouchState new];
-	trails = [TrailController new];
-	touchState.delegate = trails;
 	framerate = [Framerate new];
-	
-	ABLWrapper *wrapper = [ABLWrapper new];
-	wrapper.touchState = touchState;
-	trails.wrapper = wrapper;
-    
 	fade = [Fade new];
+    ABLWrapper *wrapper = [ABLWrapper new];
+    wrapper.touchState = touchState;
+    
+    // Now create the trail, depending on the switch
+    switch (CURRENT_TRAIL) {
+        case FIRST_TRAIL:
+        {
+            trails = [TrailController new];
+            ((TrailController*)trails).wrapper = wrapper;
+        }
+            break;
+        case FOUNTAIN:
+        {
+            trails = [FountainController new];
+            ((FountainController*)trails).touchState = touchState;
+        }
+            break;
+        default:
+            NSLog(@"Current Trail set to impossible value");
+            break;
+    }
 	
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];

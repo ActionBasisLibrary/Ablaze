@@ -11,4 +11,7 @@
 -(void)tearDown;
 -(void)update:(NSTimeInterval)timeSinceLastUpdate;
 -(void)render;
+
+@property (assign) GLKMatrix4 projectionMatrix;
+
 @end

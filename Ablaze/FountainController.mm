@@ -15,6 +15,10 @@
 #import "ABL/ABSymTime.h"
 #import "ABL/ABSymCombine.h"
 #import "ABL/ABSymForceRegress.h"
+#import "ABL/ABSymCard.h"
+#import "ABL/ABSymIntegrate.h"
+#import "ABL/ABSymDifferentiate.h"
+#import "ABL/ABSymSmooth.h"
 
 #include "GRand.h"
 
@@ -30,12 +34,13 @@
 
 #pragma mark Global Functions
 
+static ABSymVarPull *xpull;
 TouchState* _fountainTouchState;
 
-bool updateX(double* buffer, unsigned int *count){
+bool _fountainUpdateX(double* buffer, unsigned int *count){
 	return [_fountainTouchState getXs:buffer withCount:count];
 }
-bool updateY(double* buffer, unsigned int *count){
+bool _fountainUpdateY(double* buffer, unsigned int *count){
 	return [_fountainTouchState getYs:buffer withCount:count];
 }
 
@@ -67,11 +72,20 @@ bool updateY(double* buffer, unsigned int *count){
 
 - (void)tearDown
 {
-	
+    delete pshader;
+    delete particles;
 }
 
 - (void)update:(NSTimeInterval)timeSinceLastUpdate
 {	
+    double num = 0;
+    transform.getValues("inttouch", &num);
+    
+    double vel[2];
+    transform.getValues("positionCurve", vel, timer.getTime() - .5, 1);
+    printf("Velocity: %f %f\n", vel[0], vel[1]);
+    
+    particles->setNumContinuousParticles(num * 5, pid0);
 	//    printf("Velocity @ -%f = %f %f\n", 0.1, velocity.x, velocity.y);
 //	double linearVelocity = sqrt(velocity.x*velocity.x+velocity.y*velocity.y);
 	
@@ -97,40 +111,39 @@ bool updateY(double* buffer, unsigned int *count){
 
 
 - (void)prepTransform
-{
+{   
     transform = ABTransform(true);
     
-    string names[] = {"x", "y", "meanX", "meanY", "position", "positionCurve", "force"};
+    string names[] = {"x", "y", "meanX", "meanY", "position", "positionCurve", "inttouch"};
 	vector<string> position(names+2, names+4);
     
-    vector<string> tickInputs(names+5, names+6);
-    vector<string> tickInputs2(names+6, names+7);
+    vector<string> tickInputs(names+5, names+7);
+//    vector<string> tickInputs2(names+7, names+8);
     
     ABSymbol *rawInputs[] = {
 		new ABSymTime("time", &timer),
-		new ABSymVarPull("x", MAX_TOUCH_COUNT, updateX),
-		new ABSymVarPull("y", MAX_TOUCH_COUNT, updateY),
+		new ABSymVarPull("x", MAX_TOUCH_COUNT, _fountainUpdateX),
+		new ABSymVarPull("y", MAX_TOUCH_COUNT, _fountainUpdateY),
+        
 		new ABSymMean("meanX", "x"),
 		new ABSymMean("meanY", "y"),
 		new ABSymCombine("position", position),
+        
+        new ABSymCardNeg("numtouch", "x"),
+        new ABSymIntegrate("inttouch", 1, "numtouch", "time")
 	};
     
-    ABSymCurve *curve = new ABSymCurve("positionCurve", 2, "position", "time", 100, 5);
-    ABSymForceRegress<2> *force = new ABSymForceRegress<2>("force", "positionCurve", "time", 100);
+    ABSymCurve *curve = new ABSymCurve("positionCurve", 2, "position", "time", 6000, 900);
     
-    ABSymTick *tick = new ABSymTick("tick", tickInputs, &self->timer, .0001);
-    ABSymTick *tick2 = new ABSymTick("tick2", tickInputs2, &self->timer, .1);
+    ABSymTick *tick = new ABSymTick("tick", tickInputs, &self->timer, .001);
     
-    transform.addSymbols(rawInputs, 6);
+    transform.addSymbols(rawInputs, 8);
     transform.addSymbol(curve);
-    transform.addSymbol(force);
     transform.addSymbol(tick);
-    transform.addSymbol(tick2);
     
-    //    transform.printSymbolDependencies(std::cout);
+    transform.printSymbolDependencies(std::cout);
     
 	transform.startTick("tick");
-    transform.startTick("tick2");
 }
 
 - (void)prepParticles
@@ -138,15 +151,20 @@ bool updateY(double* buffer, unsigned int *count){
     // Initializes particle source with 2000 max capacity
     particles = new ABParticles(2000);
     
+    callback.transform = &transform;
+    callback.timer = &timer;
+    callback.center.set(512, 384);
+    
     // Ignore this for now--none of it is used while debugging
     ABParticles::Profile profile;
-    profile.lifeSpan = 4;
-    profile.delay = 4;
+    profile.lifeSpan = 12;
+    profile.delay = 12;
     profile.continuous = true;
+    profile.callback = &callback;
     
-    ABParticles::ProfileId pid = particles->createProfile(profile);
+    pid0 = particles->createProfile(profile);
     
-	particles->emitParticles(1500, pid);
+//	particles->emitParticles(1500, pid);
 }
 
 @end

@@ -25,5 +25,5 @@ double randd(double min, double max)
 
 float randf(float min, float max)
 {
-    return (max - min) * randf() * min;
+    return (max - min) * randf() + min;
 }

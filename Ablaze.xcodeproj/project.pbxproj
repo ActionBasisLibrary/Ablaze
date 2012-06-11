@@ -36,6 +36,7 @@
 		1281E8841575CDC600369462 /* ABParticles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87D1575B8AD00369462 /* ABParticles.vsh */; };
 		1281E8851575CDC600369462 /* ABParticles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1281E87F1575B8B900369462 /* ABParticles.fsh */; };
 		129B5FFB158588BB003C43FA /* FountainController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 129B5FFA158588BB003C43FA /* FountainController.mm */; };
+		129B603D1585BD76003C43FA /* FountainCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 129B603C1585BD76003C43FA /* FountainCallback.mm */; };
 		C9002A8D1547D8840044B6AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8C1547D8840044B6AD /* UIKit.framework */; };
 		C9002A8F1547D8840044B6AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A8E1547D8840044B6AD /* Foundation.framework */; };
 		C9002A911547D8840044B6AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9002A901547D8840044B6AD /* CoreGraphics.framework */; };
@@ -135,6 +136,8 @@
 		1281E87F1575B8B900369462 /* ABParticles.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ABParticles.fsh; sourceTree = "<group>"; };
 		129B5FF9158588BB003C43FA /* FountainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FountainController.h; sourceTree = "<group>"; };
 		129B5FFA158588BB003C43FA /* FountainController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FountainController.mm; sourceTree = "<group>"; };
+		129B603B1585BD76003C43FA /* FountainCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FountainCallback.h; sourceTree = "<group>"; };
+		129B603C1585BD76003C43FA /* FountainCallback.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FountainCallback.mm; sourceTree = "<group>"; };
 		C9002A881547D8840044B6AD /* Ablaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ablaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9002A8C1547D8840044B6AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9002A8E1547D8840044B6AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -338,6 +341,17 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
+		129B603A1585BD16003C43FA /* Fountain */ = {
+			isa = PBXGroup;
+			children = (
+				129B5FF9158588BB003C43FA /* FountainController.h */,
+				129B5FFA158588BB003C43FA /* FountainController.mm */,
+				129B603B1585BD76003C43FA /* FountainCallback.h */,
+				129B603C1585BD76003C43FA /* FountainCallback.mm */,
+			);
+			name = Fountain;
+			sourceTree = "<group>";
+		};
 		C9002A7D1547D8840044B6AD = {
 			isa = PBXGroup;
 			children = (
@@ -375,8 +389,6 @@
 				C9002AAA1547D8840044B6AD /* ViewController.mm */,
 				C92C4B091559C037002B9396 /* ABLWrapper.h */,
 				C92C4B0A1559C037002B9396 /* ABLWrapper.mm */,
-				129B5FF9158588BB003C43FA /* FountainController.h */,
-				129B5FFA158588BB003C43FA /* FountainController.mm */,
 				C942CB2C1585AE2500F9B17E /* Draw Modes */,
 				C942CB0A158592EE00F9B17E /* Drawables */,
 				C92C4AFC1558E45C002B9396 /* Touches */,
@@ -465,6 +477,7 @@
 			children = (
 				C942CB09158592DD00F9B17E /* Trails */,
 				C942CB2B1585AC8A00F9B17E /* MultiTrail */,
+				129B603A1585BD16003C43FA /* Fountain */,
 			);
 			name = "Draw Modes";
 			sourceTree = "<group>";
@@ -615,6 +628,7 @@
 				C942CB2715859E3200F9B17E /* SpeedColorCallback.cpp.mm in Sources */,
 				C942CB2A1585A6AD00F9B17E /* MultiTrailController.mm in Sources */,
 				129B5FFB158588BB003C43FA /* FountainController.mm in Sources */,
+				129B603D1585BD76003C43FA /* FountainCallback.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

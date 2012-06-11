@@ -96,7 +96,7 @@ public:
     ProfileId profile;
     
     char texId;
-    float age, size, lifeSpan;
+    float age, size, lifeSpan, birthTime;
     gVector3f position, velocity, acceleration;
     gVector4f color;
 	float born;

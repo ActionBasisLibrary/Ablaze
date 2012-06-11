@@ -80,7 +80,7 @@ bool updateTime(double* buffer){
 		new ABSymCombine("position", position),
 	};
 
-	ABSymbol *velocity = new ABSymDifferentiate("velocity", position, "time");
+	ABSymbol *velocity = new ABSymDifferentiate("velocity", 2, "position", "time");
 	ABSymbol *velocityCurve = new ABSymCurve("velocityCurve", 2, "velocity", "time", 100, 5);
 
 	vector<string> vTick(names+2, names+8);

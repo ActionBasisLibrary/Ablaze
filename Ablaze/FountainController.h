@@ -12,20 +12,27 @@
 #import "ABParticleShader.h"
 #import <GLKit/GLKit.h>
 #import "Drawable.h"
+#import "FountainCallback.h"
 
 #import "ABL/ABTransform.h"
 #import "ABL/GTimerThread.h"
 
 @interface FountainController : NSObject <TouchStateDelegate, Drawable>
 {
+    GLKMatrix4 projectionMatrix;
+    GTimerThread timer;
+    
 	ABParticles *particles;
 	ABParticleShader *pshader;
-	GLKMatrix4 projectionMatrix;
+    
+    FountainCallback callback;
+    ABParticles::ProfileId pid0;
+    
     ABTransform transform;
-    GTimerThread timer;
 }
 @property (readonly) ABParticles *particles;
 @property (readonly) ABParticleShader *pshader;
 @property GLKMatrix4 projectionMatrix;
+@property (retain) TouchState* touchState;
 
 @end
