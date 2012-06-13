@@ -61,7 +61,7 @@ void ODECallback::startColor(gVector4f &vect, float dt, const ABParticles::Parti
 
 void ODECallback::startSize (float *val, float dt, const ABParticles::Particle *ptr)
 {
-    *val = randf(4, 12);
+    *val = randf(10, 30);
 }
 
 void ODECallback::acceleration(gVector3f &vect, float dt, const ABParticles::Particle *ptr)
